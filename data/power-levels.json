@@ -176,6 +176,32 @@
       "homeUse": true
     },
     {
+      "id": "tw-32-220",
+      "label": "Taiwan 32 A @ 220 V (default home)",
+      "phases": 1,
+      "voltage": 220,
+      "voltageKind": "split",
+      "currentA": 32,
+      "powerKW": 7.04,
+      "breakerA": 40,
+      "family": "na-split",
+      "typical": "Standard TW wallbox. 32 A EVSE on a 40 A NFB (CNS 15511 / J1772).",
+      "homeUse": true
+    },
+    {
+      "id": "tw-40-220",
+      "label": "Taiwan 40 A @ 220 V",
+      "phases": 1,
+      "voltage": 220,
+      "voltageKind": "split",
+      "currentA": 40,
+      "powerKW": 8.8,
+      "breakerA": 50,
+      "family": "na-split",
+      "typical": "Listed SKU (e.g. Evalue X40A). 40 A output on a 50 A RCCB. Not the apartment default.",
+      "homeUse": true
+    },
+    {
       "id": "us-32-208",
       "label": "US/CA apartment 32 A @ 208 V",
       "phases": 1,

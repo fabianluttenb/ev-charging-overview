@@ -29,6 +29,17 @@ Full list: [`09-north-america-corner-cases.md`](09-north-america-corner-cases.md
 - **Canada commercial** often **600Y/347 V** (347 V lighting). Mexico dwellings **127/220 V**, not 120/240 V.
 - No residential three-phase AC to the car (SAE J3068 is depot/fleet). UL 2231 CCID ≠ IEC Type B.
 
+## Taiwan — 110/220 V 60 Hz, and yes they have 40 A
+
+Homes are **1φ 3-wire 110/220 V at 60 Hz** (US-style split-phase, but 110/220 not 120/240). Type A/B sockets are 110 V. A home charging station is a **dedicated 220 V** circuit.
+
+- Default wallbox: **32 A @ 220 V ≈ 7.0 kW**, SAE J1772 / CNS 15511 Type 1. Tesla Taiwan currently sells a **Type 2** Wall Connector as well.
+- **40 A almost always means the breaker**, not the car current: a 32 A EVSE is paired with a **40 A NFB** (continuous-load 125 %, same idea as NEC). Tesla TW’s home-charging page quotes a **40 A breaker** for Model 3 / Y (~40 km of range per hour).
+- **40 A EVSE output also exists:** domestic SKUs such as Evalue CSDA-X40A / CBDA-X40A are **40 A / 8.8 kW @ 220 V**, on a **50 A** RCCB. Adjustable boxes list 16 / 24 / 32 / **40** / 50 A. Not the default apartment install, but it is a listed, CNS-certified current.
+- Above that: 48 A (≈10.5 kW, e.g. Delta), 50 A (11 kW), 60 A (MSI 13.2 kW), 80 A (≈17.6 kW) — service-capacity limited, not typical 表燈 dwellings.
+- Building supplies also include **3φ 3-wire 220 V** and **3φ 4-wire 220/380 V**. Taipower guidance for new EV feeders prefers 1φ 110/220 or 3φ 4-wire 220/380, not extra 3φ 3-wire 220 V (phase balance).
+- NEMA 14-50 shows up on portable EVSE; it is **not** a standard Taiwan wall outlet.
+
 ## Japan — 100/200 V, 50/60 Hz split, Type 1, TT
 
 Home charging is **200 V single-phase Type 1**, typically 3–6 kW. 100 V is trickle only. East/west frequency split does not affect modern EVSE. Many household outlets are ungrounded Type A — Mode 2 on those is poor practice; use a grounded 200 V circuit.

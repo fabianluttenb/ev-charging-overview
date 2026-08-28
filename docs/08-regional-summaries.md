@@ -37,8 +37,8 @@
 
 ## Korea / Taiwan
 
-- KR: 220 V 60 Hz, TT, Type 1 historically.
-- TW: 110/220 V 60 Hz, Type 1.
+- KR: 220 V 60 Hz, TT, Type 1 historically; Type 2 / CCS2 growing.
+- TW: **110/220 V 60 Hz split-phase**, Type A/B, J1772 Type 1 (Tesla also Type 2). Home default **32 A @ 220 V ≈ 7 kW** on a **40 A NFB**. 40 A *charger* SKUs exist (8.8 kW). See special cases.
 
 ## India
 

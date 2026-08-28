@@ -52,6 +52,22 @@ J1772 / NACS are **single-phase**. There is no 22 kW three-phase residential AC 
 
 DC fast chargers on the same service use **480 V three-phase**, not 277 V lighting circuits.
 
+## Taiwan (110/220 V 60 Hz split-phase)
+
+Voltage on the EV circuit is **220 V**, not 240 V, so the same current is a little less power than a US Level 2 box.
+
+| EVSE current | Power @ 220 V | Typical protective device |
+| --- | --- | --- |
+| 16 A | 3.5 kW | 20 A NFB |
+| 24 A | 5.3 kW | 30 A NFB |
+| **32 A** (default home) | **7.0 kW** | **40 A NFB** |
+| **40 A** (listed SKU, e.g. Evalue X40A) | **8.8 kW** | **50 A RCCB** |
+| 48–50 A | 10.5–11 kW | 60 A |
+| 60 A | 13.2 kW | 75–80 A class |
+| 80 A | 17.6 kW | rare / fleet |
+
+The **40 A** figure people quote in Taiwan is usually the **breaker for a 32 A wallbox**. 40 A as the *charger output* is available but not the apartment default.
+
 ## Japan
 
 | Circuit | Power |
