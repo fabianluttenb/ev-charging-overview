@@ -1,0 +1,56 @@
+{
+  "id": "evbox",
+  "name": "EVBox",
+  "hq": "Netherlands",
+  "regions": [
+    "Europe",
+    "North America"
+  ],
+  "website": "https://evbox.com/",
+  "notes": "Elvi (home) and Livo / BusinessLine for workplace. Type 2, load balancing, OCPP. Brand has gone through ownership changes — check current SKU and support in the target country.",
+  "products": [
+    {
+      "name": "Elvi / Livo",
+      "power_kw": [
+        7.4,
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 socket",
+        "Type 2 tethered"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP55",
+      "ik": "IK10",
+      "rcd": "6 mA DC typical; confirm SKU",
+      "ocpp": "1.6J / 2.0.1 (platform)",
+      "auth": [
+        "RFID",
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": "business SKUs",
+      "connectivity": [
+        "Wi-Fi",
+        "Bluetooth",
+        "4G on some"
+      ],
+      "product_page": "https://evbox.com/en/ev-chargers",
+      "datasheet": "https://evbox.com/en/ev-chargers"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "myenergi",
+  "name": "myenergi",
+  "hq": "United Kingdom",
+  "regions": [
+    "UK",
+    "Europe",
+    "Oceania"
+  ],
+  "website": "https://www.myenergi.com/",
+  "notes": "Zappi: 7 kW 1φ (UK) or 22 kW 3φ export SKUs. Eco / Eco+ solar diversion with harvi/CT. OCPP on later firmware. PEN-fault protection for UK PME. Very common with UK PV.",
+  "products": [
+    {
+      "name": "Zappi",
+      "power_kw": [
+        7.0,
+        7.4,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        32
+      ],
+      "connector": [
+        "Type 2 tethered",
+        "Type 2 socket"
+      ],
+      "grids": [
+        "TN-C-S (PME)",
+        "TN-S",
+        "TT"
+      ],
+      "ip": "IP65",
+      "ik": "IK10",
+      "rcd": "6 mA DC + PEN fault (UK)",
+      "ocpp": "1.6 (later FW)",
+      "auth": [
+        "app",
+        "RFID optional"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi",
+        "Ethernet",
+        "hub"
+      ],
+      "product_page": "https://www.myenergi.com/product/zappi/",
+      "datasheet": "https://www.myenergi.com/product/zappi/"
+    }
+  ]
+}

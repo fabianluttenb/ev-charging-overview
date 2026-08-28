@@ -1,0 +1,97 @@
+{
+  "id": "tesla",
+  "name": "Tesla",
+  "hq": "United States",
+  "regions": [
+    "North America",
+    "Europe",
+    "East Asia"
+  ],
+  "website": "https://www.tesla.com/support/charging/wall-connector",
+  "notes": "Gen 3 Wall Connector. NA: 12–48 A @ 208/240 V (11.5 kW), CCID20, NACS or Universal (J1772). IEC/TW: Type 2, up to 32 A 1φ (7 kW) or 32 A 3φ (22 kW on 400 V), Type A+6 mA DC, TN/TT/IT. Wi-Fi, Tesla app, power sharing. Not OCPP.",
+  "products": [
+    {
+      "name": "Wall Connector Gen 3 (NA)",
+      "power_kw": [
+        3.8,
+        7.7,
+        9.6,
+        11.5
+      ],
+      "phases": [
+        1
+      ],
+      "current_a": [
+        16,
+        32,
+        40,
+        48
+      ],
+      "connector": [
+        "NACS tethered",
+        "J1772 via Universal"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP54 / NEMA 3R",
+      "ik": null,
+      "rcd": "CCID20 integrated",
+      "ocpp": false,
+      "auth": [
+        "Tesla app"
+      ],
+      "load_mgmt": true,
+      "pv": false,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi 2.4 GHz"
+      ],
+      "product_page": "https://www.tesla.com/support/charging/wall-connector",
+      "datasheet": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/1PNA/en-us/GUID-86D9DE81-BB5F-4CAD-9E2D-23AAAC475A20.html"
+    },
+    {
+      "name": "Wall Connector Gen 3 (IEC / TW)",
+      "power_kw": [
+        7.4,
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 tethered"
+      ],
+      "grids": [
+        "TN",
+        "TT",
+        "IT"
+      ],
+      "ip": "IP55",
+      "ik": "IK08",
+      "rcd": "Type A + 6 mA DC",
+      "ocpp": false,
+      "auth": [
+        "Tesla app",
+        "RFID on some"
+      ],
+      "load_mgmt": true,
+      "pv": false,
+      "iso15118": false,
+      "mid": "optional EU MID SKU",
+      "connectivity": [
+        "Wi-Fi"
+      ],
+      "product_page": "https://www.tesla.com/zh_tw/support/charging/wall-connector",
+      "datasheet": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/3PT2/MID/en-us/GUID-E64AD189-C626-4201-9E0B-8B430EF4F6DB.html"
+    }
+  ]
+}

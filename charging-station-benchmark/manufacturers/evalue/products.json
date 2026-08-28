@@ -1,0 +1,60 @@
+{
+  "id": "evalue",
+  "name": "Evalue / ChargingBOLT",
+  "hq": "Taiwan",
+  "regions": [
+    "East Asia"
+  ],
+  "website": "https://www.evalue.com.tw/",
+  "notes": "Taiwan-market wallboxes with adjustable 16/24/32/40/50 A @ 220 V 60 Hz. 40 A SKU = 8.8 kW on a 50 A RCCB. Type 1 (J1772) and Type 2. CNS 15511 + VPC. Requires Type B or EV Type A RCCB in TW.",
+  "products": [
+    {
+      "name": "CSDA / CBDA X-series",
+      "power_kw": [
+        3.5,
+        5.3,
+        7.0,
+        8.8,
+        11.0
+      ],
+      "phases": [
+        1
+      ],
+      "current_a": [
+        16,
+        24,
+        32,
+        40,
+        50
+      ],
+      "connector": [
+        "J1772 Type 1",
+        "Type 2"
+      ],
+      "grids": [
+        "TN (110/220 split)",
+        "3φ 220",
+        "220/380"
+      ],
+      "ip": "IP55",
+      "ik": null,
+      "rcd": "external Type B or EV Type A RCCB (TW rule)",
+      "ocpp": "1.6 JSON on networked SKUs",
+      "auth": [
+        "RFID",
+        "app"
+      ],
+      "load_mgmt": false,
+      "pv": false,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi",
+        "Ethernet",
+        "OCPP"
+      ],
+      "product_page": "https://www.evalue.com.tw/",
+      "datasheet": "https://www.evalue.com.tw/upload/files/1760427543048.pdf"
+    }
+  ]
+}

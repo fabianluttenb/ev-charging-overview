@@ -1,0 +1,57 @@
+{
+  "id": "chargepoint",
+  "name": "ChargePoint",
+  "hq": "United States",
+  "regions": [
+    "North America",
+    "Europe"
+  ],
+  "website": "https://www.chargepoint.com/drivers/home",
+  "notes": "Home Flex: 16–50 A @ 208/240 V (max 12 kW), J1772 or NACS, NEMA 6-50/14-50 or hardwire. Plug-in limited to 32/40 A. UL 2594/2231, ENERGY STAR. Wi-Fi, ChargePoint app. Commercial AC stations (CT4000 etc.) are a different product line.",
+  "products": [
+    {
+      "name": "Home Flex",
+      "power_kw": [
+        3.8,
+        7.7,
+        9.6,
+        11.5,
+        12.0
+      ],
+      "phases": [
+        1
+      ],
+      "current_a": [
+        16,
+        24,
+        32,
+        40,
+        48,
+        50
+      ],
+      "connector": [
+        "J1772 tethered",
+        "NACS tethered"
+      ],
+      "grids": [
+        "TN (split-phase)"
+      ],
+      "ip": "outdoor-rated (UL)",
+      "ik": null,
+      "rcd": "CCID / internal GFCI; do not double-up GFCI breaker",
+      "ocpp": false,
+      "auth": [
+        "ChargePoint app"
+      ],
+      "load_mgmt": false,
+      "pv": false,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi 2.4/5 GHz"
+      ],
+      "product_page": "https://www.chargepoint.com/drivers/home",
+      "datasheet": "https://docs.chargepoint.com/ref-docs-sec/content/pdfs/1-home/flex/flex-ds.pdf"
+    }
+  ]
+}

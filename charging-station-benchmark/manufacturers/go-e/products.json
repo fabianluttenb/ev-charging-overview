@@ -1,0 +1,103 @@
+{
+  "id": "go-e",
+  "name": "go-e",
+  "hq": "Austria",
+  "regions": [
+    "Europe"
+  ],
+  "website": "https://go-e.com/",
+  "notes": "Gemini / Gemini flex: compact, open HTTP/MQTT/Modbus API, portable flex SKU. Charger PRO: MID, ISO 15118 / V2X hardware-ready, OCPP 1.6, IP66, §14a EnWG. Strong with PV and third-party EMS (evcc).",
+  "products": [
+    {
+      "name": "go-e Charger Gemini / Gemini flex",
+      "power_kw": [
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        6,
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 socket",
+        "CEE inlet on flex"
+      ],
+      "grids": [
+        "TN",
+        "TT",
+        "IT"
+      ],
+      "ip": "IP54–IP65",
+      "ik": "IK08",
+      "rcd": "6 mA DC",
+      "ocpp": "1.6",
+      "auth": [
+        "app",
+        "RFID optional"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi",
+        "Bluetooth",
+        "LTE on some",
+        "HTTP API",
+        "MQTT",
+        "Modbus TCP"
+      ],
+      "product_page": "https://go-e.com/en/products/go-e-charger-gemini",
+      "datasheet": "https://go-e.com/en/downloads"
+    },
+    {
+      "name": "go-e Charger PRO",
+      "power_kw": [
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        6,
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 tethered 6 m"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP66",
+      "ik": "IK10",
+      "rcd": "6 mA DC",
+      "ocpp": "1.6 JSON",
+      "auth": [
+        "RFID",
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": true,
+      "mid": true,
+      "connectivity": [
+        "Wi-Fi",
+        "Bluetooth",
+        "LTE",
+        "Ethernet",
+        "Modbus TCP"
+      ],
+      "product_page": "https://go-e.com/en/products/go-e-charger-pro",
+      "datasheet": "https://cdn.shopify.com/s/files/1/0729/7584/3675/files/go-e-charger-pro-datenblatt.pdf"
+    }
+  ]
+}

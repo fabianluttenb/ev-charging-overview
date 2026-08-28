@@ -1,0 +1,49 @@
+{
+  "id": "emporia",
+  "name": "Emporia",
+  "hq": "United States",
+  "regions": [
+    "North America"
+  ],
+  "website": "https://www.emporiaenergy.com/",
+  "notes": "Wirecutter 2026 top pick (Classic). 40 A plug-in or 48 A hardwired @ 240 V (11.5 kW). J1772 or NACS. Tight integration with Emporia Vue energy monitor for solar/load. UL listed, 24–25 ft cable.",
+  "products": [
+    {
+      "name": "Classic Level 2",
+      "power_kw": [
+        9.6,
+        11.5
+      ],
+      "phases": [
+        1
+      ],
+      "current_a": [
+        40,
+        48
+      ],
+      "connector": [
+        "J1772 tethered",
+        "NACS tethered"
+      ],
+      "grids": [
+        "TN (split-phase / 208Y)"
+      ],
+      "ip": "IP66 claimed",
+      "ik": null,
+      "rcd": "UL 2231 CCID",
+      "ocpp": false,
+      "auth": [
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi"
+      ],
+      "product_page": "https://shop.emporiaenergy.com/products/emporia-ev-charger",
+      "datasheet": "https://www.emporiaenergy.com/"
+    }
+  ]
+}

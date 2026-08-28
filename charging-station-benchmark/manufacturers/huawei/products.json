@@ -1,0 +1,52 @@
+{
+  "id": "huawei",
+  "name": "Huawei",
+  "hq": "China",
+  "regions": [
+    "Europe",
+    "Asia"
+  ],
+  "website": "https://solar.huawei.com/",
+  "notes": "FusionCharge AC: native PV surplus with Huawei inverters/dongle. 7–22 kW Type 2. FusionSolar app. Best when the site already has a Huawei PV stack.",
+  "products": [
+    {
+      "name": "FusionCharge AC",
+      "power_kw": [
+        7.4,
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 tethered"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP54",
+      "ik": "IK10",
+      "rcd": "6 mA DC",
+      "ocpp": false,
+      "auth": [
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "FusionSolar / inverter dongle"
+      ],
+      "product_page": "https://solar.huawei.com/",
+      "datasheet": "https://solar.huawei.com/"
+    }
+  ]
+}

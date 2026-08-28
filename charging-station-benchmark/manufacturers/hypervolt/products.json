@@ -1,0 +1,49 @@
+{
+  "id": "hypervolt",
+  "name": "Hypervolt",
+  "hq": "United Kingdom",
+  "regions": [
+    "UK"
+  ],
+  "website": "https://hypervolt.co.uk/",
+  "notes": "What Car? 2025 owner-survey winner (low fault rate). Home 2.0 / 3: 7 kW 1φ Type 2, solar, PEN protection, app. UK-centric.",
+  "products": [
+    {
+      "name": "Home / Home 3",
+      "power_kw": [
+        7.2,
+        7.4
+      ],
+      "phases": [
+        1
+      ],
+      "current_a": [
+        32
+      ],
+      "connector": [
+        "Type 2 tethered"
+      ],
+      "grids": [
+        "TN-C-S",
+        "TN-S",
+        "TT"
+      ],
+      "ip": "IP65",
+      "ik": "IK10",
+      "rcd": "6 mA DC + open-PEN",
+      "ocpp": false,
+      "auth": [
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi"
+      ],
+      "product_page": "https://hypervolt.co.uk/",
+      "datasheet": "https://hypervolt.co.uk/"
+    }
+  ]
+}

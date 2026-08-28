@@ -6,6 +6,8 @@ It covers earthing, voltages and tolerances, standards, currents and powers, and
 
 Open **[index.html](index.html)** in a browser. No server is required.
 
+AC wallbox comparison (per manufacturer, datasheet links) lives in [`charging-station-benchmark/`](charging-station-benchmark/README.md) and in the HTML **Charging stations** section.
+
 ---
 
 ## Quick start
@@ -35,6 +37,7 @@ The interactive viewer also has:
 - Supply vs onboard-charger matrix
 - Connector pinouts and home supply plugs (hardwired, NEMA 14-50, IEC 60309, Mode 2 household)
 - Filterable / sortable table of 76 countries
+- AC wallbox benchmark (26 manufacturers, datasheet links)
 - Special cases (Norway IT, UK PME, Belgium 3×230 V delta, US split-phase, Japan, China GB/T, Saudi 60 Hz)
 
 ---
@@ -44,6 +47,7 @@ The interactive viewer also has:
 ```
 ev-charging-overview/
 ├── index.html                 Interactive viewer (start here)
+├── charging-station-benchmark/  AC wallbox catalog (one folder per OEM)
 ├── README.md
 ├── data/                      Machine-readable datasets
 │   ├── countries.json         Grid + charging profile by country

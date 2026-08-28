@@ -1,0 +1,49 @@
+{
+  "id": "heidelberg",
+  "name": "Amperfied / Heidelberg",
+  "hq": "Germany",
+  "regions": [
+    "Europe"
+  ],
+  "website": "https://www.amperfied.com/",
+  "notes": "Former Heidelberg Wallbox (Energy Control / Connect). Analog 0–10 V / PWM load management without a cloud. Energy Control is the cheap, robust, no-app option. Connect adds WLAN/OCPP. Brand now Amperfied (Porsche/Volkswagen group industrial).",
+  "products": [
+    {
+      "name": "Energy Control / Connect (Amperfied)",
+      "power_kw": [
+        11
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        16
+      ],
+      "connector": [
+        "Type 2 tethered"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP54",
+      "ik": "IK10",
+      "rcd": "6 mA DC; external Type A",
+      "ocpp": "Connect SKU",
+      "auth": [
+        "none on Energy Control"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "0–10 V analog (Energy Control)",
+        "WLAN/OCPP (Connect)"
+      ],
+      "product_page": "https://www.amperfied.com/",
+      "datasheet": "https://www.amperfied.com/"
+    }
+  ]
+}

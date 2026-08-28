@@ -1,0 +1,52 @@
+{
+  "id": "delta",
+  "name": "Delta Electronics",
+  "hq": "Taiwan",
+  "regions": [
+    "East Asia",
+    "Europe",
+    "North America"
+  ],
+  "website": "https://www.deltaww.com/",
+  "notes": "Taiwan/EU AC Mini Plus 32 A / 7 kW Type 1 or Type 2 (CNS 15511). EIAW-T up to 48–80 A single-phase 220 V (~10.5–17.6 kW). Recommends a dedicated 40 A 2P breaker for 32 A units. Also large DC portfolio.",
+  "products": [
+    {
+      "name": "AC Mini Plus (EVPT)",
+      "power_kw": [
+        7.0,
+        7.4
+      ],
+      "phases": [
+        1
+      ],
+      "current_a": [
+        32
+      ],
+      "connector": [
+        "J1772 / CNS 15511-2",
+        "Type 2"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP55",
+      "ik": "IK08",
+      "rcd": "30 mA AC + 6 mA DC",
+      "ocpp": "1.6",
+      "auth": [
+        "RFID"
+      ],
+      "load_mgmt": true,
+      "pv": false,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "WLAN",
+        "OCPP"
+      ],
+      "product_page": "https://www.deltaww.com/en-US/products/EV-Charging/ALL/",
+      "datasheet": "https://filecenter.deltaww.com/Products/download/21/2101/Catalogue/EV%20Charging%20Solution_Catalog_TW_202103.pdf"
+    }
+  ]
+}

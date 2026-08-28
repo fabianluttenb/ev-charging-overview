@@ -1,0 +1,100 @@
+{
+  "id": "wallbox",
+  "name": "Wallbox",
+  "hq": "Spain",
+  "regions": [
+    "Europe",
+    "North America",
+    "Latin America"
+  ],
+  "website": "https://wallbox.com/",
+  "notes": "Pulsar family is the compact residential staple. Plus = Wi-Fi/BT, IP54. Max = Ethernet, IP55/IK10, OCPP. Power Boost / Eco-Smart need an external meter. Copper SB / Pulsar Pro for business. Quasar is bidirectional (out of 22 kW AC-only scope).",
+  "products": [
+    {
+      "name": "Pulsar Plus",
+      "power_kw": [
+        7.4,
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        6,
+        16,
+        32
+      ],
+      "connector": [
+        "Type 1 tethered",
+        "Type 2 tethered 5/7 m"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP54",
+      "ik": "IK08",
+      "rcd": "6 mA DC RDC-DD; external Type A/B per local code",
+      "ocpp": "1.6J compatible",
+      "auth": [
+        "app",
+        "myWallbox"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi",
+        "Bluetooth"
+      ],
+      "product_page": "https://wallbox.com/en_uk/pulsar-plus",
+      "datasheet": "https://d1lnencgr7glws.cloudfront.net/wp-content/uploads/2024/07/31122738/EN_Pulsar_Family_Datasheets.pdf"
+    },
+    {
+      "name": "Pulsar Max",
+      "power_kw": [
+        7.4,
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        6,
+        16,
+        32
+      ],
+      "connector": [
+        "Type 1 / Type 2 / GB/T tethered",
+        "Type 2 socket"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP55",
+      "ik": "IK10",
+      "rcd": "6 mA DC; external Type A",
+      "ocpp": "1.6J",
+      "auth": [
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi",
+        "Bluetooth",
+        "Ethernet"
+      ],
+      "product_page": "https://wallbox.com/en_uk/pulsar-max",
+      "datasheet": "https://d1lnencgr7glws.cloudfront.net/wp-content/uploads/2024/07/31122738/EN_Pulsar_Family_Datasheets.pdf"
+    }
+  ]
+}

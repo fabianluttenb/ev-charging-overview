@@ -1,0 +1,54 @@
+{
+  "id": "charge-amps",
+  "name": "Charge Amps",
+  "hq": "Sweden",
+  "regions": [
+    "Europe"
+  ],
+  "website": "https://www.chargeamps.com/",
+  "notes": "Dawn Professional DE: ADAC 2025 joint 2nd (1.7). Halo is the design-led home unit. Nordic cold-weather focus, OCPP, RFID.",
+  "products": [
+    {
+      "name": "Dawn / Halo",
+      "power_kw": [
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 tethered",
+        "Type 2 socket"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP66 class on Dawn",
+      "ik": "IK10",
+      "rcd": "6 mA DC",
+      "ocpp": "1.6",
+      "auth": [
+        "RFID",
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": "Professional / Eichrecht SKUs",
+      "connectivity": [
+        "Wi-Fi",
+        "Ethernet",
+        "4G"
+      ],
+      "product_page": "https://www.chargeamps.com/",
+      "datasheet": "https://www.chargeamps.com/"
+    }
+  ]
+}

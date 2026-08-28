@@ -1,0 +1,57 @@
+{
+  "id": "easee",
+  "name": "Easee",
+  "hq": "Norway",
+  "regions": [
+    "Europe",
+    "UK"
+  ],
+  "website": "https://easee.com/",
+  "notes": "Compact ‘charging robot’ on a backplate. Fully dynamic 1φ/3φ including Norwegian IT (max ~12.7 kW at 32 A 3φ IT). Built-in Type B-class RCD. Equalizer for whole-building load/PV. OCPP 1.6 via Easee API (not always native box-to-backend).",
+  "products": [
+    {
+      "name": "Easee Home / Charge / Charge Max",
+      "power_kw": [
+        7.4,
+        12.7,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        6,
+        32
+      ],
+      "connector": [
+        "Type 2 socket"
+      ],
+      "grids": [
+        "TN",
+        "TT",
+        "IT"
+      ],
+      "ip": "IP54",
+      "ik": "IK10",
+      "rcd": "integrated AC 30 mA + DC 6 mA (Type B characteristic)",
+      "ocpp": "1.6J via API",
+      "auth": [
+        "RFID/NFC",
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi",
+        "Bluetooth",
+        "LTE Cat-M1 eSIM",
+        "Easee Link RF"
+      ],
+      "product_page": "https://easee.com/products",
+      "datasheet": "https://download.easee.com/m/48f3bf628744a32b/original/EN_Home_Charge_IG.pdf"
+    }
+  ]
+}

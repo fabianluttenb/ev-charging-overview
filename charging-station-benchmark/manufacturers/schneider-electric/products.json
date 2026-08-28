@@ -1,0 +1,102 @@
+{
+  "id": "schneider-electric",
+  "name": "Schneider Electric",
+  "hq": "France",
+  "regions": [
+    "Europe",
+    "Asia",
+    "Oceania",
+    "North America"
+  ],
+  "website": "https://www.se.com/ww/en/product-range/22127-evlink/",
+  "notes": "EVlink Home / Schneider Charge for dwellings (Wiser). EVlink Pro AC / Smart Wallbox for workplace (OCPP, MID, RFID). 6 mA DC filter on Home. EcoStruxure for sites.",
+  "products": [
+    {
+      "name": "EVlink Home / Schneider Charge",
+      "power_kw": [
+        7.4,
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        6,
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 shutter socket",
+        "Type 2 tethered 5/7 m"
+      ],
+      "grids": [
+        "TN-S",
+        "TN-C-S",
+        "TT"
+      ],
+      "ip": "IP54–IP55",
+      "ik": "IK10",
+      "rcd": "6 mA DC filter; external 30 mA Type A-SI",
+      "ocpp": false,
+      "auth": [
+        "app (Wiser)",
+        "free access"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wiser Home / EcoStruxure"
+      ],
+      "product_page": "https://www.se.com/ww/en/product-range/61636-schneider-charge/",
+      "datasheet": "https://www.se.com/ww/en/product-range/22127-evlink/"
+    },
+    {
+      "name": "EVlink Pro AC / Smart Wallbox",
+      "power_kw": [
+        7.4,
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        8,
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 shutter"
+      ],
+      "grids": [
+        "TN",
+        "TT",
+        "IT"
+      ],
+      "ip": "IP54–IP55",
+      "ik": "IK10",
+      "rcd": "RDC-DD 6 mA on Pro AC SKUs",
+      "ocpp": "1.6",
+      "auth": [
+        "RFID",
+        "remote"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": "Pro AC MID SKUs",
+      "connectivity": [
+        "Ethernet",
+        "4G",
+        "Modbus"
+      ],
+      "product_page": "https://www.se.com/ww/en/product-range/65781-evlink-pro-ac/",
+      "datasheet": "https://www.se.com/ww/en/product-range/65781-evlink-pro-ac/"
+    }
+  ]
+}

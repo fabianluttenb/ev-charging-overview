@@ -1,0 +1,51 @@
+{
+  "id": "abl",
+  "name": "ABL",
+  "hq": "Germany",
+  "regions": [
+    "Europe"
+  ],
+  "website": "https://www.abl.de/",
+  "notes": "eMH1 is the classic simple German wallbox (ADAC 1.0 in 2018). eM4 Single/Twin is the current connected/Eichrecht line. ADAC 2025 eM4 Single note 1.9.",
+  "products": [
+    {
+      "name": "eMH1 / eM4 Single",
+      "power_kw": [
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 socket",
+        "Type 2 tethered"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP54",
+      "ik": "IK10",
+      "rcd": "6 mA DC",
+      "ocpp": "eM4",
+      "auth": [
+        "RFID on eM4"
+      ],
+      "load_mgmt": true,
+      "pv": false,
+      "iso15118": false,
+      "mid": "eM4 Eichrecht",
+      "connectivity": [
+        "eM4: Ethernet/LTE/OCPP"
+      ],
+      "product_page": "https://www.abl.de/en/products/emobility/",
+      "datasheet": "https://www.abl.de/en/products/emobility/"
+    }
+  ]
+}

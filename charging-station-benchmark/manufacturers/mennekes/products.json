@@ -1,0 +1,54 @@
+{
+  "id": "mennekes",
+  "name": "Mennekes",
+  "hq": "Germany",
+  "regions": [
+    "Europe"
+  ],
+  "website": "https://www.mennekes.de/",
+  "notes": "Origin of the Type 2 connector. AMTRON 4You (home) and 4Business (OCPP, Eichrecht). ADAC 2025 AMTRON 4Business note 1.9.",
+  "products": [
+    {
+      "name": "AMTRON 4You / 4Business",
+      "power_kw": [
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 socket",
+        "Type 2 tethered"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP54",
+      "ik": "IK10",
+      "rcd": "6 mA DC; Type A upstream",
+      "ocpp": "4Business",
+      "auth": [
+        "RFID",
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": "4Business Eichrecht SKUs",
+      "connectivity": [
+        "Ethernet",
+        "Wi-Fi",
+        "LTE on Business"
+      ],
+      "product_page": "https://www.mennekes.de/emobility/",
+      "datasheet": "https://www.mennekes.de/emobility/"
+    }
+  ]
+}
