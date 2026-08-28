@@ -51,7 +51,11 @@
         "Bluetooth"
       ],
       "product_page": "https://wallbox.com/en_uk/pulsar-plus",
-      "datasheet": "https://d1lnencgr7glws.cloudfront.net/wp-content/uploads/2024/07/31122738/EN_Pulsar_Family_Datasheets.pdf"
+      "datasheet": "https://d1lnencgr7glws.cloudfront.net/wp-content/uploads/2024/07/31122738/EN_Pulsar_Family_Datasheets.pdf",
+      "mode": [
+        3
+      ],
+      "portable": false
     },
     {
       "name": "Pulsar Max",
@@ -94,7 +98,11 @@
         "Ethernet"
       ],
       "product_page": "https://wallbox.com/en_uk/pulsar-max",
-      "datasheet": "https://d1lnencgr7glws.cloudfront.net/wp-content/uploads/2024/07/31122738/EN_Pulsar_Family_Datasheets.pdf"
+      "datasheet": "https://d1lnencgr7glws.cloudfront.net/wp-content/uploads/2024/07/31122738/EN_Pulsar_Family_Datasheets.pdf",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

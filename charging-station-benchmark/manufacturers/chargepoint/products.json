@@ -51,7 +51,11 @@
         "Wi-Fi 2.4/5 GHz"
       ],
       "product_page": "https://www.chargepoint.com/drivers/home",
-      "datasheet": "https://docs.chargepoint.com/ref-docs-sec/content/pdfs/1-home/flex/flex-ds.pdf"
+      "datasheet": "https://docs.chargepoint.com/ref-docs-sec/content/pdfs/1-home/flex/flex-ds.pdf",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

@@ -12,6 +12,8 @@ Home Flex: 16–50 A @ 208/240 V (max 12 kW), J1772 or NACS, NEMA 6-50/14-50 or 
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 3.8 kW, 7.7 kW, 9.6 kW, 11.5 kW, 12.0 kW |
 | Phases | 1 |
 | Current | 16 A, 24 A, 32 A, 40 A, 48 A, 50 A |

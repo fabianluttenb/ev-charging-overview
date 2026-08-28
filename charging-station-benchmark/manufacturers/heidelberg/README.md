@@ -12,6 +12,8 @@ Former Heidelberg Wallbox (Energy Control / Connect). Analog 0–10 V / PWM load
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 11 kW |
 | Phases | 1, 3 |
 | Current | 16 A |

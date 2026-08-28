@@ -1,0 +1,63 @@
+{
+  "id": "nrgkick",
+  "name": "NRGkick (DiniTech)",
+  "hq": "Austria",
+  "regions": [
+    "Europe"
+  ],
+  "website": "https://www.nrgkick.com/",
+  "notes": "Portable IC-CPD. Mode 2 (IEC 62752) on household/CEE sockets; Mode 3 when using the Type 2 smart attachment on a Mode 3 outlet. Up to 22 kW, IP67, temperature-monitored attachments, optional ISO 15118 / MID SKUs.",
+  "products": [
+    {
+      "name": "NRGkick",
+      "power_kw": [
+        3.7,
+        7.4,
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        6,
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 tethered 5/7.5/10 m",
+        "Smart attachments: Schuko, CEE 16/32 1φ/3φ, Type 2"
+      ],
+      "grids": [
+        "TN",
+        "TT",
+        "IT"
+      ],
+      "ip": "IP67",
+      "ik": "IK10",
+      "rcd": "30 mA AC + 6 mA DC; PE/loop-impedance test",
+      "ocpp": false,
+      "auth": [
+        "app",
+        "optional RFID"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": true,
+      "mid": "optional MID SKUs",
+      "connectivity": [
+        "Bluetooth",
+        "Wi-Fi",
+        "optional 4G / GNSS"
+      ],
+      "product_page": "https://www.nrgkick.com/",
+      "datasheet": "https://cdn.shopify.com/s/files/1/0554/4991/1477/files/03_NRGkick_Data_sheet_2104-01-2.pdf",
+      "mode": [
+        2,
+        3
+      ],
+      "portable": true
+    }
+  ]
+}

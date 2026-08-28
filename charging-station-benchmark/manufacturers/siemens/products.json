@@ -51,7 +51,11 @@
         "Modbus"
       ],
       "product_page": "https://www.siemens.com/global/en/products/energy/medium-voltage/systems/emobility/versicharge.html",
-      "datasheet": "https://www.siemens.com/global/en/products/energy/medium-voltage/systems/emobility/versicharge.html"
+      "datasheet": "https://www.siemens.com/global/en/products/energy/medium-voltage/systems/emobility/versicharge.html",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

@@ -12,6 +12,8 @@ Zappi: 7 kW 1φ (UK) or 22 kW 3φ export SKUs. Eco / Eco+ solar diversion with h
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.0 kW, 7.4 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 32 A |

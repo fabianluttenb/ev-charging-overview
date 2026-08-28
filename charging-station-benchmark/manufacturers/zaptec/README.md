@@ -12,6 +12,8 @@ Strong in apartment / workplace load and phase balancing. Go / Go 2 for homes; P
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 12.7 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 6 A, 32 A |
@@ -33,6 +35,8 @@ Strong in apartment / workplace load and phase balancing. Go / Go 2 for homes; P
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 12.7 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 32 A |

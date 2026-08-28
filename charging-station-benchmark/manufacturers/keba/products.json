@@ -56,7 +56,11 @@
         "REST API"
       ],
       "product_page": "https://www.keba.com/en/emobility/products/p40/kecontact-p40-overview",
-      "datasheet": "https://www.keba.com/en/emobility/products/p40/kecontact-p40-overview"
+      "datasheet": "https://www.keba.com/en/emobility/products/p40/kecontact-p40-overview",
+      "mode": [
+        3
+      ],
+      "portable": false
     },
     {
       "name": "KeContact P30 (a / c / x-series)",
@@ -106,7 +110,11 @@
         "WLAN/4G on x-series"
       ],
       "product_page": "https://www.keba.com/en/emobility/products/product-overview/chargers",
-      "datasheet": "https://www.keba.com/download/x/be0ccce36d/kecontact_p30_technicaldata_dben.pdf"
+      "datasheet": "https://www.keba.com/download/x/be0ccce36d/kecontact_p30_technicaldata_dben.pdf",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

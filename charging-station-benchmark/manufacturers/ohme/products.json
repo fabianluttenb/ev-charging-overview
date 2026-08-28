@@ -7,7 +7,7 @@
     "Europe"
   ],
   "website": "https://www.ohme-ev.com/",
-  "notes": "Home Pro: 7 kW 1φ, tariff-aware smart charging (Octopus etc.), eMSP integration. PEN protection. Strong UK company-car / salary-sacrifice channel.",
+  "notes": "Home Pro is the Mode 3 7 kW wallbox (tariff-aware, Octopus, PEN). ePod is the Mode 2 portable 13 A / ~3 kW smart granny charger.",
   "products": [
     {
       "name": "Home Pro",
@@ -44,7 +44,54 @@
         "SIM on some"
       ],
       "product_page": "https://www.ohme-ev.com/",
-      "datasheet": "https://www.ohme-ev.com/"
+      "datasheet": "https://www.ohme-ev.com/",
+      "mode": [
+        3
+      ],
+      "portable": false
+    },
+    {
+      "name": "ePod",
+      "power_kw": [
+        3.0,
+        3.6
+      ],
+      "phases": [
+        1
+      ],
+      "current_a": [
+        10,
+        13
+      ],
+      "connector": [
+        "Type 2 tethered",
+        "BS 1363 13 A plug"
+      ],
+      "grids": [
+        "TN-C-S",
+        "TN-S",
+        "TT"
+      ],
+      "ip": "IP54",
+      "ik": null,
+      "rcd": "IC-CPD IEC 62752",
+      "ocpp": false,
+      "auth": [
+        "app"
+      ],
+      "load_mgmt": true,
+      "pv": false,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi / SIM"
+      ],
+      "product_page": "https://www.ohme-ev.com/",
+      "datasheet": "https://www.ohme-ev.com/",
+      "mode": [
+        2
+      ],
+      "portable": true
     }
   ]
 }

@@ -43,7 +43,11 @@
         "WLAN/OCPP (Connect)"
       ],
       "product_page": "https://www.amperfied.com/",
-      "datasheet": "https://www.amperfied.com/"
+      "datasheet": "https://www.amperfied.com/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

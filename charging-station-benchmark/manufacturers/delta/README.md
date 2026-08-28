@@ -12,6 +12,8 @@ Taiwan/EU AC Mini Plus 32 A / 7 kW Type 1 or Type 2 (CNS 15511). EIAW-T up to 48
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.0 kW, 7.4 kW |
 | Phases | 1 |
 | Current | 32 A |

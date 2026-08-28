@@ -43,7 +43,11 @@
         "Wi-Fi"
       ],
       "product_page": "https://shop.emporiaenergy.com/products/emporia-ev-charger",
-      "datasheet": "https://www.emporiaenergy.com/"
+      "datasheet": "https://www.emporiaenergy.com/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

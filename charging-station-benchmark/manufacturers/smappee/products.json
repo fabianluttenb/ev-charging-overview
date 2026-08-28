@@ -49,7 +49,11 @@
         "Infinity bus"
       ],
       "product_page": "https://www.smappee.com/ev-wall/",
-      "datasheet": "https://www.smappee.com/ev-wall/"
+      "datasheet": "https://www.smappee.com/ev-wall/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

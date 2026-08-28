@@ -6,10 +6,10 @@
     "Europe"
   ],
   "website": "https://go-e.com/",
-  "notes": "Gemini / Gemini flex: compact, open HTTP/MQTT/Modbus API, portable flex SKU. Charger PRO: MID, ISO 15118 / V2X hardware-ready, OCPP 1.6, IP66, §14a EnWG. Strong with PV and third-party EMS (evcc).",
+  "notes": "Gemini is the wall-mounted Mode 3 unit. Gemini flex is the portable Mode 2 IC-CPD (CEE inlet + adapters). Open HTTP/MQTT/Modbus API. Charger PRO: MID, ISO 15118 / V2X hardware-ready, OCPP 1.6, IP66, §14a EnWG.",
   "products": [
     {
-      "name": "go-e Charger Gemini / Gemini flex",
+      "name": "go-e Charger Gemini",
       "power_kw": [
         11,
         22
@@ -24,15 +24,14 @@
         32
       ],
       "connector": [
-        "Type 2 socket",
-        "CEE inlet on flex"
+        "Type 2 socket"
       ],
       "grids": [
         "TN",
         "TT",
         "IT"
       ],
-      "ip": "IP54–IP65",
+      "ip": "IP54",
       "ik": "IK08",
       "rcd": "6 mA DC",
       "ocpp": "1.6",
@@ -53,7 +52,62 @@
         "Modbus TCP"
       ],
       "product_page": "https://go-e.com/en/products/go-e-charger-gemini",
-      "datasheet": "https://go-e.com/en/downloads"
+      "datasheet": "https://go-e.com/en/downloads",
+      "mode": [
+        3
+      ],
+      "portable": false
+    },
+    {
+      "name": "go-e Charger Gemini flex",
+      "power_kw": [
+        11,
+        22
+      ],
+      "phases": [
+        1,
+        3
+      ],
+      "current_a": [
+        6,
+        16,
+        32
+      ],
+      "connector": [
+        "Type 2 socket",
+        "CEE 16/32 inlet",
+        "Schuko adapter"
+      ],
+      "grids": [
+        "TN",
+        "TT",
+        "IT"
+      ],
+      "ip": "IP65",
+      "ik": "IK08",
+      "rcd": "6 mA DC + 30 mA AC",
+      "ocpp": "1.6",
+      "auth": [
+        "app",
+        "RFID optional"
+      ],
+      "load_mgmt": true,
+      "pv": true,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "Wi-Fi",
+        "Bluetooth",
+        "HTTP API",
+        "MQTT",
+        "Modbus TCP"
+      ],
+      "product_page": "https://go-e.com/en/products/go-e-charger-gemini-flex",
+      "datasheet": "https://go-e.com/en/downloads",
+      "mode": [
+        2
+      ],
+      "portable": true
     },
     {
       "name": "go-e Charger PRO",
@@ -97,7 +151,11 @@
         "Modbus TCP"
       ],
       "product_page": "https://go-e.com/en/products/go-e-charger-pro",
-      "datasheet": "https://cdn.shopify.com/s/files/1/0729/7584/3675/files/go-e-charger-pro-datenblatt.pdf"
+      "datasheet": "https://cdn.shopify.com/s/files/1/0729/7584/3675/files/go-e-charger-pro-datenblatt.pdf",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

@@ -12,6 +12,8 @@ MaxiCharger AC Elite Home (up to 50 A NA / 22 kW IEC), AC Pro, AC Ultra. App, RF
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11.5 kW, 12 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 32 A, 40 A, 48 A, 50 A |

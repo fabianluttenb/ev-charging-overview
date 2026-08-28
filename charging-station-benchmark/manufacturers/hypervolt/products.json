@@ -43,7 +43,11 @@
         "Wi-Fi"
       ],
       "product_page": "https://hypervolt.co.uk/",
-      "datasheet": "https://hypervolt.co.uk/"
+      "datasheet": "https://hypervolt.co.uk/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

@@ -48,7 +48,11 @@
         "LTE on Business"
       ],
       "product_page": "https://www.mennekes.de/emobility/",
-      "datasheet": "https://www.mennekes.de/emobility/"
+      "datasheet": "https://www.mennekes.de/emobility/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

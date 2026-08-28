@@ -51,7 +51,11 @@
         "Bluetooth"
       ],
       "product_page": "https://www.zaptec.com/en/products/zaptec-go",
-      "datasheet": "https://www.zaptec.com/en/products/zaptec-go"
+      "datasheet": "https://www.zaptec.com/en/products/zaptec-go",
+      "mode": [
+        3
+      ],
+      "portable": false
     },
     {
       "name": "Zaptec Pro",
@@ -94,7 +98,11 @@
         "PLC HomePlug Green PHY"
       ],
       "product_page": "https://www.zaptec.com/en/products/zaptec-pro",
-      "datasheet": "https://www.zaptec.com/en/products/zaptec-pro"
+      "datasheet": "https://www.zaptec.com/en/products/zaptec-pro",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

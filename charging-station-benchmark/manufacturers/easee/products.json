@@ -51,7 +51,11 @@
         "Easee Link RF"
       ],
       "product_page": "https://easee.com/products",
-      "datasheet": "https://download.easee.com/m/48f3bf628744a32b/original/EN_Home_Charge_IG.pdf"
+      "datasheet": "https://download.easee.com/m/48f3bf628744a32b/original/EN_Home_Charge_IG.pdf",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

@@ -54,7 +54,11 @@
         "OCPP"
       ],
       "product_page": "https://www.evalue.com.tw/",
-      "datasheet": "https://www.evalue.com.tw/upload/files/1760427543048.pdf"
+      "datasheet": "https://www.evalue.com.tw/upload/files/1760427543048.pdf",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

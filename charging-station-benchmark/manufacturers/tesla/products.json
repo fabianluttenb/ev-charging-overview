@@ -8,7 +8,7 @@
     "East Asia"
   ],
   "website": "https://www.tesla.com/support/charging/wall-connector",
-  "notes": "Gen 3 Wall Connector. NA: 12–48 A @ 208/240 V (11.5 kW), CCID20, NACS or Universal (J1772). IEC/TW: Type 2, up to 32 A 1φ (7 kW) or 32 A 3φ (22 kW on 400 V), Type A+6 mA DC, TN/TT/IT. Wi-Fi, Tesla app, power sharing. Not OCPP.",
+  "notes": "Gen 3 Wall Connector is Mode 3. NA: 12–48 A @ 208/240 V (11.5 kW), CCID20, NACS or Universal (J1772). IEC/TW: Type 2, up to 32 A 1φ (7 kW) or 32 A 3φ (22 kW on 400 V). Mobile Connector is the Mode 2 travel IC-CPD with plug adapters.",
   "products": [
     {
       "name": "Wall Connector Gen 3 (NA)",
@@ -50,7 +50,11 @@
         "Wi-Fi 2.4 GHz"
       ],
       "product_page": "https://www.tesla.com/support/charging/wall-connector",
-      "datasheet": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/1PNA/en-us/GUID-86D9DE81-BB5F-4CAD-9E2D-23AAAC475A20.html"
+      "datasheet": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/1PNA/en-us/GUID-86D9DE81-BB5F-4CAD-9E2D-23AAAC475A20.html",
+      "mode": [
+        3
+      ],
+      "portable": false
     },
     {
       "name": "Wall Connector Gen 3 (IEC / TW)",
@@ -91,7 +95,58 @@
         "Wi-Fi"
       ],
       "product_page": "https://www.tesla.com/zh_tw/support/charging/wall-connector",
-      "datasheet": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/3PT2/MID/en-us/GUID-E64AD189-C626-4201-9E0B-8B430EF4F6DB.html"
+      "datasheet": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/3PT2/MID/en-us/GUID-E64AD189-C626-4201-9E0B-8B430EF4F6DB.html",
+      "mode": [
+        3
+      ],
+      "portable": false
+    },
+    {
+      "name": "Mobile Connector (UMC)",
+      "power_kw": [
+        1.4,
+        3.7,
+        7.4
+      ],
+      "phases": [
+        1
+      ],
+      "current_a": [
+        8,
+        10,
+        13,
+        16,
+        32
+      ],
+      "connector": [
+        "NACS or Type 2 tethered",
+        "NEMA 5-15 / 14-50 adapters",
+        "Schuko / CEE adapters (IEC)"
+      ],
+      "grids": [
+        "TN",
+        "TT"
+      ],
+      "ip": "IP44 typical",
+      "ik": null,
+      "rcd": "IC-CPD (IEC 62752) / CCID",
+      "ocpp": false,
+      "auth": [
+        "none"
+      ],
+      "load_mgmt": false,
+      "pv": false,
+      "iso15118": false,
+      "mid": false,
+      "connectivity": [
+        "none"
+      ],
+      "product_page": "https://www.tesla.com/support/charging/mobile-connector",
+      "datasheet": "https://www.tesla.com/support/charging/mobile-connector",
+      "mode": [
+        2
+      ],
+      "portable": true
     }
   ]
 }

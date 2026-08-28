@@ -12,6 +12,8 @@ Taiwan-market wallboxes with adjustable 16/24/32/40/50 A @ 220 V 60 Hz. 40 A SKU
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 3.5 kW, 5.3 kW, 7.0 kW, 8.8 kW, 11.0 kW |
 | Phases | 1 |
 | Current | 16 A, 24 A, 32 A, 40 A, 50 A |

@@ -12,6 +12,8 @@ VersiCharge IEC 7.4/22 kW Type 2; UL versions 48–80 A J1772. Modbus, app, some
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 16 A, 32 A, 48 A |

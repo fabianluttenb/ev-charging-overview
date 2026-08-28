@@ -51,7 +51,11 @@
         "hub"
       ],
       "product_page": "https://www.myenergi.com/product/zappi/",
-      "datasheet": "https://www.myenergi.com/product/zappi/"
+      "datasheet": "https://www.myenergi.com/product/zappi/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

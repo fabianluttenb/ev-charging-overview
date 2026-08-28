@@ -12,6 +12,8 @@ Wirecutter 2026 top pick (Classic). 40 A plug-in or 48 A hardwired @ 240 V (11.5
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 9.6 kW, 11.5 kW |
 | Phases | 1 |
 | Current | 40 A, 48 A |

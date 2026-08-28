@@ -55,7 +55,11 @@
         "Ethernet/4G on Pro"
       ],
       "product_page": "https://autelenergy.us/",
-      "datasheet": "https://autelenergy.us/pages/downloads"
+      "datasheet": "https://autelenergy.us/pages/downloads",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

@@ -12,6 +12,8 @@ FusionCharge AC: native PV surplus with Huawei inverters/dongle. 7–22 kW Type 
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 16 A, 32 A |
@@ -31,4 +33,4 @@ FusionCharge AC: native PV surplus with Huawei inverters/dongle. 7–22 kW Type 
 
 ## Images and teardowns
 
-See [`images/IMAGES.md`](images/IMAGES.md) for product photos from Huawei Digital Power (FusionCharge). No public PCB teardown was found.
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

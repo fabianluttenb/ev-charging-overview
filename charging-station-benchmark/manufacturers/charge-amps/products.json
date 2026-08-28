@@ -48,7 +48,11 @@
         "4G"
       ],
       "product_page": "https://www.chargeamps.com/",
-      "datasheet": "https://www.chargeamps.com/"
+      "datasheet": "https://www.chargeamps.com/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

@@ -50,7 +50,11 @@
         "4G on some"
       ],
       "product_page": "https://evbox.com/en/ev-chargers",
-      "datasheet": "https://evbox.com/en/ev-chargers"
+      "datasheet": "https://evbox.com/en/ev-chargers",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

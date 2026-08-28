@@ -55,7 +55,11 @@
         "Modbus RTU/TCP"
       ],
       "product_page": "https://new.abb.com/ev-charging/terra-ac-wallbox",
-      "datasheet": "https://library.e.abb.com/public/8adddd9cf393467bb98a960832aa7662/9AKK108472A2560_en_Brochure_C_Terra%20AC%20Wallbox.pdf"
+      "datasheet": "https://library.e.abb.com/public/8adddd9cf393467bb98a960832aa7662/9AKK108472A2560_en_Brochure_C_Terra%20AC%20Wallbox.pdf",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

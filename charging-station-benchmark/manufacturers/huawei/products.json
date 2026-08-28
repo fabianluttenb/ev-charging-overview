@@ -46,7 +46,11 @@
         "FusionSolar / inverter dongle"
       ],
       "product_page": "https://solar.huawei.com/",
-      "datasheet": "https://solar.huawei.com/"
+      "datasheet": "https://solar.huawei.com/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

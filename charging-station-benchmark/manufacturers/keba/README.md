@@ -12,6 +12,8 @@ ADAC 2025 company-car wallbox winner: KeContact P40 (note 1.6). P30 remains the 
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 10 A, 16 A, 20 A, 32 A |
@@ -33,6 +35,8 @@ ADAC 2025 company-car wallbox winner: KeContact P40 (note 1.6). P30 remains the 
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 8 A, 10 A, 13 A, 16 A, 20 A, 25 A, 32 A |

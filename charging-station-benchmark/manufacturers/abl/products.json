@@ -45,7 +45,11 @@
         "eM4: Ethernet/LTE/OCPP"
       ],
       "product_page": "https://www.abl.de/en/products/emobility/",
-      "datasheet": "https://www.abl.de/en/products/emobility/"
+      "datasheet": "https://www.abl.de/en/products/emobility/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

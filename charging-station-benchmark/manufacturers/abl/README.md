@@ -12,6 +12,8 @@ eMH1 is the classic simple German wallbox (ADAC 1.0 in 2018). eM4 Single/Twin is
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 16 A, 32 A |

@@ -12,6 +12,8 @@ Industrial-grade Terra AC. ADAC 2025 joint 2nd (note 1.7) for Terra AC W11-G5-RD
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 16 A, 32 A |

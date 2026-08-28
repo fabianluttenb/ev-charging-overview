@@ -52,7 +52,11 @@
         "Wiser Home / EcoStruxure"
       ],
       "product_page": "https://www.se.com/ww/en/product-range/61636-schneider-charge/",
-      "datasheet": "https://www.se.com/ww/en/product-range/22127-evlink/"
+      "datasheet": "https://www.se.com/ww/en/product-range/22127-evlink/",
+      "mode": [
+        3
+      ],
+      "portable": false
     },
     {
       "name": "EVlink Pro AC / Smart Wallbox",
@@ -96,7 +100,11 @@
         "Modbus"
       ],
       "product_page": "https://www.se.com/ww/en/product-range/65781-evlink-pro-ac/",
-      "datasheet": "https://www.se.com/ww/en/product-range/65781-evlink-pro-ac/"
+      "datasheet": "https://www.se.com/ww/en/product-range/65781-evlink-pro-ac/",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

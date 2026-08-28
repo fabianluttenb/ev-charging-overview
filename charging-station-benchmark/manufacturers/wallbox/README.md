@@ -12,6 +12,8 @@ Pulsar family is the compact residential staple. Plus = Wi-Fi/BT, IP54. Max = Et
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 6 A, 16 A, 32 A |
@@ -33,6 +35,8 @@ Pulsar family is the compact residential staple. Plus = Wi-Fi/BT, IP54. Max = Et
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 6 A, 16 A, 32 A |

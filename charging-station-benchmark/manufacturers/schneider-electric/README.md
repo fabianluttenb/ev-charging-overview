@@ -12,6 +12,8 @@ EVlink Home / Schneider Charge for dwellings (Wiser). EVlink Pro AC / Smart Wall
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 6 A, 16 A, 32 A |
@@ -33,6 +35,8 @@ EVlink Home / Schneider Charge for dwellings (Wiser). EVlink Pro AC / Smart Wall
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 8 A, 16 A, 32 A |

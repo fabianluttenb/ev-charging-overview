@@ -12,6 +12,8 @@ Compact ‘charging robot’ on a backplate. Fully dynamic 1φ/3φ including Nor
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 12.7 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 6 A, 32 A |

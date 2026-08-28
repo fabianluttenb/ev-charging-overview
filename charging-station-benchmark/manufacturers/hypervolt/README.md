@@ -12,6 +12,8 @@ What Car? 2025 owner-survey winner (low fault rate). Home 2.0 / 3: 7 kW 1φ Type
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.2 kW, 7.4 kW |
 | Phases | 1 |
 | Current | 32 A |

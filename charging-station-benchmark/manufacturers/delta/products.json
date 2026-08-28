@@ -46,7 +46,11 @@
         "OCPP"
       ],
       "product_page": "https://www.deltaww.com/en-US/products/EV-Charging/ALL/",
-      "datasheet": "https://filecenter.deltaww.com/Products/download/21/2101/Catalogue/EV%20Charging%20Solution_Catalog_TW_202103.pdf"
+      "datasheet": "https://filecenter.deltaww.com/Products/download/21/2101/Catalogue/EV%20Charging%20Solution_Catalog_TW_202103.pdf",
+      "mode": [
+        3
+      ],
+      "portable": false
     }
   ]
 }

@@ -10,7 +10,7 @@ OUT = ROOT / "charging-station-benchmark"
 MFG = OUT / "manufacturers"
 
 CATALOG = {
-    "scope": "Mode 3 AC wallboxes up to 22 kW IEC / ~12 kW NA Level 2. Public datasheets 2024–2026.",
+    "scope": "Mode 2 portable IC-CPDs and Mode 3 AC wallboxes up to 22 kW IEC / ~12 kW NA Level 2. Public datasheets 2024–2026.",
     "manufacturers": [
         {
             "id": "abb",
@@ -318,16 +318,16 @@ CATALOG = {
             "hq": "Austria",
             "regions": ["Europe"],
             "website": "https://go-e.com/",
-            "notes": "Gemini / Gemini flex: compact, open HTTP/MQTT/Modbus API, portable flex SKU. Charger PRO: MID, ISO 15118 / V2X hardware-ready, OCPP 1.6, IP66, §14a EnWG. Strong with PV and third-party EMS (evcc).",
+            "notes": "Gemini is the wall-mounted Mode 3 unit. Gemini flex is the portable Mode 2 IC-CPD (CEE inlet + adapters). Open HTTP/MQTT/Modbus API. Charger PRO: MID, ISO 15118 / V2X hardware-ready, OCPP 1.6, IP66, §14a EnWG.",
             "products": [
                 {
-                    "name": "go-e Charger Gemini / Gemini flex",
+                    "name": "go-e Charger Gemini",
                     "power_kw": [11, 22],
                     "phases": [1, 3],
                     "current_a": [6, 16, 32],
-                    "connector": ["Type 2 socket", "CEE inlet on flex"],
+                    "connector": ["Type 2 socket"],
                     "grids": ["TN", "TT", "IT"],
-                    "ip": "IP54–IP65",
+                    "ip": "IP54",
                     "ik": "IK08",
                     "rcd": "6 mA DC",
                     "ocpp": "1.6",
@@ -339,6 +339,30 @@ CATALOG = {
                     "connectivity": ["Wi-Fi", "Bluetooth", "LTE on some", "HTTP API", "MQTT", "Modbus TCP"],
                     "product_page": "https://go-e.com/en/products/go-e-charger-gemini",
                     "datasheet": "https://go-e.com/en/downloads",
+                    "mode": [3],
+                    "portable": False,
+                },
+                {
+                    "name": "go-e Charger Gemini flex",
+                    "power_kw": [11, 22],
+                    "phases": [1, 3],
+                    "current_a": [6, 16, 32],
+                    "connector": ["Type 2 socket", "CEE 16/32 inlet", "Schuko adapter"],
+                    "grids": ["TN", "TT", "IT"],
+                    "ip": "IP65",
+                    "ik": "IK08",
+                    "rcd": "6 mA DC + 30 mA AC",
+                    "ocpp": "1.6",
+                    "auth": ["app", "RFID optional"],
+                    "load_mgmt": True,
+                    "pv": True,
+                    "iso15118": False,
+                    "mid": False,
+                    "connectivity": ["Wi-Fi", "Bluetooth", "HTTP API", "MQTT", "Modbus TCP"],
+                    "product_page": "https://go-e.com/en/products/go-e-charger-gemini-flex",
+                    "datasheet": "https://go-e.com/en/downloads",
+                    "mode": [2],
+                    "portable": True,
                 },
                 {
                     "name": "go-e Charger PRO",
@@ -508,7 +532,7 @@ CATALOG = {
             "hq": "United States",
             "regions": ["North America", "Europe", "East Asia"],
             "website": "https://www.tesla.com/support/charging/wall-connector",
-            "notes": "Gen 3 Wall Connector. NA: 12–48 A @ 208/240 V (11.5 kW), CCID20, NACS or Universal (J1772). IEC/TW: Type 2, up to 32 A 1φ (7 kW) or 32 A 3φ (22 kW on 400 V), Type A+6 mA DC, TN/TT/IT. Wi-Fi, Tesla app, power sharing. Not OCPP.",
+            "notes": "Gen 3 Wall Connector is Mode 3. NA: 12–48 A @ 208/240 V (11.5 kW), CCID20, NACS or Universal (J1772). IEC/TW: Type 2, up to 32 A 1φ (7 kW) or 32 A 3φ (22 kW on 400 V). Mobile Connector is the Mode 2 travel IC-CPD with plug adapters.",
             "products": [
                 {
                     "name": "Wall Connector Gen 3 (NA)",
@@ -549,6 +573,28 @@ CATALOG = {
                     "connectivity": ["Wi-Fi"],
                     "product_page": "https://www.tesla.com/zh_tw/support/charging/wall-connector",
                     "datasheet": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/3PT2/MID/en-us/GUID-E64AD189-C626-4201-9E0B-8B430EF4F6DB.html",
+                },
+                {
+                    "name": "Mobile Connector (UMC)",
+                    "power_kw": [1.4, 3.7, 7.4],
+                    "phases": [1],
+                    "current_a": [8, 10, 13, 16, 32],
+                    "connector": ["NACS or Type 2 tethered", "NEMA 5-15 / 14-50 adapters", "Schuko / CEE adapters (IEC)"],
+                    "grids": ["TN", "TT"],
+                    "ip": "IP44 typical",
+                    "ik": None,
+                    "rcd": "IC-CPD (IEC 62752) / CCID",
+                    "ocpp": False,
+                    "auth": ["none"],
+                    "load_mgmt": False,
+                    "pv": False,
+                    "iso15118": False,
+                    "mid": False,
+                    "connectivity": ["none"],
+                    "product_page": "https://www.tesla.com/support/charging/mobile-connector",
+                    "datasheet": "https://www.tesla.com/support/charging/mobile-connector",
+                    "mode": [2],
+                    "portable": True,
                 },
             ],
         },
@@ -708,7 +754,7 @@ CATALOG = {
             "hq": "Austria",
             "regions": ["Europe", "Oceania"],
             "website": "https://www.fronius.com/en/solar-energy/installers-partners/products-solutions/residential-energy/e-mobility/wattpilot",
-            "notes": "Wattpilot Home: PV surplus charging with Fronius inverters (Solar.web). 11 kW (16 A) or 22 kW (32 A). Next / Home 2.0 generations. ADAC historically strong on PV use-case.",
+            "notes": "Wattpilot Home is the Mode 3 wallbox. Wattpilot Go is the portable Mode 2 unit (CEE inlet). PV surplus with Fronius inverters (Solar.web). 11 kW (16 A) or 22 kW (32 A).",
             "products": [
                 {
                     "name": "Wattpilot Home / Home 2.0",
@@ -729,7 +775,31 @@ CATALOG = {
                     "connectivity": ["Wi-Fi", "Solar.web"],
                     "product_page": "https://www.fronius.com/en/solar-energy/installers-partners/products-solutions/residential-energy/e-mobility/wattpilot",
                     "datasheet": "https://www.fronius.com/en/solar-energy/installers-partners/products-solutions/residential-energy/e-mobility/wattpilot",
-                }
+                    "mode": [3],
+                    "portable": False,
+                },
+                {
+                    "name": "Wattpilot Go",
+                    "power_kw": [11, 22],
+                    "phases": [1, 3],
+                    "current_a": [6, 16, 32],
+                    "connector": ["Type 2 tethered", "CEE inlet"],
+                    "grids": ["TN", "TT"],
+                    "ip": "IP65",
+                    "ik": "IK08",
+                    "rcd": "6 mA DC",
+                    "ocpp": False,
+                    "auth": ["RFID", "app"],
+                    "load_mgmt": True,
+                    "pv": True,
+                    "iso15118": False,
+                    "mid": False,
+                    "connectivity": ["Wi-Fi", "Solar.web"],
+                    "product_page": "https://www.fronius.com/en/solar-energy/installers-partners/products-solutions/residential-energy/e-mobility/wattpilot",
+                    "datasheet": "https://www.fronius.com/en/solar-energy/installers-partners/products-solutions/residential-energy/e-mobility/wattpilot",
+                    "mode": [2],
+                    "portable": True,
+                },
             ],
         },
         {
@@ -888,7 +958,7 @@ CATALOG = {
             "hq": "United Kingdom",
             "regions": ["UK", "Europe"],
             "website": "https://www.ohme-ev.com/",
-            "notes": "Home Pro: 7 kW 1φ, tariff-aware smart charging (Octopus etc.), eMSP integration. PEN protection. Strong UK company-car / salary-sacrifice channel.",
+            "notes": "Home Pro is the Mode 3 7 kW wallbox (tariff-aware, Octopus, PEN). ePod is the Mode 2 portable 13 A / ~3 kW smart granny charger.",
             "products": [
                 {
                     "name": "Home Pro",
@@ -909,6 +979,205 @@ CATALOG = {
                     "connectivity": ["Wi-Fi", "SIM on some"],
                     "product_page": "https://www.ohme-ev.com/",
                     "datasheet": "https://www.ohme-ev.com/",
+                    "mode": [3],
+                    "portable": False,
+                },
+                {
+                    "name": "ePod",
+                    "power_kw": [3.0, 3.6],
+                    "phases": [1],
+                    "current_a": [10, 13],
+                    "connector": ["Type 2 tethered", "BS 1363 13 A plug"],
+                    "grids": ["TN-C-S", "TN-S", "TT"],
+                    "ip": "IP54",
+                    "ik": None,
+                    "rcd": "IC-CPD IEC 62752",
+                    "ocpp": False,
+                    "auth": ["app"],
+                    "load_mgmt": True,
+                    "pv": False,
+                    "iso15118": False,
+                    "mid": False,
+                    "connectivity": ["Wi-Fi / SIM"],
+                    "product_page": "https://www.ohme-ev.com/",
+                    "datasheet": "https://www.ohme-ev.com/",
+                    "mode": [2],
+                    "portable": True,
+                },
+            ],
+        },
+        {
+            "id": "nrgkick",
+            "name": "NRGkick (DiniTech)",
+            "hq": "Austria",
+            "regions": ["Europe"],
+            "website": "https://www.nrgkick.com/",
+            "notes": "Portable IC-CPD. Mode 2 (IEC 62752) on household/CEE sockets; Mode 3 when using the Type 2 smart attachment on a Mode 3 outlet. Up to 22 kW, IP67, temperature-monitored attachments, optional ISO 15118 / MID SKUs.",
+            "products": [
+                {
+                    "name": "NRGkick",
+                    "power_kw": [3.7, 7.4, 11, 22],
+                    "phases": [1, 3],
+                    "current_a": [6, 16, 32],
+                    "connector": [
+                        "Type 2 tethered 5/7.5/10 m",
+                        "Smart attachments: Schuko, CEE 16/32 1φ/3φ, Type 2",
+                    ],
+                    "grids": ["TN", "TT", "IT"],
+                    "ip": "IP67",
+                    "ik": "IK10",
+                    "rcd": "30 mA AC + 6 mA DC; PE/loop-impedance test",
+                    "ocpp": False,
+                    "auth": ["app", "optional RFID"],
+                    "load_mgmt": True,
+                    "pv": True,
+                    "iso15118": True,
+                    "mid": "optional MID SKUs",
+                    "connectivity": ["Bluetooth", "Wi-Fi", "optional 4G / GNSS"],
+                    "product_page": "https://www.nrgkick.com/",
+                    "datasheet": "https://cdn.shopify.com/s/files/1/0554/4991/1477/files/03_NRGkick_Data_sheet_2104-01-2.pdf",
+                    "mode": [2, 3],
+                    "portable": True,
+                }
+            ],
+        },
+        {
+            "id": "juice",
+            "name": "Juice Technology",
+            "hq": "Switzerland",
+            "regions": ["Europe", "North America"],
+            "website": "https://juice.world/",
+            "notes": "Juice Booster is a drive-over IC-CPD: portable Mode 2 on household/CEE adapters, Mode 3 as a Type 2 charging cable. Booster 2/3 up to 22 kW; Booster 3 air up to 11 kW.",
+            "products": [
+                {
+                    "name": "Juice Booster 2 / 3",
+                    "power_kw": [1.4, 3.7, 7.4, 11, 22],
+                    "phases": [1, 3],
+                    "current_a": [6, 16, 32],
+                    "connector": ["Type 2 tethered ~5 m", "Juice Connector adapters (Schuko, CEE, Type 2, NEMA)"],
+                    "grids": ["TN", "TT"],
+                    "ip": "IP67",
+                    "ik": "IK10",
+                    "rcd": "30 mA AC + 6 mA DC",
+                    "ocpp": False,
+                    "auth": ["none / app on some"],
+                    "load_mgmt": False,
+                    "pv": False,
+                    "iso15118": False,
+                    "mid": False,
+                    "connectivity": ["Bluetooth on later SKUs"],
+                    "product_page": "https://juice.world/products/juice-booster-3",
+                    "datasheet": "https://juice.world/",
+                    "mode": [2, 3],
+                    "portable": True,
+                },
+                {
+                    "name": "Juice Booster 3 air",
+                    "power_kw": [1.4, 3.7, 7.4, 11],
+                    "phases": [1, 3],
+                    "current_a": [6, 16],
+                    "connector": ["Type 2 tethered", "Juice Connector adapters"],
+                    "grids": ["TN", "TT"],
+                    "ip": "IP67",
+                    "ik": "IK10",
+                    "rcd": "30 mA AC + 6 mA DC",
+                    "ocpp": False,
+                    "auth": ["RFID in Type 2 plug on some"],
+                    "load_mgmt": False,
+                    "pv": False,
+                    "iso15118": False,
+                    "mid": False,
+                    "connectivity": ["Bluetooth", "Wi-Fi"],
+                    "product_page": "https://juice.world/",
+                    "datasheet": "https://juice.world/",
+                    "mode": [2, 3],
+                    "portable": True,
+                },
+            ],
+        },
+        {
+            "id": "ratio",
+            "name": "Ratio Electric",
+            "hq": "Netherlands",
+            "regions": ["Europe"],
+            "website": "https://www.ratio.nl/",
+            "notes": "Dutch maker of wallboxes and portable IC-CPDs. io6 / Solar are Mode 3; the Mobile / Travel units are Mode 2 with CEE or Schuko.",
+            "products": [
+                {
+                    "name": "io6 / Solar",
+                    "power_kw": [7.4, 11, 22],
+                    "phases": [1, 3],
+                    "current_a": [16, 32],
+                    "connector": ["Type 2 socket", "Type 2 tethered"],
+                    "grids": ["TN", "TT"],
+                    "ip": "IP54",
+                    "ik": "IK10",
+                    "rcd": "6 mA DC",
+                    "ocpp": "1.6 on smart SKUs",
+                    "auth": ["RFID", "app"],
+                    "load_mgmt": True,
+                    "pv": True,
+                    "iso15118": False,
+                    "mid": False,
+                    "connectivity": ["Wi-Fi", "Ethernet on some"],
+                    "product_page": "https://www.ratio.nl/",
+                    "datasheet": "https://www.ratio.nl/",
+                    "mode": [3],
+                    "portable": False,
+                },
+                {
+                    "name": "Mobile / Travel",
+                    "power_kw": [3.7, 7.4, 11, 22],
+                    "phases": [1, 3],
+                    "current_a": [16, 32],
+                    "connector": ["Type 2 tethered", "CEE / Schuko"],
+                    "grids": ["TN", "TT"],
+                    "ip": "IP54–IP65",
+                    "ik": None,
+                    "rcd": "IC-CPD IEC 62752, 6 mA DC",
+                    "ocpp": False,
+                    "auth": ["none"],
+                    "load_mgmt": False,
+                    "pv": False,
+                    "iso15118": False,
+                    "mid": False,
+                    "connectivity": ["none / basic"],
+                    "product_page": "https://www.ratio.nl/",
+                    "datasheet": "https://www.ratio.nl/",
+                    "mode": [2],
+                    "portable": True,
+                },
+            ],
+        },
+        {
+            "id": "ctek",
+            "name": "CTEK",
+            "hq": "Sweden",
+            "regions": ["Europe"],
+            "website": "https://www.ctek.com/",
+            "notes": "NJORD GO is a compact Mode 3 home charger; Chargestorm Connected is the workplace line. Also sells Mode 2 travel chargers (Njord Go is wall; CTEK Njord / portable SKUs exist in some markets).",
+            "products": [
+                {
+                    "name": "NJORD GO",
+                    "power_kw": [7.4, 11],
+                    "phases": [1, 3],
+                    "current_a": [16, 32],
+                    "connector": ["Type 2 tethered"],
+                    "grids": ["TN", "TT"],
+                    "ip": "IP54",
+                    "ik": "IK08",
+                    "rcd": "6 mA DC",
+                    "ocpp": False,
+                    "auth": ["app"],
+                    "load_mgmt": True,
+                    "pv": False,
+                    "iso15118": False,
+                    "mid": False,
+                    "connectivity": ["Wi-Fi", "Bluetooth"],
+                    "product_page": "https://www.ctek.com/",
+                    "datasheet": "https://www.ctek.com/",
+                    "mode": [3],
+                    "portable": False,
                 }
             ],
         },
@@ -922,6 +1191,18 @@ def md_bool(v):
     if v is False:
         return "no"
     return str(v) if v else "—"
+
+
+def normalize_product(p: dict) -> dict:
+    p = dict(p)
+    p.setdefault("mode", [3])
+    p.setdefault("portable", False)
+    return p
+
+
+def mode_label(p: dict) -> str:
+    modes = p.get("mode") or [3]
+    return " / ".join(f"Mode {m}" for m in modes)
 
 
 def write_manufacturer(m: dict) -> None:
@@ -946,6 +1227,8 @@ def write_manufacturer(m: dict) -> None:
             "",
             f"| | |",
             f"| --- | --- |",
+            f"| IEC 61851 mode | {mode_label(p)} |",
+            f"| Portable | {md_bool(p.get('portable'))} |",
             f"| Power | {', '.join(str(x)+' kW' for x in p['power_kw'])} |",
             f"| Phases | {', '.join(str(x) for x in p['phases'])} |",
             f"| Current | {', '.join(str(x)+' A' for x in p['current_a'])} |",
@@ -964,15 +1247,24 @@ def write_manufacturer(m: dict) -> None:
             f"| Datasheet | {p['datasheet']} |",
             "",
         ]
+    if (d / "images" / "IMAGES.md").exists():
+        lines += [
+            "## Images and teardowns",
+            "",
+            "See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.",
+            "",
+        ]
     (d / "README.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 def main() -> None:
     MFG.mkdir(parents=True, exist_ok=True)
+    for m in CATALOG["manufacturers"]:
+        m["products"] = [normalize_product(p) for p in m["products"]]
     (OUT / "catalog.json").write_text(json.dumps(CATALOG, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     for m in CATALOG["manufacturers"]:
         write_manufacturer(m)
-    print(f"wrote {len(CATALOG['manufacturers'])} manufacturers")
+    print(f"wrote {len(CATALOG['manufacturers'])} manufacturers, {sum(len(m['products']) for m in CATALOG['manufacturers'])} products")
 
 
 if __name__ == "__main__":

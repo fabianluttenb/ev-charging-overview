@@ -12,6 +12,8 @@ EV Wall / EV Base tied to Smappee Infinity energy monitoring. ADAC 2025 EV Wall 
 
 | | |
 | --- | --- |
+| IEC 61851 mode | Mode 3 |
+| Portable | no |
 | Power | 7.4 kW, 11 kW, 22 kW |
 | Phases | 1, 3 |
 | Current | 16 A, 32 A |
