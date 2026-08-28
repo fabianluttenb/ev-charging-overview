@@ -170,9 +170,25 @@ input[type="range"] { width: 100%; accent-color: var(--teal); }
 .big-num { font-size: 42px; font-weight: 750; letter-spacing: -.04em; color: var(--teal); line-height: 1; }
 .muted { color: var(--muted); }
 .tiny { font-size: 12px; color: var(--muted); }
-.st-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
+.st-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-top: 10px; }
 .st-gallery a { text-decoration: none; color: var(--muted); }
-.st-gallery img { width: 100%; height: 110px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); background: var(--surface2); }
+.st-gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); background: var(--surface2); cursor: zoom-in; }
+.st-gallery h5 { grid-column: 1 / -1; margin: 8px 0 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.photo-cell { display: flex; align-items: center; gap: 8px; min-width: 132px; }
+.st-thumb {
+  width: 44px; height: 44px; object-fit: cover; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--surface2); flex: none;
+}
+.photo-cell .tag { margin: 0 4px 0 0; }
+tr.selected td { background: var(--teal-dim); }
+.lightbox {
+  position: fixed; inset: 0; z-index: 40; display: none;
+  background: rgba(4, 8, 16, .86); align-items: center; justify-content: center;
+  padding: 28px; cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: min(1100px, 96vw); max-height: 86vh; border-radius: 12px; box-shadow: var(--shadow); }
+.lightbox .cap { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); color: #e8eef8; font-size: 13px; }
 svg.schematic { width: 100%; height: auto; display: block; }
 .pin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
 .wizard-result h4 { margin: 0 0 8px; }
@@ -471,12 +487,14 @@ footer { margin: 40px 0 10px; color: var(--muted); font-size: 12.5px; }
 
   <section class="panel" id="stations">
     <h3>AC charging station benchmark</h3>
-    <p class="sub">Home and workplace Mode 3 wallboxes (≤ 22 kW IEC / ~12 kW NA). Filter the table, click a row for datasheet links, teardown photos, and FCC internals. Files live in <code>charging-station-benchmark/manufacturers/&lt;id&gt;/images/</code>.</p>
+    <p class="sub">Home and workplace Mode 3 wallboxes (≤ 22 kW IEC / ~12 kW NA). A thumbnail and <span class="tag">photos</span> / <span class="tag amber">teardown</span> mark appear when local pictures exist. Click a row to open the gallery; click a photo to enlarge it.</p>
     <div class="filters">
       <input id="stQ" type="search" placeholder="Filter brand, product, connector…">
       <select id="stRegion"><option value="">All regions</option></select>
       <select id="stFeat">
         <option value="">All features</option>
+        <option value="photos">Has photos</option>
+        <option value="teardown">Has teardown / FCC</option>
         <option value="ocpp">OCPP</option>
         <option value="pv">PV surplus</option>
         <option value="iso">ISO 15118</option>
@@ -489,6 +507,7 @@ footer { margin: 40px 0 10px; color: var(--muted); font-size: 12.5px; }
       <table id="stable">
         <thead>
           <tr>
+            <th>Photos</th>
             <th>Brand</th>
             <th>Product</th>
             <th>kW</th>
@@ -564,6 +583,10 @@ footer { margin: 40px 0 10px; color: var(--muted); font-size: 12.5px; }
     Data files live in <code>data/</code>; written notes in <code>docs/</code>. Sources: <code>references/sources.md</code>.
   </footer>
 </main>
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo">
+  <img id="lightboxImg" alt="">
+  <div id="lightboxCap" class="cap"></div>
+</div>
 
 <script>
 const DATA = {"voltageFamilies": {"iec-230-400": {"name": "IEC 230/400 V, 50 Hz, three-phase wye", "uLN": 230, "uLL": 400, "freq": 50, "toleranceRef": "EN 50160 / IEC 60038: ±10 % at supply terminals (95 % of 10 min values); all 10 min values +10 % / −15 %"}, "iec-220-380": {"name": "Legacy 220/380 V, 50 Hz", "uLN": 220, "uLL": 380, "freq": 50, "toleranceRef": "National; often treated as IEC 60038 230 V family in practice"}, "na-split": {"name": "North American 120/240 V split-phase, 60 Hz", "uLN": 120, "uLL": 240, "freq": 60, "toleranceRef": "ANSI C84.1 Range A service ±5 % (114–126 V / 228–252 V); utilization +5 % / −10 %"}, "na-wye-208": {"name": "North American 208Y/120 V, 60 Hz (apartments / commercial)", "uLN": 120, "uLL": 208, "freq": 60, "toleranceRef": "ANSI C84.1 Range A service ±5 %"}, "na-wye-480": {"name": "North American 480Y/277 V, 60 Hz (large commercial / industrial)", "uLN": 277, "uLL": 480, "freq": 60, "toleranceRef": "ANSI C84.1. 277 V is L–N of 480 V wye — lighting and some workplace EVSE, not residential. Canada analogue 600Y/347 V."}, "japan-100-200": {"name": "Japan 100/200 V, 50 or 60 Hz", "uLN": 100, "uLL": 200, "freq": "50 east / 60 west", "toleranceRef": "JIS C 60038; 100 V typically 101 ± 6 V"}, "it-230": {"name": "230 V IT (line-to-line), 50 Hz, often no distributed neutral", "uLN": null, "uLL": 230, "freq": 50, "toleranceRef": "EN 50160 ±10 % of 230 V"}, "br-mixed": {"name": "Brazil mixed 127/220 V, 60 Hz", "uLN": "127 or 220", "uLL": "220 or 380", "freq": 60, "toleranceRef": "ANEEL / NBR; typically ±5 to ±10 % by utility"}}, "countries": [{"iso": "AL", "name": "Albania", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "IT / TN mixed", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": "IT pockets similar to Norway."}, {"iso": "AT", "name": "Austria", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": "Three-phase dwellings common; 11 kW default wallbox."}, {"iso": "BE", "name": "Belgium", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "Some areas 3×230 V delta without neutral — EVSE that need N–PE bond are problematic."}, {"iso": "BG", "name": "Bulgaria", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "HR", "name": "Croatia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "CZ", "name": "Czechia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": ""}, {"iso": "DK", "name": "Denmark", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/K/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": "Mode 1 restricted. High share of 3-phase homes."}, {"iso": "EE", "name": "Estonia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "FI", "name": "Finland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": "Three-phase 3×25 A typical apartment/house service."}, {"iso": "FR", "name": "France", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "NF C 15-100. Residential TT with local electrode + 30 mA RCD. Single-phase 7.4 kW common."}, {"iso": "DE", "name": "Germany", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": "DIN VDE 0100-722, VDE-AR-N 4100. 11 kW (3×16 A) is the residential sweet spot; 22 kW needs 3×32 A and grid-operator notification."}, {"iso": "GR", "name": "Greece", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "HU", "name": "Hungary", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "IS", "name": "Iceland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "IE", "name": "Ireland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S (PME)", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "Similar PME open-PEN issue to the UK. Homes mostly single-phase."}, {"iso": "IT", "name": "Italy", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F/L", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "Mode 1 public charging prohibited. Type 3 legacy. 3 kW / 6 kW contractual limits common in apartments."}, {"iso": "LV", "name": "Latvia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "LT", "name": "Lithuania", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "LU", "name": "Luxembourg", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT / TN", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "NL", "name": "Netherlands", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": "3×25 A or 3×35 A household connections common; 11 kW standard."}, {"iso": "NO", "name": "Norway", "region": "Europe", "family": "it-230", "uLN": null, "uLL": 230, "hz": 50, "earth": "IT (~70 %), TN 400 V (~30 %)", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4, 11], "notes": "IT: 230 V L–L, often no N. 1φ charging 3.7–7.4 kW. 3φ IT only if the car supports it (~11 kW at ~28 A). Newer buildings TN 400 V → 11/22 kW."}, {"iso": "PL", "name": "Poland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "PT", "name": "Portugal", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "RO", "name": "Romania", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "RS", "name": "Serbia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "SK", "name": "Slovakia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "SI", "name": "Slovenia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "ES", "name": "Spain", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "ITC-BT-52. Many apartments limited contracted power."}, {"iso": "SE", "name": "Sweden", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": "Three-phase 3×16 A or 3×20 A typical."}, {"iso": "CH", "name": "Switzerland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-S / TT", "plug": "C/J", "vehicle": ["Type 2"], "homeKW": [11], "notes": "NIV / NIN. Mode 1 restricted. Type J household 10 A; 16 A Type J variant exists."}, {"iso": "TR", "name": "Türkiye", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "GB", "name": "United Kingdom", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S (PME); TT rural; TN-S some urban", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "BS 7671 Section 722. Mostly 1φ 60–100 A. Open-PEN (O-PEN) protection or TT island required for outdoor PME charging. Voltage historically 230 V +10/−6 % (216–253 V)."}, {"iso": "UA", "name": "Ukraine", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "US", "name": "United States", "region": "North America", "family": "na-split", "uLN": 120, "uLL": 240, "hz": 60, "earth": "Multi-grounded neutral (TN-C-S analogue)", "plug": "A/B + NEMA 14-50", "vehicle": ["J1772", "NACS"], "homeKW": [1.4, 7.7, 9.6, 11.5], "notes": "Homes: 120/240 V split-phase. Level 1 120 V; Level 2 240 V 32–48 A; 125 % breaker (NEC 625). Apartments often 208Y/120 (Level 2 at 208 V, −13 %). Large commercial: 480Y/277 V — 277 V is L–N of 480 V wye (lighting / some workplace AC EVSE), not residential; 80 A @ 277 V ≈ 22 kW AC; DCFC on 480 V 3φ. Also 480 V delta (no 277 V) and high-leg 240 V delta (never L–N EVSE on the high leg). J1772/NACS 1φ only."}, {"iso": "CA", "name": "Canada", "region": "North America", "family": "na-split", "uLN": 120, "uLL": 240, "hz": 60, "earth": "Multi-grounded neutral", "plug": "A/B + NEMA 14-50", "vehicle": ["J1772", "NACS"], "homeKW": [7.7, 9.6, 11.5], "notes": "CEC. Homes 120/240 V like the US. Apartments 208Y/120. Large commercial often 600Y/347 V (347 V lighting = 277 V analogue) as well as 480Y/277. Cold-weather derating of outdoor cables. Same J1772/NACS 1φ picture."}, {"iso": "MX", "name": "Mexico", "region": "North America", "family": "na-split", "uLN": 127, "uLL": 220, "hz": 60, "earth": "TN-C-S analogue", "plug": "A/B", "vehicle": ["J1772", "NACS"], "homeKW": [3.8, 7.4], "notes": "127/220 V split-phase common — not US 120/240 V. Commercial may be 220 V 3φ or 480Y/277. NOM, not NEC. J1772/NACS."}, {"iso": "BR", "name": "Brazil", "region": "Latin America", "family": "br-mixed", "uLN": 127, "uLL": 220, "hz": 60, "earth": "TN-C-S / TT mixed", "plug": "N", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": "NBR IEC 61851. Voltage 127 or 220 V by state. Type 2 AC emerging; some J1772 imports."}, {"iso": "AR", "name": "Argentina", "region": "Latin America", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/I", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": "Type I polarity reversed vs AU/CN."}, {"iso": "CL", "name": "Chile", "region": "Latin America", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/L", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "CO", "name": "Colombia", "region": "Latin America", "family": "na-split", "uLN": 120, "uLL": 208, "hz": 60, "earth": "TN-C-S analogue", "plug": "A/B", "vehicle": ["J1772", "Type 2"], "homeKW": [3.8, 7.4], "notes": "120/208 V common."}, {"iso": "PE", "name": "Peru", "region": "Latin America", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 60, "earth": "TN / TT", "plug": "A/C", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "220 V 60 Hz."}, {"iso": "UY", "name": "Uruguay", "region": "Latin America", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S", "plug": "C/F/L/I", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "CN", "name": "China", "region": "East Asia", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TT / TN-C-S mixed", "plug": "A/I", "vehicle": ["GB/T AC"], "homeKW": [7], "notes": "GB/T 18487, 20234.2. Voltage +7/−10 % (GB/T 12325). Home AC piles typically 7 kW 1φ 32 A. Separate DC inlet."}, {"iso": "JP", "name": "Japan", "region": "East Asia", "family": "japan-100-200", "uLN": 100, "uLL": 200, "hz": 50, "earth": "TT", "plug": "A/B", "vehicle": ["Type 1"], "homeKW": [3, 6], "notes": "East 50 Hz, west 60 Hz. Home EV charging on 200 V single-phase. Type 1 AC; CHAdeMO is DC only."}, {"iso": "KR", "name": "South Korea", "region": "East Asia", "family": "iec-230-400", "uLN": 220, "uLL": 380, "hz": 60, "earth": "TT", "plug": "C/F", "vehicle": ["Type 1", "Type 2"], "homeKW": [7], "notes": "220 V 60 Hz. AC historically Type 1; Type 2 / CCS2 growing on European models."}, {"iso": "TW", "name": "Taiwan", "region": "East Asia", "family": "na-split", "uLN": 110, "uLL": 220, "hz": 60, "earth": "TN-C-S analogue", "plug": "A/B", "vehicle": ["Type 1", "Type 2"], "homeKW": [3.3, 7.0, 8.8], "notes": "1φ 3-wire 110/220 V 60 Hz (split-phase, not 120/240). Household sockets Type A/B at 110 V; EV wallbox on dedicated 220 V. Default home AC: 32 A @ 220 V ≈ 7.0 kW (CNS 15511, J1772 Type 1). That 32 A EVSE is normally fed from a 40 A NFB (125 % continuous) — Tesla TW quotes a 40 A breaker for Model 3/Y. 40 A charger output also exists (e.g. Evalue X40A: 40 A / 8.8 kW @ 220 V on a 50 A RCCB). Higher SKUs 48/50/60/80 A (≈10.5–17.6 kW) are sold but not typical dwellings. Buildings: 3φ 3-wire 220 V and 3φ 4-wire 220/380 V; Tesla TW Type 2 Wall Connector lists 7 / 10.5 / 22 kW on those. Portable units often include NEMA 14-50; it is not a native household socket."}, {"iso": "HK", "name": "Hong Kong", "region": "East Asia", "family": "iec-230-400", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7], "notes": "BS 1363 sockets. Apartment charging dominated by building EVSE."}, {"iso": "IN", "name": "India", "region": "South Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT (typical)", "plug": "C/D/M", "vehicle": ["Type 2"], "homeKW": [3.3, 7.4], "notes": "IS 17017. 4-wheel AC is Type 2. 2/3-wheel Bharat AC-001 uses IEC 60309. Wide voltage variation in practice."}, {"iso": "SG", "name": "Singapore", "region": "Southeast Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "SS 638. Type 2 Mode 3."}, {"iso": "MY", "name": "Malaysia", "region": "Southeast Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "TH", "name": "Thailand", "region": "Southeast Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT / TN", "plug": "A/B/C/O", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "VN", "name": "Vietnam", "region": "Southeast Asia", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TT", "plug": "A/C", "vehicle": ["Type 2", "GB/T AC"], "homeKW": [7], "notes": "Imported Chinese vehicles may keep GB/T."}, {"iso": "ID", "name": "Indonesia", "region": "Southeast Asia", "family": "iec-220-380", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": ""}, {"iso": "PH", "name": "Philippines", "region": "Southeast Asia", "family": "na-split", "uLN": 220, "uLL": 220, "hz": 60, "earth": "TN / TT", "plug": "A/B/C", "vehicle": ["Type 2", "Type 1"], "homeKW": [3.3, 7.4], "notes": "220 V 60 Hz single-phase typical; no 110 V despite Type A plugs."}, {"iso": "AU", "name": "Australia", "region": "Oceania", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S (MEN)", "plug": "I", "vehicle": ["Type 2"], "homeKW": [7.4, 11, 22], "notes": "AS/NZS 3000, SA TS 5396. Most houses 1φ 63 A → 7.4 kW. Three-phase houses 11/22 kW. WA historically 240 V."}, {"iso": "NZ", "name": "New Zealand", "region": "Oceania", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S (MEN)", "plug": "I", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "SNZ PAS 6011. Voltage limits widened to 230 V ±10 % (2025). Mostly single-phase homes."}, {"iso": "AE", "name": "United Arab Emirates", "region": "Middle East", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-S / TN-C-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11, 22], "notes": "Villas often 3-phase; Type 2 wallboxes common."}, {"iso": "SA", "name": "Saudi Arabia", "region": "Middle East", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 60, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11, 22], "notes": "60 Hz (unlike most 230 V countries). SASO. Type 2."}, {"iso": "QA", "name": "Qatar", "region": "Middle East", "family": "iec-230-400", "uLN": 240, "uLL": 415, "hz": 50, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "KW", "name": "Kuwait", "region": "Middle East", "family": "iec-230-400", "uLN": 240, "uLL": 415, "hz": 50, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "IL", "name": "Israel", "region": "Middle East", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/H", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "Mode 1 not allowed."}, {"iso": "EG", "name": "Egypt", "region": "Africa", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "ZA", "name": "South Africa", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/M/N", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "SANS 10142-1. MEN-like PME. Load-shedding: EVSE should ride through voltage dips or inhibit cleanly."}, {"iso": "MA", "name": "Morocco", "region": "Africa", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TT", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "KE", "name": "Kenya", "region": "Africa", "family": "iec-230-400", "uLN": 240, "uLL": 415, "hz": 50, "earth": "TN-C-S / TT", "plug": "G", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": ""}, {"iso": "NG", "name": "Nigeria", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN / TT", "plug": "D/G", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": "Wide practical voltage variation; design EVSE for full IEC ±10 % plus margin."}, {"iso": "DZ", "name": "Algeria", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "TN", "name": "Tunisia", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "GH", "name": "Ghana", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "D/G", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": ""}, {"iso": "RU", "name": "Russia", "region": "Europe", "family": "iec-220-380", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11, 22], "notes": "GOST / IEC dual. Three-phase dwellings common in cities. Type 2 AC."}, {"iso": "BY", "name": "Belarus", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2", "GB/T AC"], "homeKW": [7.4, 11], "notes": "Some Chinese-market vehicles keep GB/T AC."}, {"iso": "KZ", "name": "Kazakhstan", "region": "East Asia", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "PK", "name": "Pakistan", "region": "South Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/D/G", "vehicle": ["Type 2"], "homeKW": [3.3, 7.4], "notes": "Wide practical voltage swing; specify full IEC band plus margin."}, {"iso": "BD", "name": "Bangladesh", "region": "South Asia", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TT", "plug": "C/D/G/K", "vehicle": ["Type 2"], "homeKW": [3.3, 7.4], "notes": ""}, {"iso": "IR", "name": "Iran", "region": "Middle East", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "LK", "name": "Sri Lanka", "region": "South Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "D/G/M", "vehicle": ["Type 2"], "homeKW": [3.3, 7.4], "notes": ""}]};
@@ -849,12 +872,46 @@ function ocppYes(v) {
   return s !== "false" && s !== "no";
 }
 
+function isRaster(f) { return /\.(jpe?g|png|webp)$/i.test(f); }
+function isTeardownFile(f) {
+  return /^(zdi-|fcc-|munro-|brucon-|zerobrain-|efixx-|sdg-)/i.test(f) || /teardown|internal/i.test(f);
+}
+function stationImgPath(mid, f) {
+  return "charging-station-benchmark/manufacturers/" + mid + "/images/" + encodeURIComponent(f);
+}
+function stationRasters(mid) {
+  return (STATION_IMAGES[mid] || []).filter(isRaster);
+}
+function stationTeardownSet(mid) {
+  return (STATION_IMAGES[mid] || []).filter(isTeardownFile);
+}
+function coverPhoto(mid) {
+  const files = stationRasters(mid);
+  const product = files.find(f => !isTeardownFile(f));
+  return product || files[0] || null;
+}
+function photoMarks(mid) {
+  const rasters = stationRasters(mid);
+  const tears = stationTeardownSet(mid);
+  if (!rasters.length && !tears.length) return "—";
+  const cover = coverPhoto(mid);
+  const thumb = cover
+    ? `<img class="st-thumb" src="${stationImgPath(mid, cover)}" alt="" loading="lazy">`
+    : "";
+  const badges = [];
+  if (rasters.length) badges.push(`<span class="tag">${rasters.length} photo${rasters.length > 1 ? "s" : ""}</span>`);
+  if (tears.length) badges.push(`<span class="tag amber">teardown</span>`);
+  return `<div class="photo-cell">${thumb}<div>${badges.join("")}</div></div>`;
+}
+
 function renderStations() {
   const q = ($("stQ").value || "").toLowerCase();
   const r = $("stRegion").value;
   const f = $("stFeat").value;
   let rows = stationRows().filter(({m, p}) => {
     if (r && !(m.regions || []).includes(r)) return false;
+    if (f === "photos" && !stationRasters(m.id).length) return false;
+    if (f === "teardown" && !stationTeardownSet(m.id).length) return false;
     if (f === "ocpp" && !ocppYes(p.ocpp)) return false;
     if (f === "pv" && !p.pv) return false;
     if (f === "iso" && !p.iso15118) return false;
@@ -865,6 +922,7 @@ function renderStations() {
     return !q || blob.includes(q);
   });
   $("stable").tBodies[0].innerHTML = rows.map(({m, p, key}) => `<tr data-key="${key}">
+    <td>${photoMarks(m.id)}</td>
     <td><strong>${m.name}</strong><div class="tiny">${m.hq}</div></td>
     <td>${p.name}</td>
     <td>${(p.power_kw||[]).join(" / ")}</td>
@@ -874,13 +932,39 @@ function renderStations() {
     <td>${p.rcd || "—"}</td>
     <td>${p.ip || "—"}</td>
   </tr>`).join("");
-  $("stCount").textContent = rows.length + " products · click a row for links and notes";
+  $("stCount").textContent = rows.length + " products · click a row to open photos · teardown = FCC / ZDI / Munro / similar internals";
+}
+
+function galleryCells(mid, files) {
+  return files.map(f => {
+    const src = stationImgPath(mid, f);
+    const label = isTeardownFile(f) ? "teardown" : "photo";
+    return `<a href="${src}" data-full="${src}" data-cap="${f}"><img src="${src}" alt="${f}" loading="lazy"><div class="tiny">${label} · ${f}</div></a>`;
+  }).join("");
+}
+
+function stationGallery(mid) {
+  const files = STATION_IMAGES[mid] || [];
+  const rasters = files.filter(isRaster);
+  const tears = rasters.filter(isTeardownFile);
+  const product = rasters.filter(f => !isTeardownFile(f));
+  const pdfs = files.filter(f => /\.pdf$/i.test(f));
+  if (!rasters.length && !pdfs.length) return `<p class="tiny">No local photos stored for this brand.</p>`;
+  let html = "";
+  if (tears.length) html += `<div class="st-gallery"><h5>Teardown / internals</h5>${galleryCells(mid, tears)}</div>`;
+  if (product.length) html += `<div class="st-gallery"><h5>Product / install photos</h5>${galleryCells(mid, product)}</div>`;
+  if (pdfs.length) {
+    html += `<p class="tiny" style="margin-top:10px">FCC / datasheet PDFs:
+      ${pdfs.map(f => `<a href="${stationImgPath(mid, f)}" target="_blank" rel="noopener">${f}</a>`).join(" · ")}</p>`;
+  }
+  return html;
 }
 
 function showStation(key) {
   const hit = stationRows().find(x => x.key === key);
   if (!hit) return;
   const {m, p} = hit;
+  $("stable").querySelectorAll("tr").forEach(tr => tr.classList.toggle("selected", tr.dataset.key === key));
   $("stDetail").innerHTML = `<div class="card active" style="cursor:default">
     <div class="kicker">${m.hq} · ${m.regions.join(" · ")}</div>
     <h4 style="margin:6px 0 8px">${m.name} — ${p.name}</h4>
@@ -900,16 +984,17 @@ function showStation(key) {
     · folder <code>charging-station-benchmark/manufacturers/${m.id}/</code></p>
     ${stationGallery(m.id)}
   </div>`;
+  $("stDetail").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-function stationGallery(mid) {
-  const files = (STATION_IMAGES[mid] || []).filter(f => /\.(jpe?g|png|webp)$/i.test(f));
-  if (!files.length) return "";
-  const cells = files.slice(0, 8).map(f => {
-    const src = "charging-station-benchmark/manufacturers/" + mid + "/images/" + f;
-    return `<a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="${f}" loading="lazy"><div class="tiny">${f}</div></a>`;
-  }).join("");
-  return `<div class="st-gallery">${cells}</div>`;
+function openLightbox(src, cap) {
+  $("lightboxImg").src = src;
+  $("lightboxCap").textContent = cap || "";
+  $("lightbox").classList.add("open");
+}
+function closeLightbox() {
+  $("lightbox").classList.remove("open");
+  $("lightboxImg").src = "";
 }
 
 function initStations() {
@@ -921,6 +1006,14 @@ function initStations() {
     const tr = e.target.closest("tr"); if (!tr) return;
     showStation(tr.dataset.key);
   });
+  $("stDetail").addEventListener("click", e => {
+    const a = e.target.closest("[data-full]");
+    if (!a) return;
+    e.preventDefault();
+    openLightbox(a.dataset.full, a.dataset.cap || "");
+  });
+  $("lightbox").addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
   renderStations();
 }
 
