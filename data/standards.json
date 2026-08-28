@@ -1,0 +1,91 @@
+{
+  "layers": [
+    {
+      "layer": "Supply voltage",
+      "international": ["IEC 60038"],
+      "regional": ["EN 50160 (EU voltage characteristics)", "ANSI C84.1 (North America)", "GB/T 156, GB/T 12325 (China)", "JIS C 60038 (Japan)", "AS 60038 (Australia)"]
+    },
+    {
+      "layer": "Installation earthing & wiring",
+      "international": ["IEC 60364 series"],
+      "regional": ["HD 60364 (CENELEC)", "BS 7671 (UK)", "NF C 15-100 (France)", "DIN VDE 0100 (Germany)", "NEK 400 (Norway)", "AS/NZS 3000 (AU/NZ)", "NEC / NFPA 70 (USA)", "CEC (Canada)", "GB 50054 (China)", "IS 732 (India)", "SANS 10142-1 (South Africa)"]
+    },
+    {
+      "layer": "EV charging installation (special locations)",
+      "international": ["IEC 60364-7-722"],
+      "regional": ["HD 60364-7-722", "BS 7671 Section 722", "DIN VDE 0100-722", "NEC Article 625", "AS/NZS 3000 EV clauses", "GB/T 18487 installation practice"]
+    },
+    {
+      "layer": "EV conductive charging system",
+      "international": ["IEC 61851-1 (modes, EVSE)", "IEC 61851-21-1 (on-board EMC)", "IEC 62752 (Mode 2 IC-CPD)"],
+      "regional": ["SAE J1772 (NA coupler + signalling)", "GB/T 18487.1", "UL 2594 / UL 2231 (NA EVSE / personnel protection)"]
+    },
+    {
+      "layer": "Connectors (AC)",
+      "international": ["IEC 62196-1", "IEC 62196-2 (Type 1 / Type 2 / Type 3)"],
+      "regional": ["SAE J1772 (Type 1)", "SAE J3400 (NACS)", "SAE J3068 (3-phase Type 2 in NA)", "GB/T 20234.2 (China AC)", "Bharat EV AC-001 (India low-power, IEC 60309)"]
+    },
+    {
+      "layer": "Residual DC / RCD",
+      "international": ["IEC 61008 / 61009 / 62423 (RCDs)", "IEC 62955 (RDC-DD 6 mA DC)"],
+      "regional": ["EN 61008/61009", "UL 943 GFCI (NA, different residual characteristic)"]
+    },
+    {
+      "layer": "Communication (optional on AC)",
+      "international": ["IEC 61851-1 PWM (basic signalling)", "ISO 15118 (high-level, Plug & Charge)"],
+      "regional": ["SAE J1772 PWM / SAE J2847", "GB/T 27930 (CAN, mainly DC in China)"]
+    }
+  ],
+  "chargingModes": [
+    {
+      "id": "mode1",
+      "iec": "IEC 61851-1 Mode 1",
+      "sae": "Closest to unattended use of a household outlet without EVSE",
+      "interface": "Standard household socket, no dedicated EVSE, no control pilot",
+      "limits": "1φ ≤ 16 A / 250 V; 3φ ≤ 16 A / 480 V",
+      "protection": "Relies on installation RCD only",
+      "home": "Banned or strongly restricted in many countries (UK, US, IL; restricted in CH, DK, NO, DE). Not a home charging station.",
+      "use": "Not recommended"
+    },
+    {
+      "id": "mode2",
+      "iec": "IEC 61851-1 Mode 2",
+      "sae": "AC Level 1 (120 V) portable; also 240 V portable EVSE",
+      "interface": "Household or industrial (IEC 60309 / NEMA) plug + in-cable IC-CPD (IEC 62752) + vehicle coupler",
+      "limits": "Typically 1φ ≤ 32 A / 250 V; 3φ ≤ 32 A / 480 V",
+      "protection": "IC-CPD: overcurrent, PE continuity, RCD, control pilot",
+      "home": "Emergency / travel / temporary home charging. Daily use of household plugs is thermally limited (Schuko, BS 1363).",
+      "use": "Portable"
+    },
+    {
+      "id": "mode3",
+      "iec": "IEC 61851-1 Mode 3",
+      "sae": "AC Level 2",
+      "interface": "Permanently connected EVSE (wallbox). Tethered vehicle connector or IEC 62196 socket-outlet. Control pilot PWM.",
+      "limits": "1φ up to 70 A / 250 V; 3φ up to 63 A / 480 V in the standard. Home practice: ≤ 32 A, ≤ 22 kW.",
+      "protection": "EVSE RCD / RDC-DD, PE monitoring, interlocking, current coding via PP (Type 2)",
+      "home": "The correct home charging station architecture worldwide.",
+      "use": "Home wallbox"
+    },
+    {
+      "id": "mode4",
+      "iec": "IEC 61851-1 Mode 4",
+      "sae": "DC Level 1 / 2",
+      "interface": "DC EVSE, off-board charger",
+      "limits": "Outside 22 kW AC scope",
+      "protection": "Electrical separation / specific DC rules",
+      "home": "Rare at dwellings; not covered in depth here.",
+      "use": "DC only"
+    }
+  ],
+  "pwm": {
+    "description": "IEC 61851-1 control-pilot PWM tells the vehicle the maximum current the EVSE will allow. The vehicle never draws more than this, and never more than its onboard charger.",
+    "dutyCycle": [
+      { "duty": "0 % (constant −12 V)", "meaning": "EVSE not ready / error" },
+      { "duty": "5 %", "meaning": "Digital communication (ISO 15118) required" },
+      { "duty": "10–85 %", "meaning": "Available current I = duty × 0.6 A (for 10–85 % → 6–51 A)" },
+      { "duty": "85–96 %", "meaning": "Higher-current coding (see IEC 61851-1 Table A.7)" },
+      { "duty": "100 % (constant +12 V)", "meaning": "No EV connected / standby" }
+    ]
+  }
+}

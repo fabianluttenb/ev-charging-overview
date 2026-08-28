@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AC Networks for EV Charging — Worldwide Overview</title>
+<style>
+:root {
+  --bg: #070b14;
+  --bg2: #0c1220;
+  --surface: #121a2b;
+  --surface2: #182338;
+  --line: #27364f;
+  --text: #e8eef8;
+  --muted: #8ea0bb;
+  --teal: #2ee6b8;
+  --teal-dim: rgba(46,230,184,.14);
+  --amber: #f0b429;
+  --amber-dim: rgba(240,180,41,.14);
+  --coral: #ff6b7a;
+  --blue: #6ea8fe;
+  --violet: #9b8cff;
+  --ok: #3ddc97;
+  --shadow: 0 18px 50px rgba(0,0,0,.35);
+  --radius: 16px;
+  --nav: 248px;
+  --sans: "Segoe UI", "Helvetica Neue", Inter, ui-sans-serif, system-ui, sans-serif;
+  --mono: "Cascadia Mono", "SF Mono", Consolas, ui-monospace, monospace;
+}
+[data-theme="light"] {
+  --bg: #f3f6fb;
+  --bg2: #e8eef7;
+  --surface: #ffffff;
+  --surface2: #f7f9fc;
+  --line: #d5deeb;
+  --text: #152033;
+  --muted: #5b6b82;
+  --teal: #0f9d7a;
+  --teal-dim: rgba(15,157,122,.12);
+  --amber: #b7791f;
+  --amber-dim: rgba(183,121,31,.12);
+  --coral: #c43c4e;
+  --blue: #2c6bed;
+  --violet: #6b5cff;
+  --shadow: 0 12px 32px rgba(21,32,51,.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  background: radial-gradient(1200px 600px at 10% -10%, #12324a 0%, transparent 50%),
+              radial-gradient(900px 500px at 110% 0%, #1a1638 0%, transparent 45%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+[data-theme="light"] body {
+  background: radial-gradient(1200px 600px at 10% -10%, #d9ecf4 0%, transparent 50%), var(--bg);
+}
+a { color: var(--teal); }
+code, .mono { font-family: var(--mono); font-size: .92em; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 8px; top: 8px; background: var(--surface); padding: 8px 12px; z-index: 9; }
+
+nav.side {
+  position: fixed; inset: 0 auto 0 0; width: var(--nav);
+  background: color-mix(in srgb, var(--bg2) 92%, transparent);
+  border-right: 1px solid var(--line);
+  padding: 22px 16px; overflow: auto; z-index: 5;
+  backdrop-filter: blur(16px);
+}
+.brand { display: flex; gap: 12px; align-items: center; margin-bottom: 22px; }
+.logo {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: linear-gradient(145deg, var(--teal), #1a8cff);
+  display: grid; place-items: center; font-weight: 800; color: #041018; letter-spacing: -.04em;
+}
+.brand h1 { font-size: 14px; margin: 0; letter-spacing: .02em; }
+.brand p { margin: 2px 0 0; color: var(--muted); font-size: 11px; }
+nav.side a.navlink {
+  display: block; color: var(--muted); text-decoration: none;
+  padding: 8px 10px; border-radius: 8px; font-size: 13.5px;
+}
+nav.side a.navlink:hover, nav.side a.navlink.active {
+  background: var(--teal-dim); color: var(--text);
+}
+nav.side .sec-label {
+  margin: 16px 10px 6px; font-size: 10px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--muted);
+}
+.side-tools { display: flex; gap: 8px; margin-top: 18px; }
+.side-tools button {
+  flex: 1; background: var(--surface); color: var(--text); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px; cursor: pointer;
+}
+
+main { margin-left: var(--nav); padding: 28px 36px 80px; max-width: 1280px; }
+.hero {
+  display: grid; grid-template-columns: 1.4fr .9fr; gap: 28px; align-items: end;
+  margin-bottom: 28px;
+}
+.kicker {
+  color: var(--teal); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700;
+}
+.hero h2 { font-size: clamp(28px, 4vw, 46px); line-height: 1.12; margin: 8px 0 12px; letter-spacing: -.03em; }
+.lede { color: var(--muted); font-size: 16.5px; max-width: 62ch; }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.stat {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
+}
+.stat b { display: block; font-size: 22px; color: var(--teal); letter-spacing: -.03em; }
+.stat span { color: var(--muted); font-size: 12px; }
+
+.panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 22px; margin: 18px 0; box-shadow: var(--shadow);
+}
+.panel h3 { margin: 0 0 6px; font-size: 22px; letter-spacing: -.02em; }
+.panel .sub { color: var(--muted); margin: 0 0 18px; }
+.row { display: grid; gap: 14px; }
+.row.cols-2 { grid-template-columns: 1fr 1fr; }
+.row.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.row.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.row.cols-5 { grid-template-columns: repeat(5, 1fr); }
+
+.card {
+  background: var(--surface2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
+  cursor: pointer; transition: border-color .15s, transform .15s;
+}
+.card:hover, .card.active { border-color: var(--teal); transform: translateY(-1px); }
+.card h4 { margin: 0 0 6px; font-size: 15px; }
+.card p { margin: 0; color: var(--muted); font-size: 13px; }
+.tag {
+  display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px;
+  background: var(--teal-dim); color: var(--teal); margin: 0 6px 6px 0; font-weight: 600;
+}
+.tag.amber { background: var(--amber-dim); color: var(--amber); }
+.tag.coral { background: rgba(255,107,122,.14); color: var(--coral); }
+.tag.blue { background: rgba(110,168,254,.14); color: var(--blue); }
+.tag.violet { background: rgba(155,140,255,.16); color: var(--violet); }
+
+section { scroll-margin-top: 18px; margin-top: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+tr:hover td { background: color-mix(in srgb, var(--teal) 6%, transparent); }
+input, select, button.btn {
+  background: var(--bg2); color: var(--text); border: 1px solid var(--line);
+  border-radius: 10px; padding: 9px 12px; font: inherit;
+}
+input[type="range"] { width: 100%; accent-color: var(--teal); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.filters input, .filters select { min-width: 140px; }
+.btn {
+  background: var(--teal); color: #041018; font-weight: 700; border: 0; cursor: pointer;
+}
+.btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+.callout {
+  border-left: 3px solid var(--amber); background: var(--amber-dim);
+  padding: 12px 14px; border-radius: 0 10px 10px 0; color: var(--text); font-size: 14px;
+}
+.callout.danger { border-left-color: var(--coral); background: rgba(255,107,122,.1); }
+.callout.ok { border-left-color: var(--teal); background: var(--teal-dim); }
+.formula {
+  font-family: var(--mono); background: var(--bg2); border: 1px solid var(--line);
+  padding: 10px 12px; border-radius: 8px; font-size: 13px;
+}
+.big-num { font-size: 42px; font-weight: 750; letter-spacing: -.04em; color: var(--teal); line-height: 1; }
+.muted { color: var(--muted); }
+.tiny { font-size: 12px; color: var(--muted); }
+svg.schematic { width: 100%; height: auto; display: block; }
+.pin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.wizard-result h4 { margin: 0 0 8px; }
+.kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px; font-size: 14px; }
+.kv b { color: var(--muted); font-weight: 600; }
+details.case {
+  background: var(--surface2); border: 1px solid var(--line); border-radius: 12px; padding: 4px 14px;
+}
+details.case + details.case { margin-top: 8px; }
+details.case summary { cursor: pointer; padding: 10px 0; font-weight: 650; }
+footer { margin: 40px 0 10px; color: var(--muted); font-size: 12.5px; }
+.bar { height: 10px; background: var(--bg2); border-radius: 99px; overflow: hidden; border: 1px solid var(--line); }
+.bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--blue)); }
+.tol { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-top: 6px; }
+.stack { display: grid; gap: 8px; }
+.stack-item {
+  display: grid; grid-template-columns: 180px 1fr; gap: 12px; align-items: start;
+  background: var(--surface2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px;
+}
+.stack-item strong { color: var(--teal); font-size: 13px; }
+@media (max-width: 980px) {
+  nav.side { position: relative; width: auto; inset: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  main { margin-left: 0; padding: 18px 16px 60px; }
+  .hero, .row.cols-2, .row.cols-3, .row.cols-4, .row.cols-5, .stack-item { grid-template-columns: 1fr; }
+  .kv { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="side" aria-label="Sections">
+  <div class="brand">
+    <div class="logo">AC</div>
+    <div>
+      <h1>AC charging grids</h1>
+      <p>Worldwide EV overview</p>
+    </div>
+  </div>
+  <div class="sec-label">Explore</div>
+  <a class="navlink active" href="#overview">Overview</a>
+  <a class="navlink" href="#site">Site profile</a>
+  <a class="navlink" href="#families">Grid families</a>
+  <a class="navlink" href="#earthing">Earthing</a>
+  <a class="navlink" href="#voltages">Voltages &amp; tolerances</a>
+  <a class="navlink" href="#standards">Standards</a>
+  <a class="navlink" href="#power">Power &amp; current</a>
+  <a class="navlink" href="#connectors">Home connectors</a>
+  <a class="navlink" href="#countries">Country explorer</a>
+  <a class="navlink" href="#special">Special cases</a>
+  <div class="side-tools">
+    <button type="button" id="themeBtn" title="Toggle theme">Theme</button>
+    <button type="button" id="topBtn" title="Back to top">Top</button>
+  </div>
+</nav>
+
+<main id="main">
+  <header class="hero" id="overview">
+    <div>
+      <div class="kicker">Electric vehicle AC charging · up to 22 kW</div>
+      <h2>The AC network the car actually sees</h2>
+      <p class="lede">
+        A home charging station is a controlled connection to the public low-voltage grid — not a DC charger.
+        What the vehicle can draw depends on <strong>voltage, phase count, earthing, national rules, the inlet on the car,
+        and the onboard charger</strong>. This overview maps those facts worldwide.
+      </p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>230/400 V</b><span>Dominant IEC family (most of the world)</span></div>
+      <div class="stat"><b>120/240 V</b><span>North American split-phase, 60 Hz</span></div>
+      <div class="stat"><b>22 kW</b><span>3φ 32 A @ 400 V — ceiling of this guide</span></div>
+      <div class="stat"><b>4 inlets</b><span>Type 2 · J1772 · NACS · GB/T AC</span></div>
+    </div>
+  </header>
+
+  <section class="panel" id="site">
+    <h3>Site profile</h3>
+    <p class="sub">Pick a country. The card shows the grid, earthing, typical home power, and the connectors you actually specify.</p>
+    <div class="filters">
+      <input id="siteSearch" type="search" placeholder="Search country…" autocomplete="off">
+      <select id="siteSelect"></select>
+    </div>
+    <div class="row cols-2">
+      <div class="wizard-result" id="siteCard"></div>
+      <div>
+        <div class="callout">A Mode 3 wallbox on a dedicated circuit is the home charging <em>station</em>. A household plug with a Mode 2 in-cable box is travel / backup — not a station.</div>
+        <p class="tiny" style="margin-top:14px">Always confirm the <em>actual</em> supply at the origin of the installation (phases present, earthing arrangement, main fuse / contracted power). Country rows are typical, not a substitute for a site survey or the local wiring rules.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="families">
+    <h3>Grid families that matter for AC charging</h3>
+    <p class="sub">Almost every dwelling on earth falls into one of these. Click a family to highlight matching countries below.</p>
+    <div class="row cols-3" id="familyCards"></div>
+  </section>
+
+  <section class="panel" id="earthing">
+    <h3>Earthing concepts (IEC 60364)</h3>
+    <p class="sub">The first letter is the source. The second is how the installation earths. S/C describe whether PE and N are separate or combined. The EV circuit itself must never contain a PEN conductor.</p>
+    <div class="row cols-5" id="earthBtns"></div>
+    <div class="row cols-2" style="margin-top:16px">
+      <div>
+        <svg class="schematic" id="earthSvg" viewBox="0 0 520 280" role="img" aria-label="Earthing schematic"></svg>
+      </div>
+      <div id="earthInfo"></div>
+    </div>
+    <div class="callout danger" style="margin-top:16px">
+      <strong>Open-PEN on TN-C-S / PME:</strong> if the combined PEN conductor breaks, the car body (via PE in the charge cable) can rise toward line voltage relative to true earth. UK/IE require extra measures for outdoor charging (open-PEN disconnect at 70 V, a TT island, or electrical separation). IEC 60364-7-722: no PEN on the EV circuit.
+    </div>
+  </section>
+
+  <section class="panel" id="voltages">
+    <h3>Voltages and tolerances</h3>
+    <p class="sub">Nameplate power is calculated at nominal voltage. EN 50160 allows ±10 %, so a “7.4 kW” session is really a 6.6–8.1 kW band.</p>
+    <div class="row cols-2">
+      <div>
+        <table>
+          <thead><tr><th>Family</th><th>L–N</th><th>L–L</th><th>Hz</th><th>Normal band</th></tr></thead>
+          <tbody>
+            <tr><td>IEC 230/400 V</td><td>230</td><td>400</td><td>50*</td><td>±10 % (EN 50160)</td></tr>
+            <tr><td>Legacy 220/380 V</td><td>220</td><td>380</td><td>50</td><td>National; treat as IEC family</td></tr>
+            <tr><td>NA split-phase</td><td>120</td><td>240</td><td>60</td><td>Service ±5 % (ANSI C84.1 A)</td></tr>
+            <tr><td>NA 208Y/120</td><td>120</td><td>208</td><td>60</td><td>Apartments / commercial</td></tr>
+            <tr><td>Japan 100/200 V</td><td>100</td><td>200</td><td>50/60</td><td>~101 ± 6 V</td></tr>
+            <tr><td>Norway IT</td><td>—</td><td>230</td><td>50</td><td>±10 % of 230 V L–L</td></tr>
+          </tbody>
+        </table>
+        <p class="tiny">*Saudi Arabia uses 230/400 V at <strong>60 Hz</strong>.</p>
+      </div>
+      <div>
+        <h4 style="margin:0 0 10px">230 V under EN 50160</h4>
+        <div class="tol"><span>195.5 V</span><div class="bar" style="flex:1"><i style="width:100%;opacity:.35"></i></div><span>253 V</span></div>
+        <p class="tiny">All 10-minute mean values: +10 % / −15 %.</p>
+        <div class="tol"><span>207 V</span><div class="bar" style="flex:1"><i style="width:100%"></i></div><span>253 V</span></div>
+        <p class="tiny">95 % of 10-minute means in any week: Un ± 10 %.</p>
+        <div class="callout ok" style="margin-top:14px">
+          China GB/T 12325: 220 V <strong>+7 / −10 %</strong> (198–235 V). ANSI C84.1 Range A service: <strong>±5 %</strong> — tighter than Europe at the meter, then more drop allowed inside the building.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="standards">
+    <h3>Standards stack</h3>
+    <p class="sub">A wallbox sits on every layer at once. IEC is the world template; SAE/NEC and GB/T are the two large parallel systems.</p>
+    <div class="stack">
+      <div class="stack-item"><strong>Communication</strong><span>IEC 61851-1 PWM (current coding). Optional ISO 15118. SAE J1772 PWM. GB/T 27930 (mainly DC).</span></div>
+      <div class="stack-item"><strong>Coupler</strong><span>IEC 62196-2 Type 1 / Type 2. SAE J1772. SAE J3400 (NACS). GB/T 20234.2 AC.</span></div>
+      <div class="stack-item"><strong>EVSE behaviour</strong><span>IEC 61851-1 Modes 1–4. IEC 62752 Mode 2 IC-CPD. UL 2594 / UL 2231 in North America.</span></div>
+      <div class="stack-item"><strong>Installation</strong><span>IEC 60364-7-722 · HD 60364-7-722 · BS 7671 §722 · DIN VDE 0100-722 · NEC Art. 625 · AS/NZS 3000 EV clauses.</span></div>
+      <div class="stack-item"><strong>Building earthing</strong><span>IEC 60364 · BS 7671 · NF C 15-100 · NEK 400 · AS/NZS 3000 MEN · NEC · GB 50054.</span></div>
+      <div class="stack-item"><strong>Public LV network</strong><span>IEC 60038 · EN 50160 · ANSI C84.1 · GB/T 12325 · JIS C 60038.</span></div>
+    </div>
+    <h4 style="margin:22px 0 8px">IEC 61851-1 modes (home relevance)</h4>
+    <div class="row cols-4" id="modeCards"></div>
+  </section>
+
+  <section class="panel" id="power">
+    <h3>Power and current — up to 22 kW</h3>
+    <p class="sub">Delivered power is the minimum of the EVSE, the cable, the vehicle onboard charger, and what the dwelling can spare after diversity / load management.</p>
+    <div class="row cols-2">
+      <div>
+        <div class="filters">
+          <label class="tiny">Grid
+            <select id="calcFamily"></select>
+          </label>
+          <label class="tiny">Phases
+            <select id="calcPhases"><option value="1">1-phase</option><option value="3">3-phase</option></select>
+          </label>
+        </div>
+        <label class="tiny">Current <span id="calcIlab">32</span> A
+          <input id="calcI" type="range" min="6" max="80" value="32">
+        </label>
+        <p class="tiny" id="calcHint"></p>
+        <div style="margin-top:18px">
+          <div class="big-num" id="calcP">7.4 kW</div>
+          <p class="muted" id="calcDetail"></p>
+        </div>
+        <div class="formula" id="calcFormula"></div>
+      </div>
+      <div>
+        <h4 style="margin:0 0 8px">The four IEC powers</h4>
+        <table>
+          <thead><tr><th>Name</th><th>Connection</th><th>I</th><th>P nom.</th></tr></thead>
+          <tbody>
+            <tr><td>3.7 kW</td><td>1φ 230 V</td><td>16 A</td><td>3.68 kW</td></tr>
+            <tr><td>7.4 kW</td><td>1φ 230 V</td><td>32 A</td><td>7.36 kW</td></tr>
+            <tr><td>11 kW</td><td>3φ 400 V</td><td>16 A</td><td>11.09 kW</td></tr>
+            <tr><td>22 kW</td><td>3φ 400 V</td><td>32 A</td><td>22.17 kW</td></tr>
+          </tbody>
+        </table>
+        <p class="tiny">Protective device ≈ 125 % of EVSE current (continuous load): 32 A charger → 40 A breaker. US 48 A wall unit → 60 A circuit.</p>
+      </div>
+    </div>
+    <h4 style="margin:22px 0 8px">Supply vs onboard charger</h4>
+    <table>
+      <thead>
+        <tr><th>Supply</th><th>Car 1φ 32 A (7.4 kW)</th><th>Car 3φ 16 A (11 kW)</th><th>Car 3φ 32 A (22 kW)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1φ 16 A</td><td>3.7</td><td>3.7</td><td>3.7</td></tr>
+        <tr><td>1φ 32 A</td><td>7.4</td><td>7.4</td><td>7.4</td></tr>
+        <tr><td>3φ 16 A</td><td>3.7 <span class="tiny">(one phase)</span></td><td>11</td><td>11</td></tr>
+        <tr><td>3φ 32 A</td><td>7.4</td><td>11</td><td>22</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="panel" id="connectors">
+    <h3>Connectors for home use</h3>
+    <p class="sub">Three different interfaces. The car fixes C. The wallbox is A + B. Household plugs are Mode 2 only.</p>
+    <p class="formula">Grid --(A supply)-- EVSE --(B station front)-- cable --(C vehicle inlet)</p>
+    <h4>C · Vehicle inlet</h4>
+    <div class="row cols-4" style="margin-bottom:16px">
+      <svg class="schematic" viewBox="0 0 200 160" aria-label="Type 2 pinout">
+        <text x="100" y="16" text-anchor="middle" fill="currentColor" font-size="12" font-weight="700">Type 2</text>
+        <ellipse cx="100" cy="88" rx="70" ry="58" fill="none" stroke="#2ee6b8" stroke-width="2"/>
+        <circle cx="70" cy="60" r="8" fill="none" stroke="#6ea8fe"/><text x="70" y="48" text-anchor="middle" font-size="9" fill="#6ea8fe">L1</text>
+        <circle cx="100" cy="52" r="8" fill="none" stroke="#6ea8fe"/><text x="100" y="40" text-anchor="middle" font-size="9" fill="#6ea8fe">L2</text>
+        <circle cx="130" cy="60" r="8" fill="none" stroke="#6ea8fe"/><text x="130" y="48" text-anchor="middle" font-size="9" fill="#6ea8fe">L3</text>
+        <circle cx="70" cy="118" r="8" fill="none" stroke="#f0b429"/><text x="70" y="138" text-anchor="middle" font-size="9" fill="#f0b429">N</text>
+        <circle cx="100" cy="88" r="10" fill="none" stroke="#2ee6b8" stroke-width="2"/><text x="100" y="92" text-anchor="middle" font-size="8" fill="#2ee6b8">PE</text>
+        <circle cx="130" cy="118" r="8" fill="none" stroke="#9b8cff"/><text x="130" y="138" text-anchor="middle" font-size="9" fill="#9b8cff">PP</text>
+        <circle cx="148" cy="88" r="7" fill="none" stroke="#ff6b7a"/><text x="168" y="92" font-size="9" fill="#ff6b7a">CP</text>
+      </svg>
+      <svg class="schematic" viewBox="0 0 200 160" aria-label="Type 1 pinout">
+        <text x="100" y="16" text-anchor="middle" fill="currentColor" font-size="12" font-weight="700">Type 1 / J1772</text>
+        <path d="M40 50 h120 v70 a20 20 0 0 1 -20 20 h-80 a20 20 0 0 1 -20 -20 z" fill="none" stroke="#6ea8fe" stroke-width="2"/>
+        <circle cx="70" cy="78" r="8" fill="none" stroke="#6ea8fe"/><text x="70" y="66" text-anchor="middle" font-size="9" fill="#6ea8fe">L1</text>
+        <circle cx="130" cy="78" r="8" fill="none" stroke="#f0b429"/><text x="130" y="66" text-anchor="middle" font-size="9" fill="#f0b429">N</text>
+        <circle cx="100" cy="108" r="10" fill="none" stroke="#2ee6b8" stroke-width="2"/><text x="100" y="112" text-anchor="middle" font-size="8" fill="#2ee6b8">PE</text>
+        <circle cx="55" cy="108" r="6" fill="none" stroke="#ff6b7a"/><text x="55" y="130" text-anchor="middle" font-size="9" fill="#ff6b7a">CP</text>
+        <circle cx="145" cy="108" r="6" fill="none" stroke="#9b8cff"/><text x="145" y="130" text-anchor="middle" font-size="9" fill="#9b8cff">PP</text>
+      </svg>
+      <svg class="schematic" viewBox="0 0 200 160" aria-label="NACS pinout">
+        <text x="100" y="16" text-anchor="middle" fill="currentColor" font-size="12" font-weight="700">NACS / J3400</text>
+        <rect x="55" y="40" width="90" height="100" rx="28" fill="none" stroke="#f0b429" stroke-width="2"/>
+        <circle cx="80" cy="88" r="12" fill="none" stroke="#6ea8fe" stroke-width="2"/><text x="80" y="70" text-anchor="middle" font-size="9" fill="#6ea8fe">L1/DC+</text>
+        <circle cx="120" cy="88" r="12" fill="none" stroke="#f0b429" stroke-width="2"/><text x="120" y="70" text-anchor="middle" font-size="9" fill="#f0b429">N/DC−</text>
+        <circle cx="100" cy="122" r="7" fill="none" stroke="#2ee6b8"/><text x="100" y="142" text-anchor="middle" font-size="9" fill="#2ee6b8">PE</text>
+        <circle cx="68" cy="50" r="5" fill="none" stroke="#ff6b7a"/><text x="48" y="54" font-size="8" fill="#ff6b7a">CP</text>
+        <circle cx="132" cy="50" r="5" fill="none" stroke="#9b8cff"/><text x="140" y="54" font-size="8" fill="#9b8cff">PP</text>
+      </svg>
+      <svg class="schematic" viewBox="0 0 200 160" aria-label="GB/T AC pinout">
+        <text x="100" y="16" text-anchor="middle" fill="currentColor" font-size="12" font-weight="700">GB/T AC</text>
+        <ellipse cx="100" cy="88" rx="70" ry="58" fill="none" stroke="#ff6b7a" stroke-width="2"/>
+        <circle cx="70" cy="60" r="8" fill="none" stroke="#6ea8fe"/>
+        <circle cx="100" cy="52" r="8" fill="none" stroke="#6ea8fe"/>
+        <circle cx="130" cy="60" r="8" fill="none" stroke="#6ea8fe"/>
+        <circle cx="70" cy="118" r="8" fill="none" stroke="#f0b429"/>
+        <circle cx="100" cy="88" r="10" fill="none" stroke="#2ee6b8" stroke-width="2"/>
+        <circle cx="130" cy="118" r="8" fill="none" stroke="#9b8cff"/>
+        <circle cx="148" cy="88" r="7" fill="none" stroke="#ff6b7a"/>
+        <text x="100" y="150" text-anchor="middle" font-size="10" fill="#ff6b7a">Type 2 look · reversed gender · CC not PP</text>
+      </svg>
+    </div>
+    <div class="pin-grid" id="vehCards"></div>
+    <h4 style="margin-top:22px">A · Supply of the EVSE (home)</h4>
+    <div class="pin-grid" id="gridCards"></div>
+    <div class="callout" style="margin-top:16px">
+      Schuko, BS 1363, Type E/J/I and NEMA 5-15 are <strong>not</strong> home charging stations. They overheat on multi-hour 16 A sessions. Specify a Mode 3 wallbox on a dedicated circuit; keep a Mode 2 cable for travel.
+    </div>
+  </section>
+
+  <section class="panel" id="countries">
+    <h3>Country explorer</h3>
+    <p class="sub">Typical — not exhaustive. Click a row to load the site profile. Sort by clicking headers.</p>
+    <div class="filters">
+      <input id="q" type="search" placeholder="Filter by name, connector, earthing…">
+      <select id="fRegion"><option value="">All regions</option></select>
+      <select id="fFamily"><option value="">All voltage families</option></select>
+      <select id="fVeh"><option value="">All vehicle inlets</option></select>
+    </div>
+    <div style="overflow:auto; max-height: 560px;">
+      <table id="ctable">
+        <thead>
+          <tr>
+            <th data-k="name">Country</th>
+            <th data-k="region">Region</th>
+            <th data-k="uLN">L–N</th>
+            <th data-k="uLL">L–L</th>
+            <th data-k="hz">Hz</th>
+            <th data-k="earth">Earthing</th>
+            <th data-k="vehicle">Vehicle AC</th>
+            <th data-k="homeKW">Home kW</th>
+            <th data-k="plug">House plug</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="tiny" id="cCount"></p>
+  </section>
+
+  <section class="panel" id="special">
+    <h3>Special cases</h3>
+    <p class="sub">These break the “230/400 V Type 2 everywhere” mental model.</p>
+    <details class="case" open>
+      <summary>Norway — 230 V IT (~70 % of LV)</summary>
+      <p>Three lines at 230 V to each other, often <strong>no neutral</strong>. Default home charging: single-phase 3.7–7.4 kW. Three-phase IT (~11 kW at ~28 A) only if the onboard charger is specified for 230 V 3φ (some Teslas; not universal). Newer areas are TN 400 V. Blue IEC 60309 3φ 230 V is not red 400 V.</p>
+    </details>
+    <details class="case">
+      <summary>UK &amp; Ireland — PME open-PEN + single-phase homes</summary>
+      <p>Most houses are 1φ 60–100 A, Type 2, <strong>7.4 kW</strong>. 22 kW is not a typical dwelling option. Outdoor charging on PME needs open-PEN protection (disconnect L, N and PE if PE–earth &gt; 70 V), a suitable TT island, or electrical separation (BS 7671 722.411.4.1).</p>
+    </details>
+    <details class="case">
+      <summary>Belgium — 3×230 V delta pockets (no N)</summary>
+      <p>Some LV islands have no distributed neutral; loads sit across two phases. EVSE that need a neutral–PE reference can refuse to start. Survey before specifying; an isolating transformer to local TN-S is the robust fix.</p>
+    </details>
+    <details class="case">
+      <summary>United States &amp; Canada — split-phase, J1772 / NACS</summary>
+      <p>120 V Level 1 and 240 V Level 2 on the same service. Apartments may be 208 V (≈13 % less power than a 240 V nameplate). Vehicle inlet is J1772 or NACS, almost always tethered. Breaker = 125 % of charger current. NEMA 14-50 is the default plug-in home outlet (40 A continuous → 9.6 kW).</p>
+    </details>
+    <details class="case">
+      <summary>Japan — 100/200 V, 50/60 Hz, Type 1, TT</summary>
+      <p>Home charging is 200 V single-phase Type 1, typically 3–6 kW. 100 V is trickle. East 50 Hz / west 60 Hz. Many Type A sockets are ungrounded — do not use them as a daily EV supply.</p>
+    </details>
+    <details class="case">
+      <summary>China — GB/T AC is not Type 2</summary>
+      <p>The 7-pin AC coupler looks like Type 2 but the gender is reversed and signalling is CC/CP, not PP/CP. Home piles are typically <strong>7 kW 1φ 32 A @ 220 V</strong>. Voltage band GB/T 12325: +7 / −10 %.</p>
+    </details>
+    <details class="case">
+      <summary>Saudi Arabia — IEC voltages at 60 Hz</summary>
+      <p>230/400 V, Type G household, Type 2 vehicle, TN-S — but <strong>60 Hz</strong>. Villas often have three-phase service, so 11/22 kW is realistic.</p>
+    </details>
+    <details class="case">
+      <summary>When is 22 kW actually available at home?</summary>
+      <p>Only if the dwelling has 3φ 400 V, the main fuse / contracted power can spare 3×32 A, the car’s onboard charger is 22 kW (minority), and the DSO allows it. Otherwise specify 11 kW (3×16 A) or 7.4 kW (1×32 A).</p>
+    </details>
+  </section>
+
+  <footer>
+    Engineering overview for AC charging up to 22 kW. Not a substitute for IEC 60364-7-722, BS 7671, NEC 625, or the local distribution code.
+    Data files live in <code>data/</code>; written notes in <code>docs/</code>. Sources: <code>references/sources.md</code>.
+  </footer>
+</main>
+
+<script>
+const DATA = {"voltageFamilies": {"iec-230-400": {"name": "IEC 230/400 V, 50 Hz, three-phase wye", "uLN": 230, "uLL": 400, "freq": 50, "toleranceRef": "EN 50160 / IEC 60038: ±10 % at supply terminals (95 % of 10 min values); all 10 min values +10 % / −15 %"}, "iec-220-380": {"name": "Legacy 220/380 V, 50 Hz", "uLN": 220, "uLL": 380, "freq": 50, "toleranceRef": "National; often treated as IEC 60038 230 V family in practice"}, "na-split": {"name": "North American 120/240 V split-phase, 60 Hz", "uLN": 120, "uLL": 240, "freq": 60, "toleranceRef": "ANSI C84.1 Range A service ±5 % (114–126 V / 228–252 V); utilization +5 % / −10 %"}, "na-wye-208": {"name": "North American 208Y/120 V, 60 Hz (apartments / commercial)", "uLN": 120, "uLL": 208, "freq": 60, "toleranceRef": "ANSI C84.1"}, "japan-100-200": {"name": "Japan 100/200 V, 50 or 60 Hz", "uLN": 100, "uLL": 200, "freq": "50 east / 60 west", "toleranceRef": "JIS C 60038; 100 V typically 101 ± 6 V"}, "it-230": {"name": "230 V IT (line-to-line), 50 Hz, often no distributed neutral", "uLN": null, "uLL": 230, "freq": 50, "toleranceRef": "EN 50160 ±10 % of 230 V"}, "br-mixed": {"name": "Brazil mixed 127/220 V, 60 Hz", "uLN": "127 or 220", "uLL": "220 or 380", "freq": 60, "toleranceRef": "ANEEL / NBR; typically ±5 to ±10 % by utility"}}, "countries": [{"iso": "AL", "name": "Albania", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "IT / TN mixed", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": "IT pockets similar to Norway."}, {"iso": "AT", "name": "Austria", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": "Three-phase dwellings common; 11 kW default wallbox."}, {"iso": "BE", "name": "Belgium", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "Some areas 3×230 V delta without neutral — EVSE that need N–PE bond are problematic."}, {"iso": "BG", "name": "Bulgaria", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "HR", "name": "Croatia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "CZ", "name": "Czechia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": ""}, {"iso": "DK", "name": "Denmark", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/K/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": "Mode 1 restricted. High share of 3-phase homes."}, {"iso": "EE", "name": "Estonia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "FI", "name": "Finland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": "Three-phase 3×25 A typical apartment/house service."}, {"iso": "FR", "name": "France", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "NF C 15-100. Residential TT with local electrode + 30 mA RCD. Single-phase 7.4 kW common."}, {"iso": "DE", "name": "Germany", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": "DIN VDE 0100-722, VDE-AR-N 4100. 11 kW (3×16 A) is the residential sweet spot; 22 kW needs 3×32 A and grid-operator notification."}, {"iso": "GR", "name": "Greece", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "HU", "name": "Hungary", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "IS", "name": "Iceland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "IE", "name": "Ireland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S (PME)", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "Similar PME open-PEN issue to the UK. Homes mostly single-phase."}, {"iso": "IT", "name": "Italy", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F/L", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "Mode 1 public charging prohibited. Type 3 legacy. 3 kW / 6 kW contractual limits common in apartments."}, {"iso": "LV", "name": "Latvia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "LT", "name": "Lithuania", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "LU", "name": "Luxembourg", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT / TN", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "NL", "name": "Netherlands", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11, 22], "notes": "3×25 A or 3×35 A household connections common; 11 kW standard."}, {"iso": "NO", "name": "Norway", "region": "Europe", "family": "it-230", "uLN": null, "uLL": 230, "hz": 50, "earth": "IT (~70 %), TN 400 V (~30 %)", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4, 11], "notes": "IT: 230 V L–L, often no N. 1φ charging 3.7–7.4 kW. 3φ IT only if the car supports it (~11 kW at ~28 A). Newer buildings TN 400 V → 11/22 kW."}, {"iso": "PL", "name": "Poland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "PT", "name": "Portugal", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "RO", "name": "Romania", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "RS", "name": "Serbia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "SK", "name": "Slovakia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "SI", "name": "Slovenia", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": ""}, {"iso": "ES", "name": "Spain", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "ITC-BT-52. Many apartments limited contracted power."}, {"iso": "SE", "name": "Sweden", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [11], "notes": "Three-phase 3×16 A or 3×20 A typical."}, {"iso": "CH", "name": "Switzerland", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-S / TT", "plug": "C/J", "vehicle": ["Type 2"], "homeKW": [11], "notes": "NIV / NIN. Mode 1 restricted. Type J household 10 A; 16 A Type J variant exists."}, {"iso": "TR", "name": "Türkiye", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "GB", "name": "United Kingdom", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S (PME); TT rural; TN-S some urban", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "BS 7671 Section 722. Mostly 1φ 60–100 A. Open-PEN (O-PEN) protection or TT island required for outdoor PME charging. Voltage historically 230 V +10/−6 % (216–253 V)."}, {"iso": "UA", "name": "Ukraine", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "US", "name": "United States", "region": "North America", "family": "na-split", "uLN": 120, "uLL": 240, "hz": 60, "earth": "Multi-grounded neutral (TN-C-S analogue)", "plug": "A/B + NEMA 14-50", "vehicle": ["J1772", "NACS"], "homeKW": [1.4, 7.7, 9.6, 11.5], "notes": "NEC 625, UL 2594. Level 1 120 V; Level 2 240 V 32–48 A typical. 208 V in apartments. Continuous load 125 % sizing."}, {"iso": "CA", "name": "Canada", "region": "North America", "family": "na-split", "uLN": 120, "uLL": 240, "hz": 60, "earth": "Multi-grounded neutral", "plug": "A/B + NEMA 14-50", "vehicle": ["J1772", "NACS"], "homeKW": [7.7, 9.6, 11.5], "notes": "CEC. Same electrical picture as the US. Cold-weather derating of outdoor cables."}, {"iso": "MX", "name": "Mexico", "region": "North America", "family": "na-split", "uLN": 127, "uLL": 220, "hz": 60, "earth": "TN-C-S analogue", "plug": "A/B", "vehicle": ["J1772", "NACS"], "homeKW": [3.8, 7.4], "notes": "127/220 V split-phase common. NOM standards."}, {"iso": "BR", "name": "Brazil", "region": "Latin America", "family": "br-mixed", "uLN": 127, "uLL": 220, "hz": 60, "earth": "TN-C-S / TT mixed", "plug": "N", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": "NBR IEC 61851. Voltage 127 or 220 V by state. Type 2 AC emerging; some J1772 imports."}, {"iso": "AR", "name": "Argentina", "region": "Latin America", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/I", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": "Type I polarity reversed vs AU/CN."}, {"iso": "CL", "name": "Chile", "region": "Latin America", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/L", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "CO", "name": "Colombia", "region": "Latin America", "family": "na-split", "uLN": 120, "uLL": 208, "hz": 60, "earth": "TN-C-S analogue", "plug": "A/B", "vehicle": ["J1772", "Type 2"], "homeKW": [3.8, 7.4], "notes": "120/208 V common."}, {"iso": "PE", "name": "Peru", "region": "Latin America", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 60, "earth": "TN / TT", "plug": "A/C", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "220 V 60 Hz."}, {"iso": "UY", "name": "Uruguay", "region": "Latin America", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S", "plug": "C/F/L/I", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "CN", "name": "China", "region": "East Asia", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TT / TN-C-S mixed", "plug": "A/I", "vehicle": ["GB/T AC"], "homeKW": [7], "notes": "GB/T 18487, 20234.2. Voltage +7/−10 % (GB/T 12325). Home AC piles typically 7 kW 1φ 32 A. Separate DC inlet."}, {"iso": "JP", "name": "Japan", "region": "East Asia", "family": "japan-100-200", "uLN": 100, "uLL": 200, "hz": 50, "earth": "TT", "plug": "A/B", "vehicle": ["Type 1"], "homeKW": [3, 6], "notes": "East 50 Hz, west 60 Hz. Home EV charging on 200 V single-phase. Type 1 AC; CHAdeMO is DC only."}, {"iso": "KR", "name": "South Korea", "region": "East Asia", "family": "iec-230-400", "uLN": 220, "uLL": 380, "hz": 60, "earth": "TT", "plug": "C/F", "vehicle": ["Type 1", "Type 2"], "homeKW": [7], "notes": "220 V 60 Hz. AC historically Type 1; Type 2 / CCS2 growing on European models."}, {"iso": "TW", "name": "Taiwan", "region": "East Asia", "family": "na-split", "uLN": 110, "uLL": 220, "hz": 60, "earth": "TN-C-S analogue", "plug": "A/B", "vehicle": ["Type 1"], "homeKW": [3.3, 7.4], "notes": ""}, {"iso": "HK", "name": "Hong Kong", "region": "East Asia", "family": "iec-230-400", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7], "notes": "BS 1363 sockets. Apartment charging dominated by building EVSE."}, {"iso": "IN", "name": "India", "region": "South Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT (typical)", "plug": "C/D/M", "vehicle": ["Type 2"], "homeKW": [3.3, 7.4], "notes": "IS 17017. 4-wheel AC is Type 2. 2/3-wheel Bharat AC-001 uses IEC 60309. Wide voltage variation in practice."}, {"iso": "SG", "name": "Singapore", "region": "Southeast Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "SS 638. Type 2 Mode 3."}, {"iso": "MY", "name": "Malaysia", "region": "Southeast Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "TH", "name": "Thailand", "region": "Southeast Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT / TN", "plug": "A/B/C/O", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "VN", "name": "Vietnam", "region": "Southeast Asia", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TT", "plug": "A/C", "vehicle": ["Type 2", "GB/T AC"], "homeKW": [7], "notes": "Imported Chinese vehicles may keep GB/T."}, {"iso": "ID", "name": "Indonesia", "region": "Southeast Asia", "family": "iec-220-380", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": ""}, {"iso": "PH", "name": "Philippines", "region": "Southeast Asia", "family": "na-split", "uLN": 220, "uLL": 220, "hz": 60, "earth": "TN / TT", "plug": "A/B/C", "vehicle": ["Type 2", "Type 1"], "homeKW": [3.3, 7.4], "notes": "220 V 60 Hz single-phase typical; no 110 V despite Type A plugs."}, {"iso": "AU", "name": "Australia", "region": "Oceania", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S (MEN)", "plug": "I", "vehicle": ["Type 2"], "homeKW": [7.4, 11, 22], "notes": "AS/NZS 3000, SA TS 5396. Most houses 1φ 63 A → 7.4 kW. Three-phase houses 11/22 kW. WA historically 240 V."}, {"iso": "NZ", "name": "New Zealand", "region": "Oceania", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S (MEN)", "plug": "I", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": "SNZ PAS 6011. Voltage limits widened to 230 V ±10 % (2025). Mostly single-phase homes."}, {"iso": "AE", "name": "United Arab Emirates", "region": "Middle East", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-S / TN-C-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11, 22], "notes": "Villas often 3-phase; Type 2 wallboxes common."}, {"iso": "SA", "name": "Saudi Arabia", "region": "Middle East", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 60, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11, 22], "notes": "60 Hz (unlike most 230 V countries). SASO. Type 2."}, {"iso": "QA", "name": "Qatar", "region": "Middle East", "family": "iec-230-400", "uLN": 240, "uLL": 415, "hz": 50, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "KW", "name": "Kuwait", "region": "Middle East", "family": "iec-230-400", "uLN": 240, "uLL": 415, "hz": 50, "earth": "TN-S", "plug": "G", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "IL", "name": "Israel", "region": "Middle East", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/H", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "Mode 1 not allowed."}, {"iso": "EG", "name": "Egypt", "region": "Africa", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "ZA", "name": "South Africa", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/M/N", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": "SANS 10142-1. MEN-like PME. Load-shedding: EVSE should ride through voltage dips or inhibit cleanly."}, {"iso": "MA", "name": "Morocco", "region": "Africa", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TT", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "KE", "name": "Kenya", "region": "Africa", "family": "iec-230-400", "uLN": 240, "uLL": 415, "hz": 50, "earth": "TN-C-S / TT", "plug": "G", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": ""}, {"iso": "NG", "name": "Nigeria", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN / TT", "plug": "D/G", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": "Wide practical voltage variation; design EVSE for full IEC ±10 % plus margin."}, {"iso": "DZ", "name": "Algeria", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "TN", "name": "Tunisia", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/E", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "GH", "name": "Ghana", "region": "Africa", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "D/G", "vehicle": ["Type 2"], "homeKW": [3.7, 7.4], "notes": ""}, {"iso": "RU", "name": "Russia", "region": "Europe", "family": "iec-220-380", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11, 22], "notes": "GOST / IEC dual. Three-phase dwellings common in cities. Type 2 AC."}, {"iso": "BY", "name": "Belarus", "region": "Europe", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2", "GB/T AC"], "homeKW": [7.4, 11], "notes": "Some Chinese-market vehicles keep GB/T AC."}, {"iso": "KZ", "name": "Kazakhstan", "region": "East Asia", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TN-C-S", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4, 11], "notes": ""}, {"iso": "PK", "name": "Pakistan", "region": "South Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "C/D/G", "vehicle": ["Type 2"], "homeKW": [3.3, 7.4], "notes": "Wide practical voltage swing; specify full IEC band plus margin."}, {"iso": "BD", "name": "Bangladesh", "region": "South Asia", "family": "iec-220-380", "uLN": 220, "uLL": 380, "hz": 50, "earth": "TT", "plug": "C/D/G/K", "vehicle": ["Type 2"], "homeKW": [3.3, 7.4], "notes": ""}, {"iso": "IR", "name": "Iran", "region": "Middle East", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TN-C-S / TT", "plug": "C/F", "vehicle": ["Type 2"], "homeKW": [7.4], "notes": ""}, {"iso": "LK", "name": "Sri Lanka", "region": "South Asia", "family": "iec-230-400", "uLN": 230, "uLL": 400, "hz": 50, "earth": "TT", "plug": "D/G/M", "vehicle": ["Type 2"], "homeKW": [3.3, 7.4], "notes": ""}]};
+const FAMILY_META = {
+  "iec-230-400": { name: "IEC 230/400 V, 50 Hz wye", blurb: "Europe, UK, AU/NZ, Gulf, most of Africa and Asia. 1φ 7.4 kW or 3φ 11/22 kW.", uLN: 230, uLL: 400, hz: 50 },
+  "iec-220-380": { name: "Legacy 220/380 V, 50 Hz", blurb: "China, parts of LatAm, Africa, CIS. Same topology as 230/400; slightly lower kW at 220 V.", uLN: 220, uLL: 380, hz: 50 },
+  "na-split": { name: "North American 120/240 V split-phase", blurb: "US, Canada, Mexico, Taiwan. Single-phase 240 V Level 2, 7.7–11.5 kW typical.", uLN: 120, uLL: 240, hz: 60 },
+  "na-wye-208": { name: "208Y/120 V", blurb: "North American apartments and commercial. Level 2 at 208 V.", uLN: 120, uLL: 208, hz: 60 },
+  "japan-100-200": { name: "Japan 100/200 V", blurb: "TT, Type 1, 200 V home charging ~3–6 kW. 50 Hz east / 60 Hz west.", uLN: 100, uLL: 200, hz: 50 },
+  "it-230": { name: "230 V IT (Norway)", blurb: "L–L 230 V, often no N. 1φ 3.7–7.4 kW default; 3φ only if the car allows it.", uLN: null, uLL: 230, hz: 50 },
+  "br-mixed": { name: "Brazil mixed 127/220 V 60 Hz", blurb: "Voltage is a state-level fact. Type 2 emerging. Confirm site voltage.", uLN: 127, uLL: 220, hz: 60 }
+};
+
+const EARTH = [
+  { id: "tn-s", name: "TN-S", title: "Separate PE and N from the source",
+    body: "Metallic PE all the way from the transformer. High fault current, no open-PEN hazard. Preferred TN arrangement. EV circuit is a continuation of this PE.",
+    ev: ["No PEN on the EV circuit (already true).", "RCD 30 mA still required per connecting point.", "Type B or Type A + 6 mA RDC-DD for smooth DC."],
+    where: "Industrial buildings, some older city networks, parts of TN countries." },
+  { id: "tn-c", name: "TN-C", title: "PEN throughout — not for EVSE",
+    body: "Neutral and protective functions share one conductor. RCDs cannot be applied to PEN. Forbidden as the final circuit to an EV connecting point.",
+    ev: ["Split PEN at the origin (become TN-C-S) and run a dedicated PE to the wallbox.", "Never land a wallbox on PEN."],
+    where: "Legacy distribution only." },
+  { id: "tn-c-s", name: "TN-C-S", title: "PME / MEN / multi-grounded neutral",
+    body: "PEN on the street, PE and N separate after the main earthing terminal. The world's default house system — and the open-PEN problem for outdoor charging.",
+    ev: ["UK/IE: outdoor charging needs O-PEN disconnect (70 V), TT island, or separation.", "EV circuit from MET to wallbox is TN-S (separate PE).", "North American MGN is the same topology under another name."],
+    where: "UK PME, AU/NZ MEN, DE/NL/SE TN, US/CA, ZA, Gulf." },
+  { id: "tt", name: "TT", title: "Independent local earth electrode",
+    body: "Utility gives you N. PE is a local rod / foundation earth. Fault current is small, so the RCD is the earth-fault device — which EV already requires.",
+    ev: ["30 mA RCD on the connecting point is both additional protection and the TT disconnection means.", "Keep electrode resistance compatible with the RCD.", "Used as a local island on PME supplies only if truly independent of bonded metalwork."],
+    where: "France, Italy, Spain, Japan, much of Africa and South Asia." },
+  { id: "it", name: "IT", title: "Isolated or impedance-earthed source",
+    body: "First fault does not trip; an IMD alarms. Norwegian LV is the public example: 230 V between lines, often no neutral.",
+    ev: ["Many OBC expect 230 V L–N / 400 V L–L and will only use two lines.", "Do not force 3φ IT charging unless the OEM allows it.", "Check IEC 60364-7-722 and the vehicle manual together."],
+    where: "Norway (~70 % of LV), Albania pockets, hospitals (not public LV)." }
+];
+
+const MODES = [
+  { t: "Mode 1", d: "No EVSE, no pilot, ≤ 16 A. Banned or restricted in UK, US, IL and others.", tag: "Not a station", cls: "coral" },
+  { t: "Mode 2", d: "Portable IC-CPD in the cable (IEC 62752). Household or CEE plug. Travel / backup.", tag: "Portable", cls: "amber" },
+  { t: "Mode 3", d: "Dedicated wallbox, PWM pilot, tethered coupler or Type 2 socket. This is a home charging station.", tag: "Home station", cls: "" },
+  { t: "Mode 4", d: "DC off-board charger. Outside the 22 kW AC scope of this overview.", tag: "DC", cls: "blue" }
+];
+
+const VEH = [
+  { name: "Type 2 (Mennekes)", std: "IEC 62196-2", pins: "7 pins · 1φ and 3φ", home: "Up to 22 kW (3×32 A)", where: "EU, UK, AU/NZ, ME, Africa, India 4W", note: "Female station socket or tethered connector. EU-mandated AC inlet. PP resistor codes cable current." },
+  { name: "Type 1 / SAE J1772", std: "IEC 62196-2 Type 1", pins: "5 pins · 1φ only", home: "7.7–11.5 kW @ 240 V (32–48 A)", where: "US, CA, Japan, Korea, Taiwan", note: "Almost always tethered. J1772 max 80 A / 19.2 kW is rare in homes." },
+  { name: "NACS / SAE J3400", std: "SAE J3400", pins: "5 pins · AC or DC on the same contacts", home: "Same as J1772 Level 2 AC", where: "North America (Tesla + adopters)", note: "Passive NACS↔J1772 AC adapters exist. DC Supercharging is out of AC scope." },
+  { name: "GB/T AC", std: "GB/T 20234.2", pins: "7 pins · reversed gender vs Type 2", home: "Typically 7 kW 1φ 32 A @ 220 V", where: "China", note: "Looks like Type 2 — is not. CC instead of PP. Separate DC inlet on the car." }
+];
+
+const GRID = [
+  { name: "Hardwired wallbox", r: "Matches EVSE (16–48 A)", w: "Universal preferred Mode 3 supply" },
+  { name: "NEMA 14-50", r: "50 A plug · 40 A cont. · 9.6 kW @ 240 V", w: "Dominant US plug-in home EVSE" },
+  { name: "NEMA 6-50 / 14-30", r: "9.6 kW / 5.8 kW", w: "US welder / dryer outlets" },
+  { name: "NEMA 5-15", r: "12 A @ 120 V · 1.4 kW", w: "Level 1 only" },
+  { name: "IEC 60309 blue 16/32 A 1φ", r: "3.7 / 7.4 kW", w: "EU garage, campsite, workshop" },
+  { name: "IEC 60309 red 16/32 A 3φ", r: "11 / 22 kW @ 400 V", w: "EU three-phase industrial · 22 kW ceiling" },
+  { name: "IEC 60309 blue 3φ 230 V", r: "IT Norway only", w: "Not interchangeable with red 400 V" },
+  { name: "Schuko / Type E / BS 1363 / Type I", r: "~2.3 kW continuous", w: "Mode 2 backup — not a station" }
+];
+
+function $(id){ return document.getElementById(id); }
+function el(html){ const d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstElementChild; }
+
+function unique(arr){ return [...new Set(arr)].sort(); }
+
+function fillSiteSelect() {
+  const sel = $("siteSelect");
+  DATA.countries.slice().sort((a,b)=>a.name.localeCompare(b.name)).forEach(c => {
+    const o = document.createElement("option");
+    o.value = c.iso; o.textContent = c.name;
+    sel.appendChild(o);
+  });
+  sel.value = "DE";
+  renderSite("DE");
+}
+
+function renderSite(iso) {
+  const c = DATA.countries.find(x => x.iso === iso);
+  if (!c) return;
+  $("siteSelect").value = iso;
+  const fam = FAMILY_META[c.family];
+  const kw = (c.homeKW || []).join(" / ");
+  $("siteCard").innerHTML = `
+    <div class="card active" style="cursor:default">
+      <div class="kicker">${c.region} · ${c.iso}</div>
+      <h4 style="font-size:22px;margin:6px 0 10px">${c.name}</h4>
+      <div class="kv">
+        <b>Voltage family</b><span>${fam ? fam.name : c.family}</span>
+        <b>L–N / L–L</b><span>${c.uLN ?? "—"} / ${c.uLL ?? "—"} V · ${c.hz} Hz</span>
+        <b>Earthing</b><span>${c.earth}</span>
+        <b>Household plug</b><span>Type ${c.plug}</span>
+        <b>Vehicle AC inlet</b><span>${c.vehicle.join(" · ")}</span>
+        <b>Typical home kW</b><span>${kw} kW</span>
+      </div>
+      ${c.notes ? `<p style="margin:12px 0 0;font-size:14px">${c.notes}</p>` : ""}
+      <p style="margin:12px 0 0">${(c.vehicle||[]).map(v=>`<span class="tag">${v}</span>`).join("")}<span class="tag amber">${c.earth.split(/[;(]/)[0]}</span></p>
+    </div>`;
+}
+
+function drawEarth(id) {
+  const svg = $("earthSvg");
+  const g = {
+    "tn-s": `<text x="16" y="28" fill="currentColor" font-size="14" font-weight="700">TN-S</text>
+      <text x="16" y="48" fill="#8ea0bb" font-size="11">Source earthed · PE and N separate</text>
+      <rect x="30" y="80" width="90" height="70" rx="8" fill="none" stroke="#2ee6b8" stroke-width="2"/>
+      <text x="75" y="120" text-anchor="middle" fill="#2ee6b8" font-size="11">Tx</text>
+      <path d="M75 150 v30 M60 180 h30 M67 188 h16 M71 196 h8" stroke="#2ee6b8" fill="none"/>
+      <path d="M120 95 H250" stroke="#6ea8fe" stroke-width="2"/>
+      <path d="M120 115 H250" stroke="#f0b429" stroke-width="2"/>
+      <path d="M120 135 H250" stroke="#2ee6b8" stroke-width="2"/>
+      <text x="255" y="99" font-size="11" fill="#6ea8fe">L</text>
+      <text x="255" y="119" font-size="11" fill="#f0b429">N</text>
+      <text x="255" y="139" font-size="11" fill="#2ee6b8">PE</text>
+      <rect x="300" y="90" width="160" height="90" rx="10" fill="none" stroke="#8ea0bb"/>
+      <text x="380" y="128" text-anchor="middle" fill="currentColor" font-size="12">EVSE + vehicle</text>
+      <text x="380" y="148" text-anchor="middle" fill="#8ea0bb" font-size="10">dedicated PE, no PEN</text>`,
+    "tn-c": `<text x="16" y="28" fill="currentColor" font-size="14" font-weight="700">TN-C — do not use for EV</text>
+      <rect x="30" y="80" width="90" height="70" rx="8" fill="none" stroke="#ff6b7a" stroke-width="2"/>
+      <text x="75" y="120" text-anchor="middle" fill="#ff6b7a" font-size="11">Tx</text>
+      <path d="M120 95 H250" stroke="#6ea8fe" stroke-width="2"/>
+      <path d="M120 125 H250" stroke="#ff6b7a" stroke-width="3"/>
+      <text x="255" y="99" font-size="11" fill="#6ea8fe">L</text>
+      <text x="255" y="129" font-size="11" fill="#ff6b7a">PEN</text>
+      <text x="40" y="240" fill="#ff6b7a" font-size="12">RCD cannot protect a PEN. Split at origin, then TN-S to the wallbox.</text>`,
+    "tn-c-s": `<text x="16" y="28" fill="currentColor" font-size="14" font-weight="700">TN-C-S / PME / MEN</text>
+      <text x="16" y="48" fill="#8ea0bb" font-size="11">PEN on the street · PE+N after the MET</text>
+      <rect x="24" y="80" width="80" height="60" rx="8" fill="none" stroke="#6ea8fe"/>
+      <text x="64" y="115" text-anchor="middle" fill="#6ea8fe" font-size="11">Utility</text>
+      <path d="M104 100 H190" stroke="#f0b429" stroke-width="3"/>
+      <text x="130" y="90" font-size="10" fill="#f0b429">PEN</text>
+      <circle cx="200" cy="100" r="10" fill="none" stroke="#2ee6b8"/>
+      <text x="200" y="132" text-anchor="middle" font-size="10" fill="#2ee6b8">MET</text>
+      <path d="M210 92 H300" stroke="#6ea8fe" stroke-width="2"/>
+      <path d="M210 100 H300" stroke="#f0b429" stroke-width="2"/>
+      <path d="M210 108 H300" stroke="#2ee6b8" stroke-width="2"/>
+      <text x="305" y="96" font-size="10" fill="#6ea8fe">L</text>
+      <text x="305" y="104" font-size="10" fill="#f0b429">N</text>
+      <text x="305" y="112" font-size="10" fill="#2ee6b8">PE</text>
+      <rect x="340" y="78" width="150" height="70" rx="10" fill="none" stroke="#8ea0bb"/>
+      <text x="415" y="118" text-anchor="middle" font-size="12" fill="currentColor">Outdoor EVSE</text>
+      <text x="24" y="200" font-size="12" fill="#f0b429">Open PEN → car body can rise toward line vs true earth. O-PEN / TT island required (UK/IE).</text>
+      <path d="M200 110 v40 M188 150 h24 M193 158 h14 M197 166 h6" stroke="#2ee6b8" fill="none"/>`,
+    "tt": `<text x="16" y="28" fill="currentColor" font-size="14" font-weight="700">TT</text>
+      <text x="16" y="48" fill="#8ea0bb" font-size="11">Utility earth and installation earth are independent</text>
+      <rect x="30" y="80" width="90" height="60" rx="8" fill="none" stroke="#6ea8fe"/>
+      <text x="75" y="115" text-anchor="middle" fill="#6ea8fe" font-size="11">Utility</text>
+      <path d="M75 140 v24 M62 164 h26 M68 172 h14 M72 180 h6" stroke="#6ea8fe" fill="none"/>
+      <path d="M120 95 H250" stroke="#6ea8fe" stroke-width="2"/>
+      <path d="M120 115 H250" stroke="#f0b429" stroke-width="2"/>
+      <text x="255" y="99" font-size="11" fill="#6ea8fe">L</text>
+      <text x="255" y="119" font-size="11" fill="#f0b429">N (no PE from utility)</text>
+      <rect x="300" y="80" width="160" height="80" rx="10" fill="none" stroke="#2ee6b8"/>
+      <text x="380" y="115" text-anchor="middle" fill="currentColor" font-size="12">House PE = local rod</text>
+      <path d="M380 160 v24 M367 184 h26 M373 192 h14 M377 200 h6" stroke="#2ee6b8" fill="none"/>
+      <text x="30" y="240" font-size="12" fill="#8ea0bb">Earth-fault current is small → RCD is the disconnection means (already required for EV).</text>`,
+    "it": `<text x="16" y="28" fill="currentColor" font-size="14" font-weight="700">IT · 230 V L–L (Norway)</text>
+      <rect x="30" y="80" width="90" height="70" rx="8" fill="none" stroke="#9b8cff" stroke-width="2"/>
+      <text x="75" y="120" text-anchor="middle" fill="#9b8cff" font-size="11">Tx</text>
+      <path d="M75 150 v16" stroke="#9b8cff" stroke-dasharray="3 3" fill="none"/>
+      <text x="80" y="180" font-size="10" fill="#9b8cff">Z or open</text>
+      <path d="M120 95 H240" stroke="#6ea8fe" stroke-width="2"/>
+      <path d="M120 115 H240" stroke="#6ea8fe" stroke-width="2"/>
+      <path d="M120 135 H240" stroke="#6ea8fe" stroke-width="2"/>
+      <text x="250" y="99" font-size="11" fill="#6ea8fe">L1</text>
+      <text x="250" y="119" font-size="11" fill="#6ea8fe">L2  230 V</text>
+      <text x="250" y="139" font-size="11" fill="#6ea8fe">L3     (often no N)</text>
+      <rect x="330" y="85" width="160" height="80" rx="10" fill="none" stroke="#8ea0bb"/>
+      <text x="410" y="122" text-anchor="middle" font-size="12" fill="currentColor">1φ between two lines</text>
+      <text x="410" y="142" text-anchor="middle" font-size="10" fill="#8ea0bb">3φ only if OBC allows</text>`
+  };
+  svg.innerHTML = g[id] || g["tn-c-s"];
+  svg.setAttribute("stroke-linecap","round");
+  svg.setAttribute("stroke-linejoin","round");
+  const info = EARTH.find(e => e.id === id);
+  $("earthInfo").innerHTML = `
+    <h4 style="margin:0 0 6px">${info.name} — ${info.title}</h4>
+    <p>${info.body}</p>
+    <p>${info.ev.map(x => `<span class="tag">${x}</span>`).join(" ")}</p>
+    <p class="tiny">${info.where}</p>`;
+}
+
+function familyVoltage(fam, phases) {
+  const m = FAMILY_META[fam];
+  if (phases === 1) {
+    if (fam === "it-230") return { u: 230, kind: "L–L" };
+    if (fam === "na-split" || fam === "japan-100-200") return { u: m.uLL, kind: "split L–L" };
+    if (fam === "na-wye-208") return { u: 208, kind: "L–L" };
+    if (fam === "br-mixed") return { u: 220, kind: "L–N (if 220 V site)" };
+    return { u: m.uLN, kind: "L–N" };
+  }
+  if (fam === "it-230") return { u: 230, kind: "L–L (IT)" };
+  if (fam === "na-split" || fam === "japan-100-200") return { u: null, kind: "no residential 3φ AC EV" };
+  return { u: m.uLL, kind: "L–L" };
+}
+
+function calcPower() {
+  const fam = $("calcFamily").value;
+  const ph = Number($("calcPhases").value);
+  const I = Number($("calcI").value);
+  $("calcIlab").textContent = I;
+  const v = familyVoltage(fam, ph);
+  const br = Math.ceil(I * 1.25);
+  if (!v.u) {
+    $("calcP").textContent = "n/a";
+    $("calcDetail").textContent = v.kind;
+    $("calcFormula").textContent = "North American / Japanese homes do not offer three-phase AC to the vehicle. Use 1φ 240 V / 200 V.";
+    $("calcHint").textContent = "";
+    return;
+  }
+  const P = ph === 1 ? v.u * I / 1000 : Math.sqrt(3) * v.u * I / 1000;
+  $("calcP").textContent = P.toFixed(2) + " kW";
+  $("calcDetail").textContent = `${ph}φ · ${v.u} V ${v.kind} · ${I} A  →  breaker ≥ ${br} A (125 % continuous)`;
+  $("calcFormula").textContent = ph === 1
+    ? `P = U × I = ${v.u} × ${I} = ${(v.u*I).toFixed(0)} W`
+    : `P = √3 × U_LL × I = 1.732 × ${v.u} × ${I} = ${(Math.sqrt(3)*v.u*I).toFixed(0)} W`;
+  let hint = "Nominal. Actual power tracks live voltage (EN 50160 ±10 % on IEC networks).";
+  if (P > 22.3) hint = "Above the 22 kW scope of this overview (and above typical home service).";
+  if (fam === "it-230" && ph === 3) hint = "Only if the vehicle onboard charger is specified for 230 V three-phase IT. Many cars are not.";
+  if (ph === 3 && P >= 21) hint = "22 kW class: needs 3φ service, spare fuse capacity, DSO permission in some countries, and a 22 kW OBC.";
+  $("calcHint").textContent = hint;
+}
+
+let sortKey = "name", sortDir = 1, activeFamily = "";
+
+function renderTable() {
+  const q = ($("q").value || "").toLowerCase();
+  const r = $("fRegion").value;
+  const f = $("fFamily").value;
+  const v = $("fVeh").value;
+  let rows = DATA.countries.filter(c => {
+    if (r && c.region !== r) return false;
+    if (f && c.family !== f) return false;
+    if (activeFamily && c.family !== activeFamily) return false;
+    if (v && !(c.vehicle || []).some(x => x === v)) return false;
+    const blob = [c.name, c.iso, c.earth, c.plug, (c.vehicle||[]).join(" "), c.notes, c.region].join(" ").toLowerCase();
+    return !q || blob.includes(q);
+  });
+  rows.sort((a,b) => {
+    const av = a[sortKey], bv = b[sortKey];
+    if (typeof av === "number" || typeof bv === "number") return ((av??-1) - (bv??-1)) * sortDir;
+    return String(av??"").localeCompare(String(bv??"")) * sortDir;
+  });
+  const tb = $("ctable").tBodies[0];
+  tb.innerHTML = rows.map(c => `<tr data-iso="${c.iso}">
+    <td><strong>${c.name}</strong></td>
+    <td>${c.region}</td>
+    <td>${c.uLN ?? "—"}</td>
+    <td>${c.uLL ?? "—"}</td>
+    <td>${c.hz}</td>
+    <td>${c.earth}</td>
+    <td>${(c.vehicle||[]).join(", ")}</td>
+    <td>${(c.homeKW||[]).join(" / ")}</td>
+    <td>${c.plug}</td>
+  </tr>`).join("");
+  $("cCount").textContent = rows.length + " countries shown · click a row for the site profile";
+}
+
+function init() {
+  fillSiteSelect();
+  $("siteSelect").addEventListener("change", e => renderSite(e.target.value));
+  $("siteSearch").addEventListener("input", e => {
+    const q = e.target.value.toLowerCase();
+    const hit = DATA.countries.find(c => c.name.toLowerCase().startsWith(q) || c.iso.toLowerCase() === q);
+    if (hit) renderSite(hit.iso);
+  });
+
+  $("familyCards").innerHTML = Object.entries(FAMILY_META).map(([id, m]) =>
+    `<div class="card" data-fam="${id}"><h4>${m.name}</h4><p>${m.blurb}</p></div>`
+  ).join("");
+  $("familyCards").addEventListener("click", e => {
+    const card = e.target.closest(".card");
+    if (!card) return;
+    $("familyCards").querySelectorAll(".card").forEach(x => x.classList.remove("active"));
+    const already = activeFamily === card.dataset.fam;
+    activeFamily = already ? "" : card.dataset.fam;
+    if (!already) card.classList.add("active");
+    $("fFamily").value = activeFamily;
+    renderTable();
+    document.getElementById("countries").scrollIntoView({ behavior: "smooth" });
+  });
+
+  $("earthBtns").innerHTML = EARTH.map(e => `<div class="card" data-e="${e.id}"><h4>${e.name}</h4><p>${e.title}</p></div>`).join("");
+  $("earthBtns").addEventListener("click", e => {
+    const card = e.target.closest(".card");
+    if (!card) return;
+    $("earthBtns").querySelectorAll(".card").forEach(x => x.classList.remove("active"));
+    card.classList.add("active");
+    drawEarth(card.dataset.e);
+  });
+  $("earthBtns").querySelector('[data-e="tn-c-s"]').classList.add("active");
+  drawEarth("tn-c-s");
+
+  $("modeCards").innerHTML = MODES.map(m =>
+    `<div class="card" style="cursor:default"><span class="tag ${m.cls}">${m.tag}</span><h4>${m.t}</h4><p>${m.d}</p></div>`
+  ).join("");
+
+  $("vehCards").innerHTML = VEH.map(v =>
+    `<div class="card" style="cursor:default"><span class="tag">${v.std}</span><h4>${v.name}</h4>
+     <p>${v.pins}<br>${v.home}<br>${v.where}</p><p class="tiny" style="margin-top:8px">${v.note}</p></div>`
+  ).join("");
+  $("gridCards").innerHTML = GRID.map(g =>
+    `<div class="card" style="cursor:default"><h4>${g.name}</h4><p>${g.r}</p><p class="tiny">${g.w}</p></div>`
+  ).join("");
+
+  Object.entries(FAMILY_META).forEach(([id, m]) => {
+    const o = document.createElement("option");
+    o.value = id; o.textContent = m.name;
+    $("calcFamily").appendChild(o);
+  });
+  $("calcFamily").value = "iec-230-400";
+  ["calcFamily","calcPhases","calcI"].forEach(id => $(id).addEventListener("input", calcPower));
+  calcPower();
+
+  unique(DATA.countries.map(c => c.region)).forEach(r => {
+    const o = document.createElement("option"); o.value = r; o.textContent = r; $("fRegion").appendChild(o);
+  });
+  Object.entries(FAMILY_META).forEach(([id, m]) => {
+    const o = document.createElement("option"); o.value = id; o.textContent = m.name; $("fFamily").appendChild(o);
+  });
+  unique(DATA.countries.flatMap(c => c.vehicle)).forEach(v => {
+    const o = document.createElement("option"); o.value = v; o.textContent = v; $("fVeh").appendChild(o);
+  });
+  ["q","fRegion","fFamily","fVeh"].forEach(id => $(id).addEventListener("input", renderTable));
+  $("ctable").tHead.addEventListener("click", e => {
+    const th = e.target.closest("th"); if (!th) return;
+    const k = th.dataset.k;
+    if (sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = 1; }
+    renderTable();
+  });
+  $("ctable").tBodies[0].addEventListener("click", e => {
+    const tr = e.target.closest("tr"); if (!tr) return;
+    renderSite(tr.dataset.iso);
+    document.getElementById("site").scrollIntoView({ behavior: "smooth" });
+  });
+  renderTable();
+
+  $("themeBtn").onclick = () => {
+    const cur = document.documentElement.getAttribute("data-theme") === "light" ? "" : "light";
+    document.documentElement.setAttribute("data-theme", cur);
+  };
+  $("topBtn").onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const links = [...document.querySelectorAll("nav.side a.navlink")];
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
+      }
+    });
+  }, { rootMargin: "-20% 0px -70% 0px" });
+  document.querySelectorAll("section[id], header[id]").forEach(s => io.observe(s));
+}
+
+init();
+</script>
+</body>
+</html>

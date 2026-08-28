@@ -1,0 +1,112 @@
+{
+  "legend": {
+    "firstLetter": {
+      "T": "Source (transformer / generator) has a point directly connected to earth (terre).",
+      "I": "Source is isolated from earth, or earthed only through a high impedance."
+    },
+    "secondLetter": {
+      "N": "Exposed-conductive-parts of the installation are connected to the earthed point of the source (typically the transformer star point / neutral).",
+      "T": "Exposed-conductive-parts are connected to a local earth electrode independent of the source earth."
+    },
+    "thirdLetter": {
+      "S": "Protective earth (PE) and neutral (N) are separate conductors throughout.",
+      "C": "PE and N are combined in a single PEN conductor.",
+      "C-S": "PEN on the supply, split into separate PE and N at the origin of the installation (PME / MEN / MGN)."
+    }
+  },
+  "systems": [
+    {
+      "id": "tn-s",
+      "name": "TN-S",
+      "fullName": "Terre Neutral — Separate",
+      "sourceEarth": "direct",
+      "installationEarth": "via supply PE",
+      "conductors": "PE and N separate from the source",
+      "faultCurrent": "high (metallic return)",
+      "primaryProtection": "overcurrent device; RCD additional for sockets / EV",
+      "openPenRisk": "none (PE is independent of N)",
+      "evNotes": [
+        "Preferred TN arrangement for EV charging: dedicated PE, no PEN on the EV circuit.",
+        "IEC 60364-7-722: a circuit supplying a connecting point shall not include a PEN conductor."
+      ],
+      "typicalRegions": ["Older UK urban (CNE/SNE split at substation)", "Many industrial / commercial buildings", "Parts of continental Europe"]
+    },
+    {
+      "id": "tn-c",
+      "name": "TN-C",
+      "fullName": "Terre Neutral — Combined",
+      "sourceEarth": "direct",
+      "installationEarth": "via PEN",
+      "conductors": "PEN throughout (no separate PE)",
+      "faultCurrent": "high",
+      "primaryProtection": "overcurrent; RCD cannot be used on PEN",
+      "openPenRisk": "high — a broken PEN raises all bonded metalwork to dangerous potential",
+      "evNotes": [
+        "Not acceptable for the EV charging circuit. PEN must be split (TN-C-S) and PE run separately to the EVSE.",
+        "RCDs required by IEC 60364-7-722 cannot operate correctly on a PEN conductor."
+      ],
+      "typicalRegions": ["Legacy LV distribution in some countries", "Not used as a final-circuit arrangement for EVSE"]
+    },
+    {
+      "id": "tn-c-s",
+      "name": "TN-C-S",
+      "fullName": "Terre Neutral — Combined then Separate (PME / MEN / MGN)",
+      "sourceEarth": "direct (often multiple earths on PEN)",
+      "installationEarth": "PEN split to PE + N at origin",
+      "conductors": "PEN on the utility side; PE and N separate after the main earthing terminal",
+      "faultCurrent": "high",
+      "primaryProtection": "overcurrent; RCD additional",
+      "openPenRisk": "significant for outdoor EV charging — vehicle body can rise to line potential if PEN is lost",
+      "evNotes": [
+        "Most common worldwide residential earthing system (UK PME, AU/NZ MEN, North American multi-grounded neutral).",
+        "UK BS 7671 722.411.4.1: PME shall not earth an outdoor charging point unless additional measures are used (earth electrode, open-PEN disconnection ≤ 70 V, electrical separation, or proven load balance).",
+        "EV circuit itself must still be TN-S from the origin (no PEN to the wallbox)."
+      ],
+      "typicalRegions": ["United Kingdom (PME)", "Australia & New Zealand (MEN)", "Germany, Netherlands, Nordics (TN)", "North America (multi-grounded neutral)", "South Africa", "Gulf states"]
+    },
+    {
+      "id": "tt",
+      "name": "TT",
+      "fullName": "Terre Terre — independent earths",
+      "sourceEarth": "direct (utility earth at transformer)",
+      "installationEarth": "local electrode only — no metallic PE from utility",
+      "conductors": "N from utility; PE from local rod / foundation earth",
+      "faultCurrent": "low (soil path, typically tens of amperes)",
+      "primaryProtection": "RCD is mandatory (overcurrent will not clear an earth fault)",
+      "openPenRisk": "none from a utility PEN (there is no utility PE). Local electrode resistance must stay low enough for the RCD.",
+      "evNotes": [
+        "Very common for dwellings in France, Italy, Spain, Japan, much of Africa and South Asia.",
+        "A 30 mA RCD on each connecting point is already required by IEC 60364-7-722; TT relies on it for all earth-fault disconnection.",
+        "Sometimes used as a local island for an EV circuit on an otherwise TN-C-S (PME) supply — only if the electrode is sufficiently independent of buried bonded metalwork."
+      ],
+      "typicalRegions": ["France (residential)", "Italy", "Spain", "Japan", "China (mixed)", "India (typical)", "Belgium (often)"]
+    },
+    {
+      "id": "it",
+      "name": "IT",
+      "fullName": "Isolé Terre — isolated or impedance-earthed source",
+      "sourceEarth": "isolated or high-impedance",
+      "installationEarth": "local electrodes; first fault does not complete a metallic loop",
+      "conductors": "typically 3 phases, often no distributed neutral; PE local",
+      "faultCurrent": "very small on first fault (mA); second fault behaves like TN/TT",
+      "primaryProtection": "insulation monitoring device (IMD) + alarm on first fault; overcurrent / RCD on second fault",
+      "openPenRisk": "not applicable (no PEN). First-fault voltage displacement is the issue.",
+      "evNotes": [
+        "Dominant in ~70 % of Norwegian LV networks (230 V line-to-line, no neutral).",
+        "Many onboard chargers expect 230 V L–N / 400 V L–L (TN wye). On 230 V IT they only use two lines (single-phase 230 V).",
+        "Some vehicles (e.g. certain Tesla models) can use 230 V three-phase IT and reach ~11 kW; others must not be charged three-phase on IT.",
+        "IEC 60364-7-722 and vehicle OEM instructions must both be checked before 3-phase IT charging."
+      ],
+      "typicalRegions": ["Norway (majority of LV)", "Albania (parts)", "Hospitals / process industry (not public LV)", "Belgium 3×230 V delta pockets (related topology)"]
+    }
+  ],
+  "evseRules": {
+    "iec60364_7_722": [
+      "Dedicated circuit per connecting point.",
+      "No PEN conductor on the EV circuit.",
+      "Each AC connecting point: RCD IΔn ≤ 30 mA disconnecting all live conductors.",
+      "DC residual protection: RCD Type B, or Type A/F plus RDC-DD (IEC 62955) detecting 6 mA smooth DC.",
+      "Protective measures 'non-conducting location' and 'earth-free local bonding' shall not be used."
+    ]
+  }
+}

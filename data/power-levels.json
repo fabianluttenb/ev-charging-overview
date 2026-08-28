@@ -1,0 +1,260 @@
+{
+  "formulas": {
+    "singlePhase": "P = U × I  (U is L–N, or 240 V split-phase L1–L2)",
+    "threePhaseWye": "P = √3 × U_LL × I = 3 × U_LN × I",
+    "threePhaseDeltaOrIT": "P = √3 × U_LL × I  (no usable 230 V L–N; U_LL is typically 230 V in Norwegian IT)",
+    "continuousLoadSizing": "Protective device ≥ 125 % of EVSE rated current (NEC 625 / similar continuous-load rules). Example: 32 A charger → 40 A breaker."
+  },
+  "levels": [
+    {
+      "id": "us-l1-15",
+      "label": "US AC Level 1 (15 A circuit)",
+      "phases": 1,
+      "voltage": 120,
+      "voltageKind": "L-N",
+      "currentA": 12,
+      "powerKW": 1.44,
+      "breakerA": 15,
+      "family": "na-split",
+      "typical": "NEMA 5-15 household; portable EVSE derated to 80 % of 15 A",
+      "homeUse": true
+    },
+    {
+      "id": "us-l1-20",
+      "label": "US AC Level 1 (20 A circuit)",
+      "phases": 1,
+      "voltage": 120,
+      "voltageKind": "L-N",
+      "currentA": 16,
+      "powerKW": 1.92,
+      "breakerA": 20,
+      "family": "na-split",
+      "typical": "NEMA 5-20",
+      "homeUse": true
+    },
+    {
+      "id": "eu-schuko-10",
+      "label": "Household socket 10 A (230 V)",
+      "phases": 1,
+      "voltage": 230,
+      "voltageKind": "L-N",
+      "currentA": 10,
+      "powerKW": 2.3,
+      "breakerA": 10,
+      "family": "iec-230-400",
+      "typical": "Mode 2 'granny' cable on Schuko / Type E / Type J 10 A. Not for daily primary charging.",
+      "homeUse": true
+    },
+    {
+      "id": "uk-13a",
+      "label": "UK BS 1363 13 A",
+      "phases": 1,
+      "voltage": 230,
+      "voltageKind": "L-N",
+      "currentA": 10,
+      "powerKW": 2.3,
+      "breakerA": 13,
+      "family": "iec-230-400",
+      "typical": "Mode 2 typically limited to 8–10 A continuous because of plug temperature.",
+      "homeUse": true
+    },
+    {
+      "id": "jp-100-15",
+      "label": "Japan 100 V household",
+      "phases": 1,
+      "voltage": 100,
+      "voltageKind": "L-N",
+      "currentA": 15,
+      "powerKW": 1.5,
+      "breakerA": 15,
+      "family": "japan-100-200",
+      "typical": "Emergency / trickle only",
+      "homeUse": true
+    },
+    {
+      "id": "1p-16-230",
+      "label": "Single-phase 16 A @ 230 V",
+      "phases": 1,
+      "voltage": 230,
+      "voltageKind": "L-N",
+      "currentA": 16,
+      "powerKW": 3.68,
+      "breakerA": 20,
+      "family": "iec-230-400",
+      "typical": "Entry-level Mode 3 wallbox; CEE blue 16 A; many onboard chargers' 1φ floor",
+      "homeUse": true
+    },
+    {
+      "id": "jp-200-16",
+      "label": "Japan 200 V 16 A",
+      "phases": 1,
+      "voltage": 200,
+      "voltageKind": "split",
+      "currentA": 16,
+      "powerKW": 3.2,
+      "breakerA": 20,
+      "family": "japan-100-200",
+      "typical": "Common Japanese home 200 V circuit, Type 1",
+      "homeUse": true
+    },
+    {
+      "id": "jp-200-30",
+      "label": "Japan 200 V 30 A",
+      "phases": 1,
+      "voltage": 200,
+      "voltageKind": "split",
+      "currentA": 30,
+      "powerKW": 6.0,
+      "breakerA": 40,
+      "family": "japan-100-200",
+      "typical": "Higher-power Japanese residential EVSE",
+      "homeUse": true
+    },
+    {
+      "id": "1p-32-220",
+      "label": "Single-phase 32 A @ 220 V (China)",
+      "phases": 1,
+      "voltage": 220,
+      "voltageKind": "L-N",
+      "currentA": 32,
+      "powerKW": 7.04,
+      "breakerA": 40,
+      "family": "iec-220-380",
+      "typical": "Typical Chinese home AC pile (GB/T 20234.2)",
+      "homeUse": true
+    },
+    {
+      "id": "1p-32-230",
+      "label": "Single-phase 32 A @ 230 V — 7.4 kW",
+      "phases": 1,
+      "voltage": 230,
+      "voltageKind": "L-N",
+      "currentA": 32,
+      "powerKW": 7.36,
+      "breakerA": 40,
+      "family": "iec-230-400",
+      "typical": "Default European / UK / AU home wallbox on single-phase service",
+      "homeUse": true
+    },
+    {
+      "id": "1p-32-240",
+      "label": "Single-phase 32 A @ 240 V",
+      "phases": 1,
+      "voltage": 240,
+      "voltageKind": "split",
+      "currentA": 32,
+      "powerKW": 7.68,
+      "breakerA": 40,
+      "family": "na-split",
+      "typical": "US/CA Level 2 on 40 A circuit; also AU 240 V areas",
+      "homeUse": true
+    },
+    {
+      "id": "us-40-240",
+      "label": "US 40 A @ 240 V (NEMA 14-50, 80 %)",
+      "phases": 1,
+      "voltage": 240,
+      "voltageKind": "split",
+      "currentA": 40,
+      "powerKW": 9.6,
+      "breakerA": 50,
+      "family": "na-split",
+      "typical": "Most common US plug-in home EVSE rating",
+      "homeUse": true
+    },
+    {
+      "id": "us-48-240",
+      "label": "US 48 A @ 240 V (hardwired)",
+      "phases": 1,
+      "voltage": 240,
+      "voltageKind": "split",
+      "currentA": 48,
+      "powerKW": 11.52,
+      "breakerA": 60,
+      "family": "na-split",
+      "typical": "Common hardwired US home EVSE; needs 60 A circuit",
+      "homeUse": true
+    },
+    {
+      "id": "3p-it-16",
+      "label": "Norwegian IT 3-phase 16 A @ 230 V L–L",
+      "phases": 3,
+      "voltage": 230,
+      "voltageKind": "L-L",
+      "currentA": 16,
+      "powerKW": 6.37,
+      "breakerA": 20,
+      "family": "it-230",
+      "typical": "Only if the vehicle onboard charger accepts 230 V three-phase delta/IT",
+      "homeUse": true
+    },
+    {
+      "id": "3p-16-400",
+      "label": "Three-phase 16 A @ 400 V — 11 kW",
+      "phases": 3,
+      "voltage": 400,
+      "voltageKind": "L-L",
+      "currentA": 16,
+      "powerKW": 11.09,
+      "breakerA": 20,
+      "family": "iec-230-400",
+      "typical": "Standard continental-European home wallbox where 3-phase is available",
+      "homeUse": true
+    },
+    {
+      "id": "3p-it-28",
+      "label": "Norwegian IT 3-phase ~28 A @ 230 V L–L",
+      "phases": 3,
+      "voltage": 230,
+      "voltageKind": "L-L",
+      "currentA": 28,
+      "powerKW": 11.15,
+      "breakerA": 32,
+      "family": "it-230",
+      "typical": "Tesla Model 3/Y class on 230 V IT three-phase (~11 kW)",
+      "homeUse": true
+    },
+    {
+      "id": "3p-32-400",
+      "label": "Three-phase 32 A @ 400 V — 22 kW",
+      "phases": 3,
+      "voltage": 400,
+      "voltageKind": "L-L",
+      "currentA": 32,
+      "powerKW": 22.17,
+      "breakerA": 40,
+      "family": "iec-230-400",
+      "typical": "Upper bound of this overview. Home use only where the service is 3-phase and the main fuse / diversity allows it. Many cars' onboard chargers stop at 11 kW.",
+      "homeUse": true
+    }
+  ],
+  "interaction": {
+    "note": "Delivered power is the minimum of: EVSE rating, cable rating, vehicle onboard charger (OBC), and available grid current after load management.",
+    "matrix": [
+      {
+        "supply": "1φ 16 A (~3.7 kW)",
+        "obc1p32": 3.7,
+        "obc3p16": 3.7,
+        "obc3p32": 3.7
+      },
+      {
+        "supply": "1φ 32 A (~7.4 kW)",
+        "obc1p32": 7.4,
+        "obc3p16": 7.4,
+        "obc3p32": 7.4
+      },
+      {
+        "supply": "3φ 16 A (~11 kW)",
+        "obc1p32": 3.7,
+        "obc3p16": 11.0,
+        "obc3p32": 11.0
+      },
+      {
+        "supply": "3φ 32 A (~22 kW)",
+        "obc1p32": 7.4,
+        "obc3p16": 11.0,
+        "obc3p32": 22.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "layers": [
+    "vehicleInlet — what is on the car",
+    "stationOutlet — what is on the wallbox (tethered coupler or socket)",
+    "gridPlug — how the EVSE is connected to the building (hardwired, or a high-current socket)"
+  ],
+  "vehicle": [
+    {
+      "id": "type2",
+      "name": "Type 2 (Mennekes)",
+      "standard": "IEC 62196-2 Type 2",
+      "pins": 7,
+      "phases": [1, 3],
+      "maxTypicalHomeKW": 22,
+      "maxStandard": "43 kW AC (400 V 3φ 63 A) — rare at home",
+      "signalling": "CP (control pilot PWM) + PP (proximity / cable current coding)",
+      "gender": "Female vehicle connector, male vehicle inlet; female station socket, male cable plug",
+      "regions": ["Europe", "UK", "Australia", "New Zealand", "Middle East", "Africa", "India (4-wheel)", "Latin America (new)"],
+      "homeStation": "Tethered Type 2 cable, or untethered Type 2 socket-outlet (preferred in EU public and many homes)",
+      "notes": "EU mandated AC interface. Three-phase is why 11 kW / 22 kW home charging exists in Europe."
+    },
+    {
+      "id": "type1",
+      "name": "Type 1 / SAE J1772",
+      "standard": "IEC 62196-2 Type 1 = SAE J1772 AC coupler",
+      "pins": 5,
+      "phases": [1],
+      "maxTypicalHomeKW": 11.5,
+      "maxStandard": "19.2 kW AC (240 V 80 A)",
+      "signalling": "CP + PP (proximity switch, no PP resistor current coding like Type 2)",
+      "gender": "Female vehicle connector, male vehicle inlet. No station socket-outlet in common NA practice — almost always tethered.",
+      "regions": ["United States (legacy / many non-Tesla)", "Canada", "Japan", "South Korea (many models)", "Taiwan"],
+      "homeStation": "Tethered J1772 cable on a Level 2 wallbox, or portable EVSE with J1772 coupler",
+      "notes": "Single-phase only. North American homes use 240 V split-phase, so 11.5 kW (48 A) is the practical home ceiling for most cars."
+    },
+    {
+      "id": "nacs",
+      "name": "NACS / SAE J3400",
+      "standard": "SAE J3400 (Tesla-originated North American Charging Standard)",
+      "pins": 5,
+      "phases": [1],
+      "maxTypicalHomeKW": 11.5,
+      "maxStandard": "AC up to 80 A at 277 V (~22 kW) in the standard; residential 48 A @ 240 V typical",
+      "signalling": "CP + PP; same AC pin functions as J1772, so passive NACS↔J1772 AC adapters exist",
+      "gender": "Compact five-pin; the two large contacts carry AC or DC",
+      "regions": ["United States", "Canada", "Mexico (transition)"],
+      "homeStation": "Tethered NACS wallbox, or J1772 wallbox + OEM adapter. Tesla Mobile Connector / Wall Connector.",
+      "notes": "Home AC charging looks electrically like J1772 Level 2. The same inlet is used for DC Supercharging — DC is out of AC scope."
+    },
+    {
+      "id": "gbt-ac",
+      "name": "GB/T AC",
+      "standard": "GB/T 20234.2",
+      "pins": 7,
+      "phases": [1, 3],
+      "maxTypicalHomeKW": 7,
+      "maxStandard": "Mode 3 up to 27.7 kW (440 V, 63 A) in the standard; home almost always 7 kW 1φ",
+      "signalling": "CP + CC (charging confirmation) — not the same PP coding as IEC Type 2",
+      "gender": "Physically similar to Type 2 but reversed: male vehicle connector, female vehicle inlet. Do not mate with IEC Type 2.",
+      "regions": ["China", "some Chinese-market vehicles abroad"],
+      "homeStation": "GB/T AC socket or tethered GB/T AC coupler on a 7 kW wall pile",
+      "notes": "Separate AC and DC inlets on the car (not CCS combo)."
+    },
+    {
+      "id": "type3",
+      "name": "Type 3 (Scame) — deprecated",
+      "standard": "IEC 62196-2 Type 3",
+      "pins": 5,
+      "phases": [1, 3],
+      "maxTypicalHomeKW": 22,
+      "maxStandard": "Historically used in Italy/France EVSE sockets",
+      "signalling": "CP + PP with shutters",
+      "gender": "With shutters (EV Plug Alliance)",
+      "regions": ["Legacy Italy / France public posts"],
+      "homeStation": "Do not specify for new home installations",
+      "notes": "Superseded by Type 2 in the EU."
+    }
+  ],
+  "gridAndHomeSupply": [
+    {
+      "id": "hardwired",
+      "name": "Hardwired wallbox",
+      "kind": "grid",
+      "rating": "Matches EVSE (typically 16–48 A)",
+      "regions": "Universal preferred method for Mode 3",
+      "notes": "Dedicated circuit, RCD, no plug. Required or preferred by many codes above a given current."
+    },
+    {
+      "id": "nema-5-15",
+      "name": "NEMA 5-15 (Type B)",
+      "kind": "grid",
+      "rating": "15 A 125 V (12 A continuous → 1.4 kW)",
+      "regions": "USA, Canada, Mexico, Japan (similar Type A/B)",
+      "notes": "AC Level 1 only."
+    },
+    {
+      "id": "nema-14-50",
+      "name": "NEMA 14-50",
+      "kind": "grid",
+      "rating": "50 A 125/250 V (40 A continuous → 9.6 kW @ 240 V)",
+      "regions": "USA, Canada — range / RV outlet, dominant plug-in home EVSE",
+      "notes": "Four-wire: L1, L2, N, PE. Neutral is unused by most EVSE but present on the plug."
+    },
+    {
+      "id": "nema-6-50",
+      "name": "NEMA 6-50",
+      "kind": "grid",
+      "rating": "50 A 250 V (no neutral)",
+      "regions": "USA welder outlets",
+      "notes": "Common alternative to 14-50 where no N is needed."
+    },
+    {
+      "id": "nema-14-30",
+      "name": "NEMA 14-30",
+      "kind": "grid",
+      "rating": "30 A dryer (24 A continuous → 5.8 kW)",
+      "regions": "USA",
+      "notes": "Sometimes used with portable EVSE."
+    },
+    {
+      "id": "schuko",
+      "name": "Schuko CEE 7/3–7/4 (Type F) / CEE 7/7",
+      "kind": "grid",
+      "rating": "16 A 250 V; continuous EV use typically 8–10 A",
+      "regions": "Most of continental Europe",
+      "notes": "Mode 2 only. Not a home charging station. Thermal limit of the plug is the constraint."
+    },
+    {
+      "id": "type-e",
+      "name": "Type E (CEE 7/5)",
+      "kind": "grid",
+      "rating": "16 A 250 V",
+      "regions": "France, Belgium, Poland, Czechia (mixed)",
+      "notes": "Mode 2. Earth pin in the socket."
+    },
+    {
+      "id": "bs1363",
+      "name": "BS 1363 (Type G)",
+      "kind": "grid",
+      "rating": "13 A fused plug; EV Mode 2 typically ≤ 10 A",
+      "regions": "UK, IE, MY, SG, AE, SA, HK",
+      "notes": "Mode 2 travel cable. Daily charging should be a Mode 3 wallbox."
+    },
+    {
+      "id": "as3112",
+      "name": "AS/NZS 3112 (Type I)",
+      "kind": "grid",
+      "rating": "10 A common, 15 A / 20 A also used",
+      "regions": "Australia, New Zealand",
+      "notes": "Mode 2; dedicated 15 A sockets sometimes used. Wallbox preferred."
+    },
+    {
+      "id": "gb1002",
+      "name": "GB 1002 / GB 2099 (Type I / A)",
+      "kind": "grid",
+      "rating": "10 A / 16 A 250 V",
+      "regions": "China",
+      "notes": "Mode 2. Home charging stations are GB/T AC wall piles."
+    },
+    {
+      "id": "cee-blue-16",
+      "name": "IEC 60309 blue 16 A 1φ (6h)",
+      "kind": "grid",
+      "rating": "16 A 230 V → 3.7 kW",
+      "regions": "Europe campsites, garages, workshops",
+      "notes": "Robust Mode 2 or plug-in wallbox supply. Preferred over Schuko for regular use."
+    },
+    {
+      "id": "cee-blue-32",
+      "name": "IEC 60309 blue 32 A 1φ",
+      "kind": "grid",
+      "rating": "32 A 230 V → 7.4 kW",
+      "regions": "Europe",
+      "notes": "Single-phase industrial socket used as a home EV supply."
+    },
+    {
+      "id": "cee-red-16",
+      "name": "IEC 60309 red 16 A 3φ 400 V (6h, 3P+N+E)",
+      "kind": "grid",
+      "rating": "16 A 400 V 3φ → 11 kW",
+      "regions": "Europe, AU, Middle East",
+      "notes": "Common three-phase industrial socket; also used to feed 11 kW wallboxes or Mode 2 3φ cables."
+    },
+    {
+      "id": "cee-red-32",
+      "name": "IEC 60309 red 32 A 3φ 400 V",
+      "kind": "grid",
+      "rating": "32 A 400 V 3φ → 22 kW",
+      "regions": "Europe",
+      "notes": "Upper bound of home AC in this overview."
+    },
+    {
+      "id": "cee-blue-3p-230",
+      "name": "IEC 60309 blue 3φ 230 V (Norway IT)",
+      "kind": "grid",
+      "rating": "16 / 32 A at 230 V L–L",
+      "regions": "Norway (IT network)",
+      "notes": "Clock position / colour differs from red 400 V. Not interchangeable with TN 400 V CEE."
+    }
+  ]
+}
