@@ -28,3 +28,7 @@ EV Wall / EV Base tied to Smappee Infinity energy monitoring. ADAC 2025 EV Wall 
 | Connectivity | Ethernet, Wi-Fi, Infinity bus |
 | Product page | https://www.smappee.com/ev-wall/ |
 | Datasheet | https://www.smappee.com/ev-wall/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

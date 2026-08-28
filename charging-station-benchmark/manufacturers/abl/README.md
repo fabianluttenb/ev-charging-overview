@@ -28,3 +28,7 @@ eMH1 is the classic simple German wallbox (ADAC 1.0 in 2018). eM4 Single/Twin is
 | Connectivity | eM4: Ethernet/LTE/OCPP |
 | Product page | https://www.abl.de/en/products/emobility/ |
 | Datasheet | https://www.abl.de/en/products/emobility/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

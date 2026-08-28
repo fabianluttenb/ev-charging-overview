@@ -28,3 +28,7 @@ Compact ‘charging robot’ on a backplate. Fully dynamic 1φ/3φ including Nor
 | Connectivity | Wi-Fi, Bluetooth, LTE Cat-M1 eSIM, Easee Link RF |
 | Product page | https://easee.com/products |
 | Datasheet | https://download.easee.com/m/48f3bf628744a32b/original/EN_Home_Charge_IG.pdf |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

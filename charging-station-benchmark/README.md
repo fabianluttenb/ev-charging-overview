@@ -10,14 +10,22 @@ Open the repo **[index.html](../index.html)** and jump to **Charging stations** 
 charging-station-benchmark/
 ├── README.md
 ├── catalog.json                 Machine-readable comparison (also embedded in index.html)
+├── images-index.json            Local photo / PDF filenames per OEM
 └── manufacturers/
     ├── abb/
+    │   ├── README.md
+    │   ├── products.json
+    │   └── images/              FCC internals, Wikimedia, ZDI PCB, teardown thumbs
     ├── keba/
     ├── wallbox/
     └── …
 ```
 
-Each manufacturer folder contains `README.md` (human notes) and `products.json` (the same records as in `catalog.json`).
+Each manufacturer folder contains `README.md` (human notes), `products.json` (the same records as in `catalog.json`), and `images/` with whatever public teardown or product photos could be stored locally. Sources are listed in `images/IMAGES.md`.
+
+**Teardown coverage is uneven.** NA SKUs (Tesla, Emporia, Autel, ChargePoint, Wallbox RFID) have FCC internal-photo PDFs and ZDI Pwn2Own PCB photos. EU wallboxes rarely publish internals — those folders hold Wikimedia product shots, ADAC benchmark *links*, and teardown-video thumbnails (Munro Live, BruCON, Zerobrain, eFIXX). Do not treat brochure renders as teardowns.
+
+Refresh downloads: `python tools/download_station_images.py` from the repo root.
 
 ## Scope
 

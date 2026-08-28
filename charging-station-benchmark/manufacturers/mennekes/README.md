@@ -28,3 +28,7 @@ Origin of the Type 2 connector. AMTRON 4You (home) and 4Business (OCPP, Eichrech
 | Connectivity | Ethernet, Wi-Fi, LTE on Business |
 | Product page | https://www.mennekes.de/emobility/ |
 | Datasheet | https://www.mennekes.de/emobility/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

@@ -28,3 +28,7 @@ Industrial-grade Terra AC. ADAC 2025 joint 2nd (note 1.7) for Terra AC W11-G5-RD
 | Connectivity | Ethernet, Wi-Fi, Bluetooth, 4G optional, Modbus RTU/TCP |
 | Product page | https://new.abb.com/ev-charging/terra-ac-wallbox |
 | Datasheet | https://library.e.abb.com/public/8adddd9cf393467bb98a960832aa7662/9AKK108472A2560_en_Brochure_C_Terra%20AC%20Wallbox.pdf |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

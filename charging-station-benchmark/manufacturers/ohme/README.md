@@ -28,3 +28,7 @@ Home Pro: 7 kW 1φ, tariff-aware smart charging (Octopus etc.), eMSP integration
 | Connectivity | Wi-Fi, SIM on some |
 | Product page | https://www.ohme-ev.com/ |
 | Datasheet | https://www.ohme-ev.com/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

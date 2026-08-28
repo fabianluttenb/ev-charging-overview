@@ -49,3 +49,7 @@ Gen 3 Wall Connector. NA: 12–48 A @ 208/240 V (11.5 kW), CCID20, NACS or Unive
 | Connectivity | Wi-Fi |
 | Product page | https://www.tesla.com/zh_tw/support/charging/wall-connector |
 | Datasheet | https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/3PT2/MID/en-us/GUID-E64AD189-C626-4201-9E0B-8B430EF4F6DB.html |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

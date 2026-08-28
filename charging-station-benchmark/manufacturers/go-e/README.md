@@ -49,3 +49,7 @@ Gemini / Gemini flex: compact, open HTTP/MQTT/Modbus API, portable flex SKU. Cha
 | Connectivity | Wi-Fi, Bluetooth, LTE, Ethernet, Modbus TCP |
 | Product page | https://go-e.com/en/products/go-e-charger-pro |
 | Datasheet | https://cdn.shopify.com/s/files/1/0729/7584/3675/files/go-e-charger-pro-datenblatt.pdf |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

@@ -28,3 +28,7 @@ VersiCharge IEC 7.4/22 kW Type 2; UL versions 48–80 A J1772. Modbus, app, some
 | Connectivity | Wi-Fi, Ethernet, Modbus |
 | Product page | https://www.siemens.com/global/en/products/energy/medium-voltage/systems/emobility/versicharge.html |
 | Datasheet | https://www.siemens.com/global/en/products/energy/medium-voltage/systems/emobility/versicharge.html |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

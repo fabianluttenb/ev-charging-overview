@@ -28,3 +28,7 @@ Dawn Professional DE: ADAC 2025 joint 2nd (1.7). Halo is the design-led home uni
 | Connectivity | Wi-Fi, Ethernet, 4G |
 | Product page | https://www.chargeamps.com/ |
 | Datasheet | https://www.chargeamps.com/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

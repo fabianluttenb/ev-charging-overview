@@ -49,3 +49,7 @@ Pulsar family is the compact residential staple. Plus = Wi-Fi/BT, IP54. Max = Et
 | Connectivity | Wi-Fi, Bluetooth, Ethernet |
 | Product page | https://wallbox.com/en_uk/pulsar-max |
 | Datasheet | https://d1lnencgr7glws.cloudfront.net/wp-content/uploads/2024/07/31122738/EN_Pulsar_Family_Datasheets.pdf |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

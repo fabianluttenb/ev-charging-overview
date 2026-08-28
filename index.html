@@ -170,6 +170,9 @@ input[type="range"] { width: 100%; accent-color: var(--teal); }
 .big-num { font-size: 42px; font-weight: 750; letter-spacing: -.04em; color: var(--teal); line-height: 1; }
 .muted { color: var(--muted); }
 .tiny { font-size: 12px; color: var(--muted); }
+.st-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
+.st-gallery a { text-decoration: none; color: var(--muted); }
+.st-gallery img { width: 100%; height: 110px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); background: var(--surface2); }
 svg.schematic { width: 100%; height: auto; display: block; }
 .pin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
 .wizard-result h4 { margin: 0 0 8px; }
@@ -468,7 +471,7 @@ footer { margin: 40px 0 10px; color: var(--muted); font-size: 12.5px; }
 
   <section class="panel" id="stations">
     <h3>AC charging station benchmark</h3>
-    <p class="sub">Home and workplace Mode 3 wallboxes (≤ 22 kW IEC / ~12 kW NA). Filter the table, click a row for datasheet links. Full notes live in <code>charging-station-benchmark/manufacturers/</code>.</p>
+    <p class="sub">Home and workplace Mode 3 wallboxes (≤ 22 kW IEC / ~12 kW NA). Filter the table, click a row for datasheet links, teardown photos, and FCC internals. Files live in <code>charging-station-benchmark/manufacturers/&lt;id&gt;/images/</code>.</p>
     <div class="filters">
       <input id="stQ" type="search" placeholder="Filter brand, product, connector…">
       <select id="stRegion"><option value="">All regions</option></select>
@@ -827,6 +830,8 @@ function renderTable() {
   $("cCount").textContent = rows.length + " countries shown · click a row for the site profile";
 }
 
+const STATION_IMAGES = {"abb": ["brochure-terra-ac.pdf", "commons-iaa-2023-munich.jpg", "commons-terra-chargers.jpg"], "abl": ["commons-jcrg-hof.jpg", "commons-ladesaeulen.jpg"], "alfen": ["commons-eve-double-pro-line.jpg", "commons-icu-hague.jpg", "commons-twin-winschoten.jpg", "datasheet-eve-single.pdf"], "autel": ["fcc-2A5NP-AUTELNEACL-internal.pdf", "zdi-barrot-bt.jpg", "zdi-cpu-reverse.jpg", "zdi-cpu.jpg", "zdi-metrology.jpg", "zdi-modem.jpg"], "charge-amps": ["product-og-1.jpg", "product-og-2.jpg", "product-og-3.jpg", "product-page-dawn.jpg"], "chargepoint": ["commons-home-charger.jpg", "commons-home-install.jpg", "datasheet-home-flex.pdf", "fcc-w38-28010087-internal.pdf", "zdi-cpu-side0.jpg", "zdi-cpu-side1.jpg", "zdi-metrology-side0.jpg", "zdi-metrology-side1.jpg"], "delta": ["catalog-ev-charging-tw.pdf", "commons-awt-70215aem.jpg", "commons-ev-ac-charger-2014.jpg", "commons-evpt3215mwe.jpg"], "easee": ["efixx-rcd-test-thumb.jpg", "efixx-review-open-cover-thumb.jpg", "install-guide.pdf"], "emporia": ["fcc-2AS6P-EMEVSE1-internal.pdf", "zdi-main-board.jpg", "zdi-msp430-detail.jpg"], "evalue": ["datasheet.pdf", "product-og-1.jpg"], "evbox": ["commons-alize-tournefeuille.jpg", "commons-elvi-or-businessline-tauber.jpg", "commons-wetherby.jpg"], "fronius": ["commons-wattpilot-bregenz.jpg"], "go-e": ["datasheet-pro.pdf", "zerobrain-gemini-flex-teardown-thumb.jpg"], "heidelberg": ["commons-amperfied.jpg", "commons-horchheim-ladesaeule.jpg"], "huawei": ["fusioncharge-3.jpg", "fusioncharge-hero.jpg"], "hypervolt": ["commons-home-3-pro.jpg"], "keba": ["commons-honda-evse-keba.jpg", "commons-p30-graz-wall.jpg", "commons-p30-keba-lrm.jpg", "commons-p30-wiesbaden.jpg", "datasheet-p30.pdf"], "mennekes": ["commons-amtron-alfa-romeo.jpg", "commons-icu-hague.jpg", "commons-type2-front.jpg", "commons-type2-side.jpg", "commons-type2-socket-detail.jpg"], "myenergi": ["datasheet-zappi-multiphase.pdf", "product-og-1.jpg", "product-og-2.jpg", "product-og-3.jpg"], "ohme": ["sdg-home-pro-teardown-thumb.jpg"], "schneider-electric": ["commons-evlink-1.jpg", "commons-evlink-2.jpg", "commons-evlink-pont-veyle.jpg", "commons-evlink-pro-ac-metal.jpg"], "siemens": ["commons-versicharge-ac.jpg"], "smappee": ["product-og-1.png", "product-og-2.jpg", "product-og-3.jpg"], "tesla": ["commons-nacs-vs-type2.jpg", "commons-wall-connector-newton-1.jpg", "commons-wall-connector-newton-2.jpg", "fcc-2AEIM-1470138-external.pdf", "fcc-2AEIM-1470138-internal.pdf", "munro-teardown-thumb.jpg", "zdi-debug-headers.jpg", "zdi-flash-vias.jpg", "zdi-pcb-bottom.jpg", "zdi-pcb-top.jpg"], "wallbox": ["datasheet-pulsar-family.pdf", "fcc-2BB8L-RFID02-internal.pdf", "munro-pulsar-plus-teardown-thumb.jpg"], "zaptec": ["brucon-teardown-thumb.jpg", "commons-zaptec-go-asphalt.jpg", "commons-zaptec-go-unbox.jpg", "commons-zaptec-go.jpg"]};
+
 function stationRows() {
   const out = [];
   (STATIONS.manufacturers || []).forEach(m => {
@@ -891,8 +896,20 @@ function showStation(key) {
     </div>
     <p style="margin:12px 0 0"><a href="${p.product_page}" target="_blank" rel="noopener">Product page</a>
     · <a href="${p.datasheet}" target="_blank" rel="noopener">Datasheet</a>
+    · <a href="charging-station-benchmark/manufacturers/${m.id}/images/IMAGES.md">images / teardowns</a>
     · folder <code>charging-station-benchmark/manufacturers/${m.id}/</code></p>
+    ${stationGallery(m.id)}
   </div>`;
+}
+
+function stationGallery(mid) {
+  const files = (STATION_IMAGES[mid] || []).filter(f => /\.(jpe?g|png|webp)$/i.test(f));
+  if (!files.length) return "";
+  const cells = files.slice(0, 8).map(f => {
+    const src = "charging-station-benchmark/manufacturers/" + mid + "/images/" + f;
+    return `<a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="${f}" loading="lazy"><div class="tiny">${f}</div></a>`;
+  }).join("");
+  return `<div class="st-gallery">${cells}</div>`;
 }
 
 function initStations() {

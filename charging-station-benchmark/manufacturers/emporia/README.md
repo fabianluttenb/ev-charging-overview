@@ -28,3 +28,7 @@ Wirecutter 2026 top pick (Classic). 40 A plug-in or 48 A hardwired @ 240 V (11.5
 | Connectivity | Wi-Fi |
 | Product page | https://shop.emporiaenergy.com/products/emporia-ev-charger |
 | Datasheet | https://www.emporiaenergy.com/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

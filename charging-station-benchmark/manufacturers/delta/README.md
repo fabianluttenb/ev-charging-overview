@@ -28,3 +28,7 @@ Taiwan/EU AC Mini Plus 32 A / 7 kW Type 1 or Type 2 (CNS 15511). EIAW-T up to 48
 | Connectivity | WLAN, OCPP |
 | Product page | https://www.deltaww.com/en-US/products/EV-Charging/ALL/ |
 | Datasheet | https://filecenter.deltaww.com/Products/download/21/2101/Catalogue/EV%20Charging%20Solution_Catalog_TW_202103.pdf |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

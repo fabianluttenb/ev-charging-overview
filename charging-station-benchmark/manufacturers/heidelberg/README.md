@@ -28,3 +28,7 @@ Former Heidelberg Wallbox (Energy Control / Connect). Analog 0–10 V / PWM load
 | Connectivity | 0–10 V analog (Energy Control), WLAN/OCPP (Connect) |
 | Product page | https://www.amperfied.com/ |
 | Datasheet | https://www.amperfied.com/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

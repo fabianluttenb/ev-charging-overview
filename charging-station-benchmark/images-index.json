@@ -1,0 +1,144 @@
+{
+  "abb": [
+    "brochure-terra-ac.pdf",
+    "commons-iaa-2023-munich.jpg",
+    "commons-terra-chargers.jpg"
+  ],
+  "abl": [
+    "commons-jcrg-hof.jpg",
+    "commons-ladesaeulen.jpg"
+  ],
+  "alfen": [
+    "commons-eve-double-pro-line.jpg",
+    "commons-icu-hague.jpg",
+    "commons-twin-winschoten.jpg",
+    "datasheet-eve-single.pdf"
+  ],
+  "autel": [
+    "fcc-2A5NP-AUTELNEACL-internal.pdf",
+    "zdi-barrot-bt.jpg",
+    "zdi-cpu-reverse.jpg",
+    "zdi-cpu.jpg",
+    "zdi-metrology.jpg",
+    "zdi-modem.jpg"
+  ],
+  "charge-amps": [
+    "product-og-1.jpg",
+    "product-og-2.jpg",
+    "product-og-3.jpg",
+    "product-page-dawn.jpg"
+  ],
+  "chargepoint": [
+    "commons-home-charger.jpg",
+    "commons-home-install.jpg",
+    "datasheet-home-flex.pdf",
+    "fcc-w38-28010087-internal.pdf",
+    "zdi-cpu-side0.jpg",
+    "zdi-cpu-side1.jpg",
+    "zdi-metrology-side0.jpg",
+    "zdi-metrology-side1.jpg"
+  ],
+  "delta": [
+    "catalog-ev-charging-tw.pdf",
+    "commons-awt-70215aem.jpg",
+    "commons-ev-ac-charger-2014.jpg",
+    "commons-evpt3215mwe.jpg"
+  ],
+  "easee": [
+    "efixx-rcd-test-thumb.jpg",
+    "efixx-review-open-cover-thumb.jpg",
+    "install-guide.pdf"
+  ],
+  "emporia": [
+    "fcc-2AS6P-EMEVSE1-internal.pdf",
+    "zdi-main-board.jpg",
+    "zdi-msp430-detail.jpg"
+  ],
+  "evalue": [
+    "datasheet.pdf",
+    "product-og-1.jpg"
+  ],
+  "evbox": [
+    "commons-alize-tournefeuille.jpg",
+    "commons-elvi-or-businessline-tauber.jpg",
+    "commons-wetherby.jpg"
+  ],
+  "fronius": [
+    "commons-wattpilot-bregenz.jpg"
+  ],
+  "go-e": [
+    "datasheet-pro.pdf",
+    "zerobrain-gemini-flex-teardown-thumb.jpg"
+  ],
+  "heidelberg": [
+    "commons-amperfied.jpg",
+    "commons-horchheim-ladesaeule.jpg"
+  ],
+  "huawei": [
+    "fusioncharge-3.jpg",
+    "fusioncharge-hero.jpg"
+  ],
+  "hypervolt": [
+    "commons-home-3-pro.jpg"
+  ],
+  "keba": [
+    "commons-honda-evse-keba.jpg",
+    "commons-p30-graz-wall.jpg",
+    "commons-p30-keba-lrm.jpg",
+    "commons-p30-wiesbaden.jpg",
+    "datasheet-p30.pdf"
+  ],
+  "mennekes": [
+    "commons-amtron-alfa-romeo.jpg",
+    "commons-icu-hague.jpg",
+    "commons-type2-front.jpg",
+    "commons-type2-side.jpg",
+    "commons-type2-socket-detail.jpg"
+  ],
+  "myenergi": [
+    "datasheet-zappi-multiphase.pdf",
+    "product-og-1.jpg",
+    "product-og-2.jpg",
+    "product-og-3.jpg"
+  ],
+  "ohme": [
+    "sdg-home-pro-teardown-thumb.jpg"
+  ],
+  "schneider-electric": [
+    "commons-evlink-1.jpg",
+    "commons-evlink-2.jpg",
+    "commons-evlink-pont-veyle.jpg",
+    "commons-evlink-pro-ac-metal.jpg"
+  ],
+  "siemens": [
+    "commons-versicharge-ac.jpg"
+  ],
+  "smappee": [
+    "product-og-1.png",
+    "product-og-2.jpg",
+    "product-og-3.jpg"
+  ],
+  "tesla": [
+    "commons-nacs-vs-type2.jpg",
+    "commons-wall-connector-newton-1.jpg",
+    "commons-wall-connector-newton-2.jpg",
+    "fcc-2AEIM-1470138-external.pdf",
+    "fcc-2AEIM-1470138-internal.pdf",
+    "munro-teardown-thumb.jpg",
+    "zdi-debug-headers.jpg",
+    "zdi-flash-vias.jpg",
+    "zdi-pcb-bottom.jpg",
+    "zdi-pcb-top.jpg"
+  ],
+  "wallbox": [
+    "datasheet-pulsar-family.pdf",
+    "fcc-2BB8L-RFID02-internal.pdf",
+    "munro-pulsar-plus-teardown-thumb.jpg"
+  ],
+  "zaptec": [
+    "brucon-teardown-thumb.jpg",
+    "commons-zaptec-go-asphalt.jpg",
+    "commons-zaptec-go-unbox.jpg",
+    "commons-zaptec-go.jpg"
+  ]
+}

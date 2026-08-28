@@ -28,3 +28,7 @@ What Car? 2025 owner-survey winner (low fault rate). Home 2.0 / 3: 7 kW 1φ Type
 | Connectivity | Wi-Fi |
 | Product page | https://hypervolt.co.uk/ |
 | Datasheet | https://hypervolt.co.uk/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

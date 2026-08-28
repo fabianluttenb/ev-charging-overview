@@ -28,3 +28,7 @@ Wattpilot Home: PV surplus charging with Fronius inverters (Solar.web). 11 kW (1
 | Connectivity | Wi-Fi, Solar.web |
 | Product page | https://www.fronius.com/en/solar-energy/installers-partners/products-solutions/residential-energy/e-mobility/wattpilot |
 | Datasheet | https://www.fronius.com/en/solar-energy/installers-partners/products-solutions/residential-energy/e-mobility/wattpilot |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

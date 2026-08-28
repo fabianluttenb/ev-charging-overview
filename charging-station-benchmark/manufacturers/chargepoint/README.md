@@ -28,3 +28,7 @@ Home Flex: 16–50 A @ 208/240 V (max 12 kW), J1772 or NACS, NEMA 6-50/14-50 or 
 | Connectivity | Wi-Fi 2.4/5 GHz |
 | Product page | https://www.chargepoint.com/drivers/home |
 | Datasheet | https://docs.chargepoint.com/ref-docs-sec/content/pdfs/1-home/flex/flex-ds.pdf |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

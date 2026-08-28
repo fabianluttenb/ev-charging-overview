@@ -49,3 +49,7 @@ Strong in apartment / workplace load and phase balancing. Go / Go 2 for homes; P
 | Connectivity | Wi-Fi, 4G LTE-M, PLC HomePlug Green PHY |
 | Product page | https://www.zaptec.com/en/products/zaptec-pro |
 | Datasheet | https://www.zaptec.com/en/products/zaptec-pro |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

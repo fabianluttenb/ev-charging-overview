@@ -28,3 +28,7 @@ Benelux install-base leader. Eve Single S-line (11 kW 3φ) vs Pro-line (22 kW). 
 | Connectivity | Ethernet, Wi-Fi, 2G/4G LTE Cat-M1, P1 RJ-11, Modbus TCP/RTU |
 | Product page | https://alfen.com/en/ev-chargers/eve-single |
 | Datasheet | https://eu-assets.contentstack.com/v3/assets/blt08d332658a89f766/blta4f9411e56ab5073/68122bc8e6f15cbfb092b5e1/904460xxx-ace-ds-1200-1.2-en_datasheet_eve_single_int.pdf |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

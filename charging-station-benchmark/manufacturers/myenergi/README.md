@@ -28,3 +28,7 @@ Zappi: 7 kW 1φ (UK) or 22 kW 3φ export SKUs. Eco / Eco+ solar diversion with h
 | Connectivity | Wi-Fi, Ethernet, hub |
 | Product page | https://www.myenergi.com/product/zappi/ |
 | Datasheet | https://www.myenergi.com/product/zappi/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

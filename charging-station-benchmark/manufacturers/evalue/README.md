@@ -28,3 +28,7 @@ Taiwan-market wallboxes with adjustable 16/24/32/40/50 A @ 220 V 60 Hz. 40 A SKU
 | Connectivity | Wi-Fi, Ethernet, OCPP |
 | Product page | https://www.evalue.com.tw/ |
 | Datasheet | https://www.evalue.com.tw/upload/files/1760427543048.pdf |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

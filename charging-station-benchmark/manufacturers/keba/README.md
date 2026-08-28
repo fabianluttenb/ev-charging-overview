@@ -49,3 +49,7 @@ ADAC 2025 company-car wallbox winner: KeContact P40 (note 1.6). P30 remains the 
 | Connectivity | USB, Ethernet, UDP, Modbus TCP, WLAN/4G on x-series |
 | Product page | https://www.keba.com/en/emobility/products/product-overview/chargers |
 | Datasheet | https://www.keba.com/download/x/be0ccce36d/kecontact_p30_technicaldata_dben.pdf |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

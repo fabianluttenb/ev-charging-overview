@@ -28,3 +28,7 @@ MaxiCharger AC Elite Home (up to 50 A NA / 22 kW IEC), AC Pro, AC Ultra. App, RF
 | Connectivity | Wi-Fi, Bluetooth, Ethernet/4G on Pro |
 | Product page | https://autelenergy.us/ |
 | Datasheet | https://autelenergy.us/pages/downloads |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

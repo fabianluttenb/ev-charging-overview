@@ -28,3 +28,7 @@ Elvi (home) and Livo / BusinessLine for workplace. Type 2, load balancing, OCPP.
 | Connectivity | Wi-Fi, Bluetooth, 4G on some |
 | Product page | https://evbox.com/en/ev-chargers |
 | Datasheet | https://evbox.com/en/ev-chargers |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

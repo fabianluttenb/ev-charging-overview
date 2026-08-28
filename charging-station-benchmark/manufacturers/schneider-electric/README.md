@@ -49,3 +49,7 @@ EVlink Home / Schneider Charge for dwellings (Wiser). EVlink Pro AC / Smart Wall
 | Connectivity | Ethernet, 4G, Modbus |
 | Product page | https://www.se.com/ww/en/product-range/65781-evlink-pro-ac/ |
 | Datasheet | https://www.se.com/ww/en/product-range/65781-evlink-pro-ac/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for FCC internals, Wikimedia product photos, ZDI PCB shots, and teardown-video stills.

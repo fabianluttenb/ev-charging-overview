@@ -28,3 +28,7 @@ FusionCharge AC: native PV surplus with Huawei inverters/dongle. 7–22 kW Type 
 | Connectivity | FusionSolar / inverter dongle |
 | Product page | https://solar.huawei.com/ |
 | Datasheet | https://solar.huawei.com/ |
+
+## Images and teardowns
+
+See [`images/IMAGES.md`](images/IMAGES.md) for product photos from Huawei Digital Power (FusionCharge). No public PCB teardown was found.
