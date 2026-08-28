@@ -4,11 +4,14 @@
 
 IEC 60038 replaced the old 220/380 V and 240/415 V targets with **230/400 V**. Equipment is specified around 230 V ±10 %. Many countries still **name** 220 V or 240 V on paper; the product is in the same family.
 
-| Quantity | IEC 230/400 V wye | NA split-phase | NA 208Y/120 | Japan | Norway IT |
-| --- | --- | --- | --- | --- | --- |
-| L–N | 230 V | 120 V | 120 V | 100 V | — (often no N) |
-| L–L | 400 V | 240 V | 208 V | 200 V | 230 V |
-| Frequency | 50 Hz (SA: 60 Hz) | 60 Hz | 60 Hz | 50 / 60 Hz | 50 Hz |
+| Quantity | IEC 230/400 V wye | NA split-phase | NA 208Y/120 | NA 480Y/277 | Japan | Norway IT |
+| --- | --- | --- | --- | --- | --- | --- |
+| L–N | 230 V | 120 V | 120 V | **277 V** | 100 V | — (often no N) |
+| L–L | 400 V | 240 V | 208 V | 480 V | 200 V | 230 V |
+| Frequency | 50 Hz (SA: 60 Hz) | 60 Hz | 60 Hz | 60 Hz | 50 / 60 Hz | 50 Hz |
+| Typical site | Most of world | US/CA houses | Apartments, small commercial | Large commercial / industrial | Japan | Norway LV |
+
+**277 V is not a US region and not a house voltage.** It is the phase-to-neutral of a **480Y/277 V** wye, used nationwide for commercial lighting and some workplace EVSE. Canada’s analogue is **600Y/347 V**. See [North America corner cases](09-north-america-corner-cases.md).
 
 ## Supply-voltage tolerance
 
@@ -33,7 +36,7 @@ Frequency (interconnected 50 Hz systems): 50 Hz ±1 % (49.5–50.5 Hz) during 99
 | Service voltage | ±5 % (114–126 V, 228–252 V) | +6 % / −8.3 % |
 | Utilization voltage | +5 % / −10 % (108–126 V) | +5.8 % / −13.3 % |
 
-Service voltage is at the meter; utilization voltage is at the equipment after building drop.
+Service voltage is at the meter; utilization voltage is at the equipment after building drop. The same ±5 % Range A band applies to 208 V, 240 V, 277 V, and 480 V service voltages.
 
 ### China — GB/T 12325
 

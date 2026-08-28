@@ -21,10 +21,10 @@
 
 ## North America
 
-- 120/240 V 60 Hz split-phase; 208Y/120 in multi-dwelling.
-- J1772 and NACS, tethered wall units, 32–48 A @ 240 V (7.7–11.5 kW).
-- NEMA 14-50 is the household “high power” socket.
-- ANSI C84.1 ±5 % service. NEC 625.
+- **Homes:** 120/240 V 60 Hz split-phase. J1772 and NACS, tethered, 32–48 A @ 240 V (7.7–11.5 kW). NEMA 14-50. NEC 625 / CEC, ANSI C84.1 ±5 % service.
+- **Apartments:** often **208Y/120 V** (Level 2 at 208 V, −13 % vs 240 V).
+- **Large commercial:** **480Y/277 V**. 277 V = L–N of 480 V wye (lighting / some AC EVSE). Not residential. 80 A @ 277 V ≈ 22 kW AC. DCFC on 480 V 3φ. Canada twin: **600Y/347 V**.
+- Corner cases (high-leg delta, 480 V delta without 277 V, Mexico 127/220 V): [`09-north-america-corner-cases.md`](09-north-america-corner-cases.md).
 
 ## China
 

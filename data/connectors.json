@@ -40,7 +40,7 @@
       "pins": 5,
       "phases": [1],
       "maxTypicalHomeKW": 11.5,
-      "maxStandard": "AC up to 80 A at 277 V (~22 kW) in the standard; residential 48 A @ 240 V typical",
+      "maxStandard": "AC up to 80 A at 277 V (~22 kW) from 480Y commercial; residential 48 A @ 240 V typical. 277 V is not a house voltage.",
       "signalling": "CP + PP; same AC pin functions as J1772, so passive NACS↔J1772 AC adapters exist",
       "gender": "Compact five-pin; the two large contacts carry AC or DC",
       "regions": ["United States", "Canada", "Mexico (transition)"],

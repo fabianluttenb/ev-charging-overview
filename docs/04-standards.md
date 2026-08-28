@@ -21,7 +21,7 @@ IEC 60038 / EN 50160 / ANSI C84.1         what the public LV network actually is
 | **3** | Dedicated EVSE, pilot PWM, tethered cable or Type 2 socket | **Yes — this is a home charging station** |
 | **4** | DC, off-board charger | Out of AC scope |
 
-SAE language: **AC Level 1** = 120 V, **AC Level 2** = 208–240 V. Level 2 corresponds to Mode 3 (or a 240 V Mode 2 portable).
+SAE language: **AC Level 1** = 120 V, **AC Level 2** = 208–240 V (and, on commercial 480Y, 277 V if the EVSE is listed for it). Level 2 corresponds to Mode 3 (or a 240 V Mode 2 portable). NEC 625 also lists 480Y/277, 480, 600Y/347, and 600 as AC system voltages.
 
 ## Control pilot (every Mode 2/3 session)
 

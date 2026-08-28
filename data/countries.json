@@ -26,7 +26,14 @@
       "uLN": 120,
       "uLL": 208,
       "freq": 60,
-      "toleranceRef": "ANSI C84.1"
+      "toleranceRef": "ANSI C84.1 Range A service ±5 %"
+    },
+    "na-wye-480": {
+      "name": "North American 480Y/277 V, 60 Hz (large commercial / industrial)",
+      "uLN": 277,
+      "uLL": 480,
+      "freq": 60,
+      "toleranceRef": "ANSI C84.1. 277 V is L–N of 480 V wye — lighting and some workplace EVSE, not residential. Canada analogue 600Y/347 V."
     },
     "japan-100-200": {
       "name": "Japan 100/200 V, 50 or 60 Hz",
@@ -84,9 +91,9 @@
     {"iso":"TR","name":"Türkiye","region":"Europe","family":"iec-230-400","uLN":230,"uLL":400,"hz":50,"earth":"TN-C-S / TT","plug":"C/F","vehicle":["Type 2"],"homeKW":[7.4,11],"notes":""},
     {"iso":"GB","name":"United Kingdom","region":"Europe","family":"iec-230-400","uLN":230,"uLL":400,"hz":50,"earth":"TN-C-S (PME); TT rural; TN-S some urban","plug":"G","vehicle":["Type 2"],"homeKW":[7.4],"notes":"BS 7671 Section 722. Mostly 1φ 60–100 A. Open-PEN (O-PEN) protection or TT island required for outdoor PME charging. Voltage historically 230 V +10/−6 % (216–253 V)."},
     {"iso":"UA","name":"Ukraine","region":"Europe","family":"iec-230-400","uLN":230,"uLL":400,"hz":50,"earth":"TN-C-S","plug":"C/F","vehicle":["Type 2"],"homeKW":[7.4,11],"notes":""},
-    {"iso":"US","name":"United States","region":"North America","family":"na-split","uLN":120,"uLL":240,"hz":60,"earth":"Multi-grounded neutral (TN-C-S analogue)","plug":"A/B + NEMA 14-50","vehicle":["J1772","NACS"],"homeKW":[1.4,7.7,9.6,11.5],"notes":"NEC 625, UL 2594. Level 1 120 V; Level 2 240 V 32–48 A typical. 208 V in apartments. Continuous load 125 % sizing."},
-    {"iso":"CA","name":"Canada","region":"North America","family":"na-split","uLN":120,"uLL":240,"hz":60,"earth":"Multi-grounded neutral","plug":"A/B + NEMA 14-50","vehicle":["J1772","NACS"],"homeKW":[7.7,9.6,11.5],"notes":"CEC. Same electrical picture as the US. Cold-weather derating of outdoor cables."},
-    {"iso":"MX","name":"Mexico","region":"North America","family":"na-split","uLN":127,"uLL":220,"hz":60,"earth":"TN-C-S analogue","plug":"A/B","vehicle":["J1772","NACS"],"homeKW":[3.8,7.4],"notes":"127/220 V split-phase common. NOM standards."},
+    {"iso":"US","name":"United States","region":"North America","family":"na-split","uLN":120,"uLL":240,"hz":60,"earth":"Multi-grounded neutral (TN-C-S analogue)","plug":"A/B + NEMA 14-50","vehicle":["J1772","NACS"],"homeKW":[1.4,7.7,9.6,11.5],"notes":"Homes: 120/240 V split-phase. Level 1 120 V; Level 2 240 V 32–48 A; 125 % breaker (NEC 625). Apartments often 208Y/120 (Level 2 at 208 V, −13 %). Large commercial: 480Y/277 V — 277 V is L–N of 480 V wye (lighting / some workplace AC EVSE), not residential; 80 A @ 277 V ≈ 22 kW AC; DCFC on 480 V 3φ. Also 480 V delta (no 277 V) and high-leg 240 V delta (never L–N EVSE on the high leg). J1772/NACS 1φ only."},
+    {"iso":"CA","name":"Canada","region":"North America","family":"na-split","uLN":120,"uLL":240,"hz":60,"earth":"Multi-grounded neutral","plug":"A/B + NEMA 14-50","vehicle":["J1772","NACS"],"homeKW":[7.7,9.6,11.5],"notes":"CEC. Homes 120/240 V like the US. Apartments 208Y/120. Large commercial often 600Y/347 V (347 V lighting = 277 V analogue) as well as 480Y/277. Cold-weather derating of outdoor cables. Same J1772/NACS 1φ picture."},
+    {"iso":"MX","name":"Mexico","region":"North America","family":"na-split","uLN":127,"uLL":220,"hz":60,"earth":"TN-C-S analogue","plug":"A/B","vehicle":["J1772","NACS"],"homeKW":[3.8,7.4],"notes":"127/220 V split-phase common — not US 120/240 V. Commercial may be 220 V 3φ or 480Y/277. NOM, not NEC. J1772/NACS."},
     {"iso":"BR","name":"Brazil","region":"Latin America","family":"br-mixed","uLN":127,"uLL":220,"hz":60,"earth":"TN-C-S / TT mixed","plug":"N","vehicle":["Type 2"],"homeKW":[3.7,7.4],"notes":"NBR IEC 61851. Voltage 127 or 220 V by state. Type 2 AC emerging; some J1772 imports."},
     {"iso":"AR","name":"Argentina","region":"Latin America","family":"iec-220-380","uLN":220,"uLL":380,"hz":50,"earth":"TN-C-S / TT","plug":"C/I","vehicle":["Type 2"],"homeKW":[3.7,7.4],"notes":"Type I polarity reversed vs AU/CN."},
     {"iso":"CL","name":"Chile","region":"Latin America","family":"iec-220-380","uLN":220,"uLL":380,"hz":50,"earth":"TN-C-S / TT","plug":"C/L","vehicle":["Type 2"],"homeKW":[7.4],"notes":""},

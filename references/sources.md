@@ -7,6 +7,7 @@ This overview synthesises publicly available standards summaries and regional pr
 - IEC 60038 — Standard voltages
 - EN 50160:2022 — Voltage characteristics of electricity supplied by public networks
 - ANSI C84.1 — Electric Power Systems and Equipment — Voltage Ratings (60 Hz)
+- NEC Article 625 — EV charging AC system voltages include 120, 120/240, 208Y/120, 240, 480Y/277, 480, 600Y/347, 600
 - GB/T 12325 — Power quality, supply voltage deviation (China)
 - Wikipedia, *Mains electricity by country* (country table of nominal voltage, frequency, plug letter)
 - New Zealand voltage limit change to 230 V ±10 % (2025), Electricity Engineers’ Association

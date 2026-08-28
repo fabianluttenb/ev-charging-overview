@@ -32,6 +32,26 @@ These four cover almost all Mode 3 home wallboxes outside North America and Japa
 
 J1772 / NACS are **single-phase**. There is no 22 kW three-phase residential AC in the US/Canada. SAE J3068 (Type 2 three-phase) exists for depots, not houses.
 
+### 208 V apartments (208Y/120)
+
+| Continuous current | Power @ 208 V | vs 240 V |
+| --- | --- | --- |
+| 32 A | 6.7 kW | −13 % |
+| 40 A | 8.3 kW | −13 % |
+| 48 A | 10.0 kW | −13 % |
+
+### 277 V commercial (480Y/277) — not residential
+
+277 V is L–N of 480 V wye. Only use EVSE **listed 277 V**.
+
+| Continuous current | Power @ 277 V | Role |
+| --- | --- | --- |
+| 32 A | 8.9 kW | Workplace 1φ from a 480Y lighting/power panel |
+| 48 A | 13.3 kW | Higher-power commercial wall unit |
+| 80 A | **22.2 kW** | NACS/J1772 AC standard ceiling — NA “22 kW AC”, not 3φ 400 V |
+
+DC fast chargers on the same service use **480 V three-phase**, not 277 V lighting circuits.
+
 ## Japan
 
 | Circuit | Power |

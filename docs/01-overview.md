@@ -9,6 +9,8 @@ Worldwide, almost every home AC installation falls into one of a few **grid fami
 | IEC 230/400 V wye | 230 V L–N, 400 V L–L | 50 Hz (60 Hz in Saudi Arabia) | 3.7 / 7.4 kW (1φ) or 11 / 22 kW (3φ) |
 | Legacy 220/380 V wye | 220 V L–N, 380 V L–L | 50 Hz | same, slightly lower kW |
 | North American split-phase | 120 / 240 V | 60 Hz | 1.4 kW (Level 1) or 7.7–11.5 kW (Level 2) |
+| NA 208Y/120 (apartments) | 120 V L–N, 208 V L–L | 60 Hz | Level 2 at 208 V (−13 % vs 240 V) |
+| NA 480Y/277 (commercial) | **277 V L–N**, 480 V L–L | 60 Hz | Workplace AC if EVSE is 277 V rated; 80 A → 22 kW. Not homes |
 | Japan 100/200 V | 100 V / 200 V | 50 Hz east, 60 Hz west | ~3–6 kW on 200 V |
 | 230 V IT (Norway) | 230 V L–L, often no N | 50 Hz | 3.7–7.4 kW 1φ; ~11 kW 3φ only if the car allows it |
 

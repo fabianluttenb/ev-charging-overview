@@ -176,6 +176,58 @@
       "homeUse": true
     },
     {
+      "id": "us-32-208",
+      "label": "US/CA apartment 32 A @ 208 V",
+      "phases": 1,
+      "voltage": 208,
+      "voltageKind": "L-L",
+      "currentA": 32,
+      "powerKW": 6.66,
+      "breakerA": 40,
+      "family": "na-wye-208",
+      "typical": "208Y/120 apartment or small commercial. ~13 % below a 240 V nameplate.",
+      "homeUse": true
+    },
+    {
+      "id": "us-48-208",
+      "label": "US/CA apartment 48 A @ 208 V",
+      "phases": 1,
+      "voltage": 208,
+      "voltageKind": "L-L",
+      "currentA": 48,
+      "powerKW": 9.98,
+      "breakerA": 60,
+      "family": "na-wye-208",
+      "typical": "Hardwired Level 2 on 208Y service",
+      "homeUse": true
+    },
+    {
+      "id": "us-32-277",
+      "label": "US commercial 32 A @ 277 V (480Y)",
+      "phases": 1,
+      "voltage": 277,
+      "voltageKind": "L-N",
+      "currentA": 32,
+      "powerKW": 8.86,
+      "breakerA": 40,
+      "family": "na-wye-480",
+      "typical": "One phase to N of 480Y/277. Workplace only. EVSE must be 277 V listed. Not residential.",
+      "homeUse": false
+    },
+    {
+      "id": "us-80-277",
+      "label": "US commercial 80 A @ 277 V — 22 kW AC",
+      "phases": 1,
+      "voltage": 277,
+      "voltageKind": "L-N",
+      "currentA": 80,
+      "powerKW": 22.16,
+      "breakerA": 100,
+      "family": "na-wye-480",
+      "typical": "NACS/J1772 AC standard ceiling. North American 22 kW AC figure — not 3φ 400 V. Commercial 480Y only.",
+      "homeUse": false
+    },
+    {
       "id": "3p-it-16",
       "label": "Norwegian IT 3-phase 16 A @ 230 V L–L",
       "phases": 3,

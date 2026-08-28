@@ -18,13 +18,16 @@ Some LV islands are three-phase **230 V delta without a distributed neutral**. H
 
 Most dwellings are **TN-C-S (PME)** and **single-phase**. A 22 kW wallbox is almost never a residential option (no 3φ). The distinctive requirement is **open-PEN protection** for outdoor charging: if PEN is lost, disconnect L, N **and** PE from the vehicle (voltage-operated device, 70 V criterion) or create a true TT island with a suitable electrode. 7.4 kW (32 A) is the standard home rating.
 
-## United States / Canada — split-phase, two AC couplers, 125 % sizing
+## United States / Canada — several LV families, not one “NA voltage”
 
-- 120 V Level 1 and 240 V Level 2 on the **same** split-phase service.
-- Apartments may only have **208 V** (wye); power is 208/240 ≈ 13 % lower than a 240 V nameplate.
-- Vehicle inlet is **J1772 or NACS**, not Type 2.
-- Breaker = 125 % of charger current (48 A charger → 60 A breaker).
-- NEMA 14-50 is the default plug-in home outlet (40 A continuous).
+Full list: [`09-north-america-corner-cases.md`](09-north-america-corner-cases.md).
+
+- **Homes:** 120/240 V split-phase. Level 1 = 120 V; Level 2 = 240 V, 32–48 A (7.7–11.5 kW). J1772 or NACS, almost always tethered. Breaker = 125 % of charger current. NEMA 14-50 = 40 A continuous (9.6 kW).
+- **Apartments / small commercial:** **208Y/120 V**. Level 2 at 208 V is ~13 % below a 240 V nameplate (32 A → 6.7 kW). EVSE must be 208–240 V.
+- **Large commercial / industrial:** **480Y/277 V**. **277 V is L–N of 480 V wye** — lighting and some workplace AC EVSE, **not** a house voltage. 80 A × 277 V ≈ **22 kW** is the NA AC ceiling (NACS/J1772), not European 3φ 400 V. Many wallboxes are 208–240 V only — do not land them on 277 V. DCFC sits on **480 V three-phase**.
+- **480 V delta** has **no 277 V** (no wye N). **High-leg 240 V delta:** never put L–N EVSE on the orange 208 V-to-N leg.
+- **Canada commercial** often **600Y/347 V** (347 V lighting). Mexico dwellings **127/220 V**, not 120/240 V.
+- No residential three-phase AC to the car (SAE J3068 is depot/fleet). UL 2231 CCID ≠ IEC Type B.
 
 ## Japan — 100/200 V, 50/60 Hz split, Type 1, TT
 

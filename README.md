@@ -59,7 +59,8 @@ ev-charging-overview/
 │   ├── 05-power-and-currents.md
 │   ├── 06-connectors-home-use.md
 │   ├── 07-special-cases.md
-│   └── 08-regional-summaries.md
+│   ├── 08-regional-summaries.md
+│   └── 09-north-america-corner-cases.md
 └── references/
     └── sources.md
 ```
@@ -79,7 +80,7 @@ ev-charging-overview/
 | Powers up to 22 kW AC | Public-charging business models |
 | Home-use connectors (vehicle, wallbox, grid plug) | |
 
-US **480Y/277 V** is commercial/industrial (lighting and some workplace EVSE), not residential. Homes are 120/240 V split-phase; apartments are often 208Y/120 V.
+North America is several LV families, not one voltage. **Homes** are 120/240 V split-phase. **Apartments** are often 208Y/120 V (Level 2 at 208 V). **Large commercial** is **480Y/277 V**: 277 V is L–N of 480 V wye (lighting and some workplace AC EVSE), not a house voltage; 80 A × 277 V ≈ 22 kW AC. Also 480 V delta (no 277 V), high-leg 240 V delta, and Canada **600Y/347 V**. See [`docs/09-north-america-corner-cases.md`](docs/09-north-america-corner-cases.md).
 
 ---
 
